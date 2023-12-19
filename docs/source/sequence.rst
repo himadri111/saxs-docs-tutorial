@@ -12,6 +12,7 @@ Sequence of steps
 .. _bgrcorr:
 Bgr Correction
 --------------
+(Primary responsibility: Elis Newham)
 Load SAXS scans along with background files and apply adcorr correction
   a. Theory behind absorption corrections in variable geometries
   b. Example usage with experimental data
@@ -20,4 +21,20 @@ Load SAXS scans along with background files and apply adcorr correction
 .. _ctcoreg:
 CT coregistration
 ------------------
-Load CT image and co-register 
+(Primary responsibility: Elis Newham with input from Alissa Parmenter and Jishizhan Chen)
+Load CT image and co-register. 
+Data preprocessing
+--------------------
+  a. Diffuse scatter/background subtraction methods
+  b. Mask effects and data augmentation
+3D reconstruction
+------------------
+  a. Initial estimation of scattering amplitudes
+  b. Demonstration on:
+    i. Using simulated organ-like geometries
+    ii. Using real CT/SAXS scan data
+
+
+
+
+

@@ -23,6 +23,7 @@ Contents
    usage
    sequence
    bgrcorr
+   coreg
    api
 
 

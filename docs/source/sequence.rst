@@ -23,10 +23,12 @@ CT coregistration
 ------------------
 (Primary responsibility: Elis Newham with input from Alissa Parmenter and Jishizhan Chen)
 Load CT image and co-register. 
+.. _datapreproc:
 Data preprocessing
 --------------------
   a. Diffuse scatter/background subtraction methods
   b. Mask effects and data augmentation
+.. _3drecon:
 3D reconstruction
 ------------------
   a. Initial estimation of scattering amplitudes

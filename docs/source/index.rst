@@ -21,6 +21,7 @@ Contents
 .. toctree::
 
    usage
+   sequence
    api
 
 

@@ -22,6 +22,7 @@ Contents
 
    usage
    sequence
+   bgrcorr
    api
 
 

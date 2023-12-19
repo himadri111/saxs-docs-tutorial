@@ -1,5 +1,5 @@
-Sequence
-=====
+Background Corrections
+=======================
 
 .. _Overview:
 

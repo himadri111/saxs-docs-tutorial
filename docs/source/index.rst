@@ -24,6 +24,7 @@ Contents
    sequence
    bgrcorr
    coreg
+   imgtreatment
    saxsrecon
    api
 

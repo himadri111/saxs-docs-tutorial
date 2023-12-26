@@ -26,6 +26,7 @@ Contents
    coreg
    imgtreatment
    saxsrecon
+   instruments
    api
 
 

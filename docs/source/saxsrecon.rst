@@ -5,4 +5,4 @@ SAXS-Recon
 
 Overview
 ------------
-Check out the :doc:`coreg` section for further information.
+Details of the reconstruction process, giving examples of single-, double- and higher-overlap cases.

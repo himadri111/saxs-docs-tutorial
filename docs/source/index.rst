@@ -24,6 +24,7 @@ Contents
    sequence
    bgrcorr
    coreg
+   saxsrecon
    api
 
 

@@ -116,6 +116,7 @@ Set up the *model function* by defining the wavevector q (and components), 2\the
   jupyter.display(chi, label="chi")
 
 which leads to the following image:
+
 .. image:: chi_image.png
   :width: 400
 

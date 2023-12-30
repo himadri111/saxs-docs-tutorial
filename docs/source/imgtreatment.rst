@@ -35,7 +35,7 @@ First get an example SAXS image
 
 The modified PONI file is:
 
-.. include:: tSfp.rst
+.. include::  tSfp.rst
 
 Here file continues
 

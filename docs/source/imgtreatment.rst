@@ -141,7 +141,36 @@ which looks correct. For the qx, qy, qz components:
   qz = np.ones_like(qx)
   qz = (q**2/(2*qE))*qz
 
-The model function 
+.. _meridional model:
+Types of meridional models
+---------------------------
+Let the 3rd order peak position be q0 = 0.27 and the axial width dq0=0.01 (all in nm^-1). The simplest model is an 3D intensity pattern with a Gaussian peak-shape along the radial axis (axial direction) and a conical-type intensity distribution around chi0 with a width dchi0. This can be expressed as:
+
+.. code-block:: python
+
+  # define peak centre and width
+  chi0 = np.pi/2.0
+  dchi0 = np.pi/6.0
+  modelint_sph = np.exp(-0.5*(((q-q0)/dq0)**2))*np.exp(-0.5*(((chi-chi0)/dchi0)**2))
+  jupyter.display(modelint, label="sphmodelint")
+
+The second is a 3D intensity pattern with a flat streak-like shape
+
+.. code-block:: python
+
+  # define peak centre and width
+  dq1=5*dq0 #lateral peak width vs axial width
+  modelint_flat = np.exp(-0.5*(((qy-q0)/dq0)**2))*np.exp(-0.5*((qx**2+qz**2)/dq1**2))
+
+These can be displayed as:
+
+.. image:: chi_image.png
+  :width: 400
+
+and
+
+.. image:: chi_image.png
+  :width: 400
 
 .. _diffuse bgr corr:
 Subtract diffuse bgr

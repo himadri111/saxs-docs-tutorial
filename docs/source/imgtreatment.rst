@@ -29,7 +29,7 @@ Subtract diffuse bgr
 Using synthetic SAXS data (pyFAI generated) with a meridional and diffuse ellipsoidal term
 1. Display image with and without diffuse term
 
-.. code-block:: ruby
+.. code-block:: python
 
   Some ruby code
 

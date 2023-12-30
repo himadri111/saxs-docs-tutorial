@@ -162,14 +162,14 @@ The second is a 3D intensity pattern with a flat streak-like shape
   dq1=5*dq0 #lateral peak width vs axial width
   modelint_flat = np.exp(-0.5*(((qy-q0)/dq0)**2))*np.exp(-0.5*((qx**2+qz**2)/dq1**2))
 
-These can be displayed as:
+These can be displayed as (spherical):
 
-.. image:: chi_image.png
+.. image:: spherical_streak_model.png
   :width: 400
 
-and
+and (flat)
 
-.. image:: chi_image.png
+.. image:: flat_streak_model.png
   :width: 400
 
 .. _diffuse bgr corr:

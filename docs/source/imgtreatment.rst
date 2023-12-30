@@ -35,8 +35,9 @@ First get an example SAXS image
 
 The modified PONI file is:
 
-.. literalinclude:: testSAXSCal_flipped_poni.txt
-  :text:
+.. include:: tSfp.rst
+
+Here file continues
 
 .. _diffuse bgr corr:
 Subtract diffuse bgr

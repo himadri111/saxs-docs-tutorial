@@ -80,7 +80,7 @@ Apply 2D integration
 
 The first 2D rebinned plot (original data) is correct
 
-.. image:: f134_original_incorrect.png
+.. image:: f134_original_correct.png
   :width: 400
 
 The second 2D rebinned plot is clearly incorrect

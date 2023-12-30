@@ -99,6 +99,26 @@ which looks correct
 .. image:: f134_flipped_correct.png
   :width: 400
 
+Set up the *model function* by defining the wavevector q (and components), 2\theta and other components:
+.. code-block:: python
+  y, x = np.mgrid[0:len(img[:,0]), 0:len(img[0])] #could be img_ud as well
+  px, py = 172e-6, 172e-6 # in m
+  ym, xm = y*py, x*px
+  poni1 = 0.12554280 # (y centre) 
+  poni2 = 0.11783720 # (x centre)
+  xperp = sqrt((xm-poni2)**2+(ym-poni1)**2)
+  cos(chi), sin(chi) = (xm-poni2)/xperp, (ym-poni1)/xperp
+  # to define chi, separate adjustments needed in quadrants II-IV
+  chi = np.arctan(sinchi/coschi) #original
+  chi = np.where((sinchi<0)&(coschi<0),np.arctan(sinchi/coschi)+np.pi,chi) #quadrant III
+  chi = np.where((sinchi>0)&(coschi<0),np.arctan(sinchi/coschi)+np.pi,chi) #quadrant II
+  chi = np.where((sinchi<0)&(coschi>0),np.arctan(sinchi/coschi)+2*np.pi,chi) #quadrant IV
+  jupyter.display(chi, label="chi")
+
+which leads to the following image:
+.. image:: f134_flipped_correct.png
+  :width: 400
+
 .. _diffuse bgr corr:
 Subtract diffuse bgr
 -------------------------

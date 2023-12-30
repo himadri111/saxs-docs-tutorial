@@ -66,31 +66,37 @@ Flip image vertically (and create modified PONI file, above, which has y-centre 
 
 .. code-block:: python
 
-img_ud = np.flipud(img)
-ai1 = pyFAI.load("testSAXSCal.poni") #with original x- and y-centrees
-ai2 = pyFAI.load("testSAXSCal_flipped.poni") #with y-centre flipped vertically - cy’ = ny(1679)-cy = 729.90 pixels
+  img_ud = np.flipud(img)
+  ai1 = pyFAI.load("testSAXSCal.poni") #with original x- and y-centrees
+  ai2 = pyFAI.load("testSAXSCal_flipped.poni") #with y-centre flipped vertically - cy’ = ny(1679)-cy = 729.90 pixels
 
 Apply 2D integration
 
 .. code-block:: python
 
-img_ud = np.flipud(img)
-resBF = ai.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
+  img_ud = np.flipud(img)
+  resB = ai.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
+  resBF = ai.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
 
-which is incorrect
+The first 2D rebinned plot (original data) is correct
 
-.. image:: f134_original.png
+.. image:: f134_original_incorrect.png
   :width: 400
 
-Use the ai2 integrator:
+The second 2D rebinned plot is clearly incorrect
+
+.. image:: f134_flipped_incorrect.png
+  :width: 400
+
+Use the ai2 integrator (which uses the corrected PONI file):
 
 .. code-block:: python
 
-res2BF = ai2.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
+  res2BF = ai2.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
 
 which looks correct
 
-.. image:: f134_original.png
+.. image:: f134_flipped_correct.png
   :width: 400
 
 .. _diffuse bgr corr:

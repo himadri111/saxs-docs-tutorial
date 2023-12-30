@@ -28,6 +28,11 @@ Subtract diffuse bgr
 -------------------------
 Using synthetic SAXS data (pyFAI generated) with a meridional and diffuse ellipsoidal term
 1. Display image with and without diffuse term
+
+.. image:: testerpillar2.jpg
+  :width: 400
+  :alt: Alternative text
+
 2. Display I(q) profile with and without diffuse term
 3. Fit different background terms (cubic spline, exponential background, power law) and test fit quality
 4. Repeat with noise added

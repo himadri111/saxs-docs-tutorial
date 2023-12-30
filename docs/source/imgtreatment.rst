@@ -29,12 +29,9 @@ Subtract diffuse bgr
 Using synthetic SAXS data (pyFAI generated) with a meridional and diffuse ellipsoidal term
 1. Display image with and without diffuse term
 
-Code example::
-.. highlight:: python
+.. code-block:: ruby
 
-  backgrounds_incident_flux = np.asarray(np.mean(backgrounds_incident_flux[0,0,:,5]))
-  backgrounds_transmitted_flux = np.asarray(np.mean(backgrounds_transmitted_flux[0,0,:,1]))
-  backgrounds_count_times =  np.asarray([backgrounds_count_times])  
+  Some ruby code
 
 .. image:: testerpillar1.jpg
   :width: 400

@@ -62,6 +62,37 @@ leading to
   :width: 400
   :alt: Alternative text
 
+Flip image vertically (and create modified PONI file, above, which has y-centre flipped to enable correct calibration)
+
+.. code-block:: python
+
+img_ud = np.flipud(img)
+ai1 = pyFAI.load("testSAXSCal.poni") #with original x- and y-centrees
+ai2 = pyFAI.load("testSAXSCal_flipped.poni") #with y-centre flipped vertically - cy’ = ny(1679)-cy = 729.90 pixels
+
+Apply 2D integration
+
+.. code-block:: python
+
+img_ud = np.flipud(img)
+resBF = ai.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
+
+which is incorrect
+
+.. image:: f134_original.png
+  :width: 400
+
+Use the ai2 integrator:
+
+.. code-block:: python
+
+res2BF = ai2.integrate2d_ng(img_ud, 500, 360, unit="q_nm^-1",filename="integratedB.edf")
+
+which looks correct
+
+.. image:: f134_original.png
+  :width: 400
+
 .. _diffuse bgr corr:
 Subtract diffuse bgr
 -------------------------

@@ -172,6 +172,31 @@ and (flat)
 .. image:: flat_streak_model.png
   :width: 400
 
+.. _total_scattering:
+Meridional and diffuse scattering
+----------------------------------------------
+To simulate the diffuse scattering which exists along with the meridional peaks, an ellipsoidal intensity pattern is used.
+
+.. code-block:: python
+
+  amp_m = 1.0
+  chi0 = np.pi/2.0
+  dchi0 = np.pi/12.0
+  meridsph = amp_m*(np.exp(-0.5*(((q-q0)/dq0)**2))*np.exp(-0.5*(((chi-chi0)/dchi0)**2))
+  + np.exp(-0.5*(((q-q0)/dq0)**2))*np.exp(-0.5*(((chi-chi0-np.pi)/dchi0)**2)))
+  amp_e = 2.0
+  ecc = 5.0
+  ay = 0.1
+  ax = ecc*ax
+  saxsellipse = amp_e*np.exp(-(qx/ax)**2-(qy/ay)**2)
+  totalsaxs = saxsellipse + meridsph
+  jupyter.display(total, label="totalsaxs")
+
+which displays as:
+
+.. image:: totalsaxs_1.png
+  :width: 400
+
 .. _diffuse bgr corr:
 Subtract diffuse bgr
 -------------------------

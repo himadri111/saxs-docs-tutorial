@@ -50,7 +50,17 @@ The modified PONI file is:
   #Rot3: 0.00
   #Wavelength: 0.88560148e-10
 
-Here file continues
+To display it, 
+
+.. code-block:: python
+
+  jupyter.display(img, label="Inital")
+
+leading to
+
+.. image:: f134_original.png
+  :width: 400
+  :alt: Alternative text
 
 .. _diffuse bgr corr:
 Subtract diffuse bgr

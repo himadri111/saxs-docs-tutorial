@@ -36,6 +36,7 @@ First get an example SAXS image
 The modified PONI file is:
 
 .. include::  tSfp.rst
+  :language: python
 
 Here file continues
 

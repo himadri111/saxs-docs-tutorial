@@ -31,7 +31,16 @@ Using synthetic SAXS data (pyFAI generated) with a meridional and diffuse ellips
 
 .. code-block:: python
 
-  Some ruby code
+  ponifile = [i for i in all_files if i.endswith(".poni")][0]
+  splinefile = [i for i in all_files if i.endswith(".spline")][0]
+  print(ponifile, splinefile)
+
+  #patch the poni-file with the proper path.
+  with open(ponifile, "a") as f:
+      f.write("SplineFile: %s\n"%splinefile)
+
+  ai = pyFAI.load(ponifile)
+  print(ai)
 
 .. image:: testerpillar1.jpg
   :width: 400

@@ -109,18 +109,39 @@ Set up the *model function* by defining the wavevector q (and components), 2\the
   poni1 = 0.12554280 # (y centre) 
   poni2 = 0.11783720 # (x centre)
   xperp = sqrt((xm-poni2)**2+(ym-poni1)**2)
+  # define 2theta
+  twotheta = np.arctan(xperp/distance)
+  # define Ewald sphere radius
+  qE = 2*np.pi/wavelen
+  # define wavevector q
+  q = (4*np.pi/wavelen)*np.sin(twotheta/2.0)
+  
   cos(chi), sin(chi) = (xm-poni2)/xperp, (ym-poni1)/xperp
   # to define chi, separate adjustments needed in quadrants II-IV
   chi = np.arctan(sinchi/coschi) #original
   chi = np.where((sinchi<0)&(coschi<0),np.arctan(sinchi/coschi)+np.pi,chi) #quadrant III
   chi = np.where((sinchi>0)&(coschi<0),np.arctan(sinchi/coschi)+np.pi,chi) #quadrant II
   chi = np.where((sinchi<0)&(coschi>0),np.arctan(sinchi/coschi)+2*np.pi,chi) #quadrant IV
+
+  #test the chi display is ok
   jupyter.display(chi, label="chi")
 
 which leads to the following image:
 
 .. image:: chi_image.png
   :width: 400
+
+which looks correct. For the qx, qy, qz components:
+
+.. code-block:: python
+
+  # define qx, qy, qz components
+  qx=q*np.sqrt(1-(q/(2*qE))**2) * np.cos(chi) #chi in radians
+  qy=q*np.sqrt(1-(q/(2*qE))**2) * np.sin(chi)
+  qz = np.ones_like(qx)
+  qz = (q**2/(2*qE))*qz
+
+The model function 
 
 .. _diffuse bgr corr:
 Subtract diffuse bgr

@@ -29,7 +29,7 @@ Subtract diffuse bgr
 Using synthetic SAXS data (pyFAI generated) with a meridional and diffuse ellipsoidal term
 1. Display image with and without diffuse term
 
-.. image:: testerpillar2.jpg
+.. image:: testerpillar1.jpg
   :width: 400
   :alt: Alternative text
 

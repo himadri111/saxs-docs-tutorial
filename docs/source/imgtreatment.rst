@@ -34,7 +34,7 @@ First get an example SAXS image
   ai = pyFAI.load("testSAXSCal_flipped.poni") # integrator with vertical flipped image
 
 The modified PONI file is:
-.. include:: inclusion.txt
+.. include:: testSAXSCal_flipped_poni.txt
    :literal:
 
 .. _diffuse bgr corr:

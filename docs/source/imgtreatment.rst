@@ -23,11 +23,26 @@ Augment using SAXS symmetry
 Using above data set
 1. code showing augmentation of image with image
 
-.. _diffuse bgr:
+.. _synth real data:
+Construct synthetic and real SAXS data
+---------------------------------------
+First get an example SAXS image
+
+.. code-block:: python
+
+  img=frames[0][134] # number 134 from scan i22-729075
+  ai = pyFAI.load("testSAXSCal_flipped.poni") # integrator with vertical flipped image
+
+The modified PONI file is:
+.. include:: inclusion.txt
+   :literal:
+
+.. _diffuse bgr corr:
 Subtract diffuse bgr
 -------------------------
 Using synthetic SAXS data (pyFAI generated) with a meridional and diffuse ellipsoidal term
-1. Display image with and without diffuse term
+1. Generate synthetic data
+2. Display image with and without diffuse term
 
 .. code-block:: python
 

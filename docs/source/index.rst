@@ -9,8 +9,6 @@ and offers a *simple* and *intuitive* API.
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project. Lumache has its documentation hosted on Read the Docs. 
 
-Check out the :doc:`sequence` for the sequence of correction steps. Text 1
-
 .. note::
 
    This project is under active development.

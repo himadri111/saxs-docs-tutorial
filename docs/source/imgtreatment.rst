@@ -100,7 +100,9 @@ which looks correct
   :width: 400
 
 Set up the *model function* by defining the wavevector q (and components), 2\theta and other components:
+
 .. code-block:: python
+
   y, x = np.mgrid[0:len(img[:,0]), 0:len(img[0])] #could be img_ud as well
   px, py = 172e-6, 172e-6 # in m
   ym, xm = y*py, x*px

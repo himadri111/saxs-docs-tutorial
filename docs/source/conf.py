@@ -20,8 +20,6 @@ extensions = [
     'sphinx.ext.intersphinx',
 ]
 
-mathjax_path="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),

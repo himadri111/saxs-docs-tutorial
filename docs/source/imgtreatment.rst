@@ -197,10 +197,12 @@ which displays as:
 .. image:: totalsaxs_1.png
   :width: 400
 
-.. math::
+.. math:: \beta \sim \text{Poisson}(\lambda=5)
+   :label: beta_prior
 
-   y    & = ax^2 + bx + c \\\\
-   f(x) & = x^2 + 2xy + y^2
+The prior on :math:`\beta` is a Poisson distribution with rate parameter of 5 :eq:`beta_prior`.
+
+the mean (:math:`\mu`) of
 
 .. _diffuse bgr corr:
 Subtract diffuse bgr

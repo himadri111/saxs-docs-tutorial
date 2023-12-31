@@ -197,7 +197,10 @@ which displays as:
 .. image:: totalsaxs_1.png
   :width: 400
 
-Since Pythagoras, we know that :math:`a^2 + b^2 = c^2`.
+.. math::
+
+   y    & = ax^2 + bx + c \\\\
+   f(x) & = x^2 + 2xy + y^2
 
 .. _diffuse bgr corr:
 Subtract diffuse bgr

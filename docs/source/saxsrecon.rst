@@ -21,6 +21,14 @@ Then we can equate
    :nowrap:
 
    \begin{eqnarray}
+      y    & = & ax^2 + bx + c \\
+      f(x) & = & x^2 + 2xy + y^2
+   \end{eqnarray}
+
+.. math::
+   :nowrap:
+
+   \begin{eqnarray}
       I^{k1}_{r1}(\chi)    & = & w_{1,r1}^{k1} * a_{1} V_{1}(\chi;{\bf{f_{1},\alpha_{1}}};r1) + w_{2,r1}^{k1} * a_{2} V_{2}(\chi;{\bf{f_{2},\alpha_{2}};r1) + \ldots + w_{M,r1}^{k1} * a_{M} V_{M}(\chi;{\bf{f_{M},\alpha_{M}}};r1) \\
       f(x) & = & x^2 + 2xy + y^2
    \end{eqnarray}

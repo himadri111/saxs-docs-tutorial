@@ -34,7 +34,25 @@ Since the mean fibril characteristics are known (:math:`\bf{f}`) the above set o
 .. code-block:: python
    :linenos:
 
-   import antigravity
-
-   def main():
-       antigravity.fly()
+   import numpy as np
+   """
+   the equation works like
+   1                2       3   ....   Nfibrils = I(chi1)
+   a1*model(chi1) + a2*model(chi1) ... aN*model(chi1) = I(chi1)
+   a1*model(chi2) + a2*model(chi2) ... aN*model(chi2) = I(chi2)
+   .
+   .
+   .
+   M = Nx*r*n_chi_svd
+   a(M)*model(chiM) + a2*model(chiM) ... aN*model(chiM) = I(chiM)
+   """
+   """
+   for chi_s_svd points (j: 0 to n_chi_svd-1)
+   for each voxel in pdict, evaluate I(chi) and model weight at chi_s_svd points
+   use mean values of q0, wa, wMu
+   if the value is > threshold (e.g. 1% of max val) then 
+   in matrix A, add model weight to "indx" column; "nxscan*n_chi_svd + j" row
+   add it to the Ichi value at that point chi_s_svd; add to b_svd
+   """
+   ampval2=np.linalg.lstsq(a_svd_arr, b_svd_arr, rcond=None)[0]
+   

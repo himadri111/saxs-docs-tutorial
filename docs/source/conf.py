@@ -16,8 +16,11 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
+    'sphinx.ext.mathjax', 
     'sphinx.ext.intersphinx',
 ]
+
+mathjax_path="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),

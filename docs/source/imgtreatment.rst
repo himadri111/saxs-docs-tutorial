@@ -204,6 +204,12 @@ The prior on :math:`\beta` is a Poisson distribution with rate parameter of 5 :e
 
 the mean (:math:`\mu`) of
 
+.. math::
+
+   (a + b)^2 = a^2 + 2ab + b^2
+
+   (a - b)^2 = a^2 - 2ab + b^2
+
 .. _diffuse bgr corr:
 Subtract diffuse bgr
 -------------------------

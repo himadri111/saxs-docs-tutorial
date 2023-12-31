@@ -22,8 +22,6 @@ Then we can equate
 
    \begin{eqnarray}
       I^{k1}_{r1}(\chi)    & = & w_{1,r1}^{k1} * a_{1} V_{1}(\chi;{\bf{f_{1},\alpha_{1}}};r1) + w_{2,r1}^{k1} * a_{2} V_{2}(\chi;{\bf{f_{2},\alpha_{2}};r1) + \ldots + w_{M,r1}^{k1} * a_{M} V_{M}(\chi;{\bf{f_{M},\alpha_{M}}};r1) \\
-      I^{k2}_{r1}(\chi)    & = & w_{1,r1}^{k2} * a_{1} V_{1}(\chi;{\bf{f_{1},\alpha_{1}}};r1) + w_{2,r1}^{k2} * a_{2} V_{2}(\chi;{\bf{f_{2},\alpha_{2}};r1) + \ldots + w_{M,r1}^{k2} * a_{M} V_{M}(\chi;{\bf{f_{M},\alpha_{M}}};r1) \\
-      I^{k3}_{r1}(\chi)    & = & \ldots \\
       I^{kP}_{rN}(\chi)    & = & w_{1,rN}^{kP} * a_{1} V_{1}(\chi;{\bf{f_{1},\alpha_{1}}};rN) + w_{2,rN}^{kP} * a_{2} V_{2}(\chi;{\bf{f_{2},\alpha_{2}};rN) + \ldots + w_{M,rN}^{kP} * a_{M} V_{M}(\chi;{\bf{f_{M},\alpha_{M}}};rN)
    \end{eqnarray}
 

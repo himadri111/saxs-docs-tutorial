@@ -26,6 +26,10 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ['std']
 
+.. role:: python(code)
+  :language: python
+  :class: highlight
+
 templates_path = ['_templates']
 
 # -- Options for HTML output

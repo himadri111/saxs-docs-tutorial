@@ -55,4 +55,13 @@ Since the mean fibril characteristics are known (:math:`\bf{f}`) the above set o
    add it to the Ichi value at that point chi_s_svd; add to b_svd
    """
    ampval2=np.linalg.lstsq(a_svd_arr, b_svd_arr, rcond=None)[0]
+
+.. role:: bash(code)
+   :language: bash
+
+Test inline: :bash:`export FOO="bar"`.
+
+.. code-block:: bash
+
+    export FOO="bar"
    

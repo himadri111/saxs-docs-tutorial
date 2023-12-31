@@ -197,6 +197,20 @@ which displays as:
 .. image:: totalsaxs_1.png
   :width: 400
 
+\renewcommand\sphinxstylewarningtitle[1]{%
+  \underline{\textbf{\sphinxremovefinalcolon{#1}}}\par
+}
+\renewcommand{\sphinxstylenotetitle}[1]{%
+  \textit{\textbf{\sphinxremovefinalcolon{#1}}}\par\nobreak
+  % LaTeX syntax is complex and we would be better off using \hrule.
+  {\parskip0pt\noindent}%
+  \raisebox{1ex}%
+   {\makebox[\linewidth]{\textcolor{sphinxnoteBorderColor}{\dotfill}}}
+  % It is complex to obtain nice vertical spacing for both a paragraph
+  % or a list following up; this set-up is better for a paragraph next.
+  \par\vskip-\parskip
+}
+
 .. _diffuse bgr corr:
 Subtract diffuse bgr
 -------------------------

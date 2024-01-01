@@ -17,12 +17,14 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 2
 
    usage
    sequence
    fibremodel
    bgrcorr
    coreg
+      bgrcorr
    imgtreatment
    saxsrecon
    instruments

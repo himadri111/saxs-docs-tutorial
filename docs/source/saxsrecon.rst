@@ -60,5 +60,32 @@ Since the mean fibril characteristics are known (:math:`\bf{f}`) the above set o
    """
    ampval2=np.linalg.lstsq(a_svd_arr, b_svd_arr, rcond=None)[0]
 
+.. _validationinitial:
 
-   
+Validation of initialisation
+--------------------------------
+
+.. _angular:
+
+Simulating the tomoSAXS scan and rotation
+-----------------------------------------------
+Using these estimated amplitude and fibril characteristics, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, as shown in the schematics below.
+
+SHOW EXAMPLE PLOT
+
+The color scheme for the voxels represents their status - green (unsolved), dark pink (already solved), and bright pink (solved at the current scan point). The procedure for solving the voxels is described next. 
+
+.. _sv:
+
+Identifying voxel-specific diffracting sectors
+-----------------------------------------------
+Each fibre :math:`i` contributes significantly (above a noise threshold) only at specific rotation angles :math:`i` and angular sectors :math:`\delta \chi_q`. To calculate this, using the estimated :math:`\{a_{i},\bf{f}_{i},,\bf{\alpha}_{i}\}_{M}` parameters, the total measured angular SAXS intensity :math:`I^{k}_{r}(\chi)` for each rotation angle :math:`r_{j}`, and the individual components :math:`w_{i,r}^{k} \times a_{i} V_{i}(\chi;{\bf{f_{i},\alpha_{i}}};r)` are calculated. 
+
+SHOW EXAMPLE PLOT
+
+As can be seen, some fibres are the predominant contributors to the SAXS signal in certain angular sectors :math:`\delta \chi_q` (shown as shaded), while other fibres are overlapping. For the first category, the fibre characteristics can be extracted by fitting the radial intensity profiles along these angular sectors to the model scattering functions. The angular sector where the fibre :math:`i` is the predominant contributor is estimated by taking the ratio of the simulated :math:`w_{i,r}^{k} \times a_{i} V_{i}(\chi;{\bf{f_{i},\alpha_{i}}};r)` to :math:`I^{k}_{r}(\chi)` over the full :math:`\chi` range, and finding if there exists any :math:`\delta \chi_q` where the ratio is :math:`>t_{s}` where :math:`t_{s}` is a single-voxel dimensionless ratio e.g. = 0.95 (i.e. the fibre :math:`i` contributes at least :math:`t_{s}` of the intensity over :math:`\delta \chi_q`. This step is called Single-Voxel Estimation, and an example of the :math:`I(q)` fits is shown below. 
+
+SHOW EXAMPLE PLOT
+
+For the next level of complexity, 
+ 

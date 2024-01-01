@@ -24,7 +24,7 @@ Contents
    fibremodel
    bgrcorr
    coreg
-      bgrcorr
+      test1
    imgtreatment
    saxsrecon
    instruments

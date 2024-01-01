@@ -5,11 +5,15 @@ Fibre diffraction model
 
 Background
 ------------
-Summarises the 3DXRD model for collagen meridional fibril scattering.
-
-Source code is in threeDXRD.py or threeDXRD_nomlab_CURRENT.py 
+Summarises the 3DXRD model for collagen meridional fibril scattering. Source code is in threeDXRD.py or threeDXRD_nomlab_CURRENT.py 
 
 .. _fibreimage:
-3D and 2D SAXS from fibril
+3D and 2D SAXS scattering from fibril
+--------------------------------------
 
-Summarize folder structure, needed files (including calibration), sample file, water bgr, empty kapton bgr, empty air bgr, input file locations, ...
+:math:`I^{k}_{r}(\chi)`
+
+The scattering from a single fibril with D-period :math:`D` and fibril radius :math:`R` is a series of ellipsoids with axial spacing :math:`2\pi/D` and width :math:`w_{p}\propto \frac{1}{R}`. This is graphically shown below
+
+.. image:: 3Dfibril_mayavi_example1_cropped.png
+  :width: 400

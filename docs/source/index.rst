@@ -20,6 +20,7 @@ Contents
 
    usage
    sequence
+   fibremodel
    bgrcorr
    coreg
    imgtreatment

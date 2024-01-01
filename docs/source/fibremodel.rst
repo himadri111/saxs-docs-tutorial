@@ -17,3 +17,8 @@ The scattering from a single fibril with D-period :math:`D` and fibril radius :m
 
 .. image:: 3Dfibril_mayavi_example1_cropped.png
   :width: 400
+
+The scattering from three fibrils separated by 30 degrees is shown below; note the separated ellipsoidal streaks.
+
+.. image:: 3Dfibril_mayavi_example1_cropped.png
+  :width: 400

@@ -97,3 +97,7 @@ Iterative solution of voxels
 -----------------------------------------------
 
 To solve the fibril-parameters for the voxels, the above steps for :ref:`voxel-solution <voxelsol>` are combined with :ref:`estimation <angular>` of :math:`I^{k}_{r}(\chi)` for each scan-point and rotation angle. As individual voxels get fitted, they are moved to a "solved" list whose parameters are known. Therefore, when :ref:`estimating voxels <voxelsol>`, only unsolved voxels are included when simulating the angular SAXS intensity profile and identifying any single or overlapping voxels. 
+
+The plot below shows how the percentage of solved voxels increases with each rotation angle and iteration. In the simplest implementation, solution proceeds serially without ranking or prioritising the peak intensity contributions from specific voxels. 
+
+By prioritising the highest single-voxels or double-scattering pairs for initial solution, possible benefits could include more accurate estimate of these initial voxels which then reduce the propagated error for subsequent voxels which have to subtract out these known contributors before fitting.

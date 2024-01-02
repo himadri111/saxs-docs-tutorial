@@ -14,7 +14,7 @@ Sequence of steps
 Bgr Correction
 --------------
 Described in :doc:`bgrcorr` section.
-(Primary responsibility: Elis Newham)
+(Primary responsibility: EN/HG)
 Load SAXS scans along with background files and apply adcorr correction
   a. Theory behind absorption corrections in variable geometries
   b. Example usage with experimental data
@@ -24,7 +24,7 @@ Load SAXS scans along with background files and apply adcorr correction
 .. _ctcoreg:
 CT coregistration
 ------------------
-(Primary responsibility: Elis Newham with input from Alissa Parmenter and Jishizhan Chen). Load CT image and co-register
+(Primary responsibility: EN, input from AP/JC). Load CT image and co-register
 Described in :doc:`coreg` section.
 
 .. _datapreproc:

@@ -1,4 +1,4 @@
-Image treatement
+Image treatment
 =======================================================
 
 .. _Overview:

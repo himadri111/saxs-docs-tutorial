@@ -1,5 +1,5 @@
 """
-Lumache - Python library for cooks and food lovers.
+SAXS Recon - Python library for SAXS recon.
 """
 
 __version__ = "0.1.0"

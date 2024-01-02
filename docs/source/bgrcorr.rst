@@ -16,7 +16,7 @@ Summarize folder structure, needed files (including calibration), sample file, w
 Principles of Background Corrections
 --------------
 Summarize relations in A. Smith et al J. App. Cryst. (2017)
-(Primary responsibility: Elis Newham)
+(Primary responsibility: EN/HG)
 Summarize equations
 
 Load SAXS scans along with background files and apply adcorr correction
@@ -28,7 +28,7 @@ Load SAXS scans along with background files and apply adcorr correction
 .. _variablethickness:
 Accounting for variable thickness with CT image
 ------------------
-(Primary responsibility: Elis Newham with input from Alissa Parmenter and Jishizhan Chen). Code examples
+(Primary responsibility: EN with input from AP/JC). Code examples
 
 .. _examplesim:
 Simulated data examples

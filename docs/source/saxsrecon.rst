@@ -64,6 +64,14 @@ Since the mean fibril characteristics are known (:math:`\bf{f}`) the above set o
 
 Validation of initialisation
 --------------------------------
+In the plot below, we show the estimated amplitudes from a 10x10 planar slice
+
+.. image:: pred_vs_actualAmps_labels.png
+  :width: 400
+
+with the fibril geometry (viewed from above) shown below:
+.. image:: simpleFibreGeometry.png
+  :width: 400
 
 .. _angular:
 

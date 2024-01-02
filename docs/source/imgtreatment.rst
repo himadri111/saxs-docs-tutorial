@@ -5,7 +5,7 @@ Image treatement
 Overview
 ------------
 Background corrected SAXS frames need to be processed to:
-1. extract the ROI of interest (a sector around 3rd meridional order) using ` pyFAI <https://pyfai.readthedocs.io/en/>`_ based cake remapping
+1. extract the ROI of interest (a sector around 3rd meridional order) using `pyFAI <https://pyfai.readthedocs.io/en/>`_ based cake remapping
 2. augment ROI data using chi->chi+180 symmetry
 3. subtract the diffuse SAXS signal
 4. apply denoising filter if needed

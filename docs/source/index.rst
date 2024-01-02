@@ -4,7 +4,7 @@ Welcome to SAXS documentation!
 **SAXSRecon** is a Python library for SAXS reconstruction.
 
 Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project. SAXSRecon has its documentation hosted on Read the Docs. 
+how to :ref:`install <installation>` the project. SAXSRecon has its documentation hosted on Read the Docs. 
 
 .. note::
 

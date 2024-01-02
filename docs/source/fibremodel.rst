@@ -22,3 +22,8 @@ The scattering from three fibrils separated by 30 degrees is shown below; note t
 
 .. image:: 3Dfibril_mayavi_example2_cropped.png
   :width: 400
+
+If the right-hand fibres is rotated by 30 degrees out of plane, note the reduction of it's meridional peak intensity due to the reduced intersection of the meridional streak with the Ewald sphere. 
+
+.. image:: 3Dfibril_mayavi_example3_cropped2.png
+  :width: 400

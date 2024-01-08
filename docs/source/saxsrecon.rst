@@ -113,6 +113,9 @@ By prioritising the highest single-voxels or double-scattering pairs for initial
 
 .. raw:: html
 
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/watch?v=7gMg98Hf3uM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
+	<center>
+	<video width="640" height="360" controls>
+		<source src="http://www.silx.org/pub/pyFAI/video/Calibration_15mn.mp4" type="video/mp4">
+		This 15mn tutorial presents the usage of pyFAI-calib2
+	</video>
+	</center>

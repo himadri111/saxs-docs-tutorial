@@ -111,6 +111,4 @@ The plot below shows how the percentage of solved voxels increases with each rot
 
 By prioritising the highest single-voxels or double-scattering pairs for initial solution, possible benefits could include more accurate estimate of these initial voxels which then reduce the propagated error for subsequent voxels which have to subtract out these known contributors before fitting.
 
-.. raw:: html
-
-<video controls src="_static/sample-mp4-file.mp4"></video>
+.. video:: /_static/sample-mp4-file.mp4

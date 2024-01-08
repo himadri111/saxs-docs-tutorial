@@ -110,26 +110,3 @@ To solve the fibril-parameters for the voxels, the above steps for :ref:`voxel-s
 The plot below shows how the percentage of solved voxels increases with each rotation angle and iteration. In the simplest implementation, solution proceeds serially without ranking or prioritising the peak intensity contributions from specific voxels. 
 
 By prioritising the highest single-voxels or double-scattering pairs for initial solution, possible benefits could include more accurate estimate of these initial voxels which then reduce the propagated error for subsequent voxels which have to subtract out these known contributors before fitting.
-
-Youtube test
-
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 75%; height: 75%;"></iframe>
-    </div>
-
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/7gMg98Hf3uM?si=OP9I4WGb3X-uEip8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 50%; height: 50%;"></iframe>
-    </div>
-
-.. raw:: html
-
-	<center>
-	<video width="640" height="360" controls>
-		<source src="http://www.silx.org/pub/pyFAI/video/Calibration_15mn.mp4" type="video/mp4">
-		This 15mn tutorial presents the usage of pyFAI-calib2
-	</video>
-	</center>

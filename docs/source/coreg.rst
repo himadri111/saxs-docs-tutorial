@@ -67,12 +67,12 @@ Allows selection of individual files that make up the tomoSAXS scan.
 ---------------------
 1.a. Load WAXS sum intensity map. 
 
-.. image:: raw_WAXS_map.png
+.. image:: raw_WAXS_map.tif
   :width: 400
 
 1.b. Use k-means clustering (with a custer count of 5) to segment bone.
 
-.. image:: clustered_WAXS_map.png
+.. image:: clustered_WAXS_map.tif
   :width: 400
  
 
@@ -83,7 +83,7 @@ Allows selection of individual files that make up the tomoSAXS scan.
 
 1.d. for an ROI of +/- 10 pixels around this point, isolate coordinates of pixels whose clustered grey-scale values do not correspond to bone:
 
-.. image:: midpoint WAXS.png
+.. image:: midpoint WAXS.tif
   :width: 400
 
 1.e. The endpoint of the upper vertabra is designated as the highest point at which these pixels start; and the endpoint of the lower vertebrae
@@ -93,7 +93,7 @@ Allows selection of individual files that make up the tomoSAXS scan.
 
 1.f. Now, the inverted and resliced CT data is loaded:
 
-.. image:: raw inverse CT.png
+.. image:: raw inverse CT.tif
   :width: 400
 
 

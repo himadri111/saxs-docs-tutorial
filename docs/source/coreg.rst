@@ -67,24 +67,20 @@ Allows selection of individual files that make up the tomoSAXS scan.
 ---------------------
 1.a. Load WAXS sum intensity map. 
 
-.. image:: raw_WAXS_map.tif
-  :width: 400
+.. image:: raw_WAXS_map.png
 
 1.b. Use k-means clustering (with a custer count of 5) to segment bone.
 
-.. image:: clustered_WAXS_map.tif
-  :width: 400
- 
+.. image:: clustered_WAXS_map.png
 
 1.c. Find sample midpoint along X-axis as point of lowest mean WAXS scattering intensity between kapton edges.
 
-.. image:: mean x-Axis intensity.png
-  :width: 400
+.. image:: mean_xAxis_intensity.png
+
 
 1.d. for an ROI of +/- 10 pixels around this point, isolate coordinates of pixels whose clustered grey-scale values do not correspond to bone:
 
-.. image:: midpoint WAXS.tif
-  :width: 400
+.. image:: midpoint_WAXS.png
 
 1.e. The endpoint of the upper vertabra is designated as the highest point at which these pixels start; and the endpoint of the lower vertebrae
      as the lowest point at which they end.
@@ -93,14 +89,11 @@ Allows selection of individual files that make up the tomoSAXS scan.
 
 1.f. Now, the inverted and resliced CT data is loaded:
 
-.. image:: raw inverse CT.tif
-  :width: 400
-
+.. image:: raw_inverse_CT.png
 
 1.g. and also clustered (using 5 clusters)
 
-.. image:: clustered inverse CT.png
-  :width: 400
+.. image:: clustered_inverse_CT.png
 
 1.h. The same steps are repeated to find the endpoint of the upper vertabra in the CT data.
 

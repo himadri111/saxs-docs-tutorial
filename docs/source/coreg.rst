@@ -39,9 +39,9 @@ Loading data
 Data for each scan is loaded using a series of GUIs.
 
 the first:
+
 .. image:: vertical_reg_GUI.png
   :width: 400
-  :alt: Alternative text
 
 reads in:
 a. The CT folder for the scan that should contain:
@@ -55,10 +55,10 @@ f. The voxel size of the fibre tracing data (downsampled as part of the process)
 g. Horizontal WAXS map voxel size
 h. Vertical WAXS map voxel size
 
-the first:
+the second:
+
 .. image:: saxs_select_GUI.png
   :width: 400
-  :alt: Alternative text
 
 Allows selection of individual files that make up the tomoSAXS scan.
 
@@ -66,24 +66,25 @@ Allows selection of individual files that make up the tomoSAXS scan.
 1. Vertical registration
 ---------------------
 1.a. Load WAXS sum intensity map. 
+
 .. image:: raw_WAXS_map.png
   :width: 400
-  :alt: Alternative text
 
 1.b. Use k-means clustering (with a custer count of 5) to segment bone.
+
 .. image:: clustered_WAXS_map.png
   :width: 400
-  :alt: Alternative text
+ 
 
 1.c. Find sample midpoint along X-axis as point of lowest mean WAXS scattering intensity between kapton edges.
+
 .. image:: mean x-Axis intensity.png
   :width: 400
-  :alt: Alternative text
 
 1.d. for an ROI of +/- 10 pixels around this point, isolate coordinates of pixels whose clustered grey-scale values do not correspond to bone:
+
 .. image:: midpoint WAXS.png
   :width: 400
-  :alt: Alternative text
 
 1.e. The endpoint of the upper vertabra is designated as the highest point at which these pixels start; and the endpoint of the lower vertebrae
      as the lowest point at which they end.
@@ -91,14 +92,15 @@ Allows selection of individual files that make up the tomoSAXS scan.
 
 
 1.f. Now, the inverted and resliced CT data is loaded:
+
 .. image:: raw inverse CT.png
   :width: 400
-  :alt: Alternative text
+
 
 1.g. and also clustered (using 5 clusters)
+
 .. image:: clustered inverse CT.png
   :width: 400
-  :alt: Alternative text
 
 1.h. The same steps are repeated to find the endpoint of the upper vertabra in the CT data.
 

@@ -110,3 +110,7 @@ To solve the fibril-parameters for the voxels, the above steps for :ref:`voxel-s
 The plot below shows how the percentage of solved voxels increases with each rotation angle and iteration. In the simplest implementation, solution proceeds serially without ranking or prioritising the peak intensity contributions from specific voxels. 
 
 By prioritising the highest single-voxels or double-scattering pairs for initial solution, possible benefits could include more accurate estimate of these initial voxels which then reduce the propagated error for subsequent voxels which have to subtract out these known contributors before fitting.
+
+.. raw:: html
+
+<video controls src="_static/sample-mp4-file.mp4"></video>

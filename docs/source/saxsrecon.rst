@@ -122,7 +122,7 @@ Youtube test
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/watch?v=7gMg98Hf3uM&t=2s" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 50%; height: 50%;"></iframe>
+        <iframe src="https://www.youtube.com/embed/7gMg98Hf3uM?si=OP9I4WGb3X-uEip8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 50%; height: 50%;"></iframe>
     </div>
 
 .. raw:: html

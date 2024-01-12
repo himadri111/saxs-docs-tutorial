@@ -13,7 +13,11 @@ b. Coarse SAXS mapping dataset of the respective sample (per-frame sum SAXS scat
 c. CT dataset.
 d. Resliced and inverted copy of CT dataset at same orientation as coarse WAXS map (See CT Processing page - [update to hyperlink once page complete]).
 e. Segmentation dataset of kapton tube (from CT data)
-f. Fibre tracing dataset of CT data (volumetric dataset with greyscale values corresponding to estimated 3D collagen fibre orientations).
+f. Fibre tracing dataset of CT data (volumetric datasets with greyscale values corresponding to estimated 3D collagen fibre orientations).
+g. Fibre tracing "vox_padding" excel file - used for padding of fibre tracing data. NB - the names given to tomoSAXS scans in this file are used verbatim in this registration process.
+
+TomoSAXS operates along a number of discrete vertical "slices": lateral axes that the scan was conducted over, seperated vertically to form 3D voxels. 
+These need to be registered spatially with the corresponding CT data, so that fibres isolated during fibre tracing are 
 
 Steps are:
 1. Register vertical axis between resliced CT dataset and coarse mapping of tomoSAXS dataset.
@@ -21,16 +25,22 @@ Steps are:
   The offset is provided with absolute values from coarse SAXS map. 
   This calibration also allows estimation of which CT slices represent the regions investigated in the tomoSAXS scan.
 
-2. Register horizontal axis between CT dataset and tomoSAXS dataset.
+2. Pad fibre tracing data.
+  The Fibre tracing technique sumsamples and downsamples original CT data. This process adds ampty voxels to fibre tracing data so that the fibre tracing data returns to 
+  the same dimensions as the original CT data.
+  Padded data can then be registered with SAXS data both `vertically <.. vert_reg:>`_ and horizontally.
+  The padded fibre tracing slices that vertically correspond to the slices of the tomoSAXS scan are then isolated and saved.
+ 
+3. Register horizontal axis between padded firbe tracing data and SAXS data for each orientation in tomoSAXS scan.
   This process uses a seperate volume taken from the original CT volume, consisting of a segmented region of the kapton tube surrounding the sample.
   This volume is subsampled, alongside the  fibre-tracing dataset, to slices comprising the tomoSAXS scanned region.
-  The data (both kapton segmentation and fibre tracing data) is rotated to correspond to each angular rotation of the tomoSAXS scan (e.g. -900 – 00 – 900).
+  The data (both kapton segmentation and fibre tracing data) is rotated to correspond to each angular rotation of the tomoSAXS scan (e.g. -90 – 00 – 90).
   For each rotation, the kapton segmentation is treated as a coord, to estimate the complete extent of the kapton tube as a circle. The space between the inside edges of the kapton tube and the traced fibres is estimated (in um).
-  This information is then used to calibrate the horizontal registration between fibre tracing and SAXS data.
+  The outer edge of the kapton tube is found in both this data, and the SAXS data for the respective orientation for each slice of the tomoSAXS scan.
+  The offset is then calculated between these edges, and the fibre tracing data further padded to account for this offset
 
-3. Tagging/dictionary of SAXS frames for each fibre, in each orientation
-	A python dictionary is created, consisting subheadings for each scanning orientation 
-
+3. Downsample registered fibre tracing data and save for tomoSAXS analysis.
+  The registered fibre tracing data can finally be processed into it's corresponding tomoSAXS voxels/beamptahs.
 
 .. load_data:
 Loading data
@@ -40,20 +50,23 @@ Data for each scan is loaded using a series of GUIs.
 
 the first:
 
-.. image:: vertical_reg_GUI.png
-  :width: 400
+.. image:: final_gui.png
 
 reads in:
-a. The CT folder for the scan that should contain:
-  i. Fibre tracing data
-  ii. Inverted reslice of CT data
-b. The nexus file for the coarse tomoSAXS map
-c. The output folder for the registration data
-d. The voxel size of the original CT data
-e. The voxel size of the inverted CT data (may be adjusted if processed on a laptop due to limited computing power)
-f. The voxel size of the fibre tracing data (downsampled as part of the process)
-g. Horizontal WAXS map voxel size
-h. Vertical WAXS map voxel size
+a. "Scan name" - the name given to the tomoSAXS scan in the accompanying fibre tracing "vix_padding" excel file.
+b. "Original CT data" - the folder containing the original CT data.
+c. "Inverted resliced CT map" - the file comprising the resliced, grayscale inverted CT map corresponding to the coarse WAXS map used for registration.
+d. "Kapton CT dataset" - the folder containing the segmented kapton tube data.
+e. "Beta/phi fibre tracing data" - the folder containing the (original unpadded) beta/phi fibre tracing data.
+f. "Alpha/theta fibre tracing data" - the folder containing the (original unpadded) alpha/theta fibre tracing data.
+g. "WAXS map data" - the .nxs file of the coarse WAXS map. 
+g. "Output folder" - the folder that the user wishes to output data generated by the registration script (example figures and tables).
+h. "Original CT voxel size (um)" - The voxel size of the original CT data in microns.
+i. "Inverted CT voxel size (um)" - The voxel size of the inverted CT data (may be adjusted if processed on a laptop due to limited computing power).
+j. "Kapton data voxel size (um)" - The voxel size of the kapton segmented data (may be adjusted if processed on a laptop due to limited computing power).
+k. "Fibre tracing voxel scale" - The downsampling scale used for fibre tracing data creation.
+l. "Kapton tube diameter (um) - diameter of kapton tube in microns.
+m. "SAXS rotational direction" - direction of rotation for tomoSAXS scan.
 
 the second:
 
@@ -62,43 +75,58 @@ the second:
 
 Allows selection of individual files that make up the tomoSAXS scan.
 
+the third:
+
+.. image:: saxs_scan_gui.png
+
+Reads in:
+a. "Number of rotational angles in tomoSAXS scan".
+b. "start angle" - axis orientation of the first orientation of the tomoSAXS scan.
+c. "end angle" - axis orientation of the last orientation of the tomoSAXS scan.
+d. "angle of WAXS map".
+
 .. vert_reg:
 1. Vertical registration
 ---------------------
 1.a. Load WAXS sum intensity map. 
 
-.. image:: raw_WAXS_map.png
+.. image:: WAXS_map_scaled.png
 
-1.b. Use k-means clustering (with a custer count of 5) to segment bone.
+1.b. User selects endpoint of the upper vertebra in WAXS data.
 
-.. image:: clustered_WAXS_map.png
+.. image:: WAXS_map_top_vert_endpoint.png
 
-1.c. Find sample midpoint along X-axis as point of lowest mean WAXS scattering intensity between kapton edges.
-
-.. image:: mean_xAxis_intensity.png
-
-
-1.d. for an ROI of +/- 10 pixels around this point, isolate coordinates of pixels whose clustered grey-scale values do not correspond to bone:
-
-.. image:: midpoint_WAXS.png
-
-1.e. The endpoint of the upper vertabra is designated as the highest point at which these pixels start; and the endpoint of the lower vertebrae
-     as the lowest point at which they end.
-     The "base_y_value" dataset in the WAXS hdf5 file provides the absolute axis coordinates for these endpoints.
-
-
-1.f. Now, the inverted and resliced CT data is loaded:
+1.c. Now, the inverted and resliced CT data is loaded:
 
 .. image:: raw_inverse_CT.png
 
-1.g. and also clustered (using 5 clusters)
+1.d. and user selects endpoint of the upper vertebra in CT data.
 
-.. image:: clustered_inverse_CT.png
+.. image:: Upper_vertebral_endpoint_in_CT_map.png
 
-1.h. The same steps are repeated to find the endpoint of the upper vertabra in the CT data.
+1.e. The offset between the vertebral endpoint and the tomoSAXS slices can now be calculated by loading the first orientation of the tomoSAXS scan, and comparing the y axis coordinates of each slice with that of the vertebral endpoint:
 
+.. image:: CT_map_with tomoSAXS_slices.png
 
+.. image:: registered_fib_trac_gif.gif
 
+.. padding:
+1. Padding of fibre tracing data
+--------------------------------
+For both the Beta/phi fibre tracing data; and alpha/theta fibre tracing data: 
+2.a. Load fibre tracing data 
+
+.. image:: example_fibre_tracing.png
+
+2.b. Load padding values from the "vox_padding" excel file.
+
+.. image:: vox_padding.png
+
+2.c. Create empty arrays wth shapes corresponding to the padding dimensions and concatenate with fibre tracing data:
+
+.. image:: Example_alpha_fibre_tracing_tomoSAXS_slice_0.png
+
+2.d. Isolate and save padded fibre tracing slices that correspond to tomoSAXS slices.
 
 
 

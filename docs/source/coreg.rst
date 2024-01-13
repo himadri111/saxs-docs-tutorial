@@ -9,11 +9,17 @@ Describes the steps in aligning the CT 3D image to the SAXS maps, including fixi
 
 Prerequisite data:
 a. TomoSAXS dataset.
+
 b. Coarse SAXS mapping dataset of the respective sample (per-frame sum SAXS scattering).
+
 c. CT dataset.
+
 d. Resliced and inverted copy of CT dataset at same orientation as coarse WAXS map (See CT Processing page - [update to hyperlink once page complete]).
+
 e. Segmentation dataset of kapton tube (from CT data)
+
 f. Fibre tracing dataset of CT data (volumetric datasets with greyscale values corresponding to estimated 3D collagen fibre orientations).
+
 g. Fibre tracing "vox_padding" excel file - used for padding of fibre tracing data. NB - the names given to tomoSAXS scans in this file are used verbatim in this registration process.
 
 TomoSAXS operates along a number of discrete vertical "slices": lateral axes that the scan was conducted over, seperated vertically to form 3D voxels. 

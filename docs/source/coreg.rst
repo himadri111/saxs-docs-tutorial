@@ -1,6 +1,12 @@
 CT to SAXS volume coregistration
 ==================================
 
+.. code-block:: python
+
+  img=frames[0][134] # number 134 from scan i22-729075
+  ai = pyFAI.load("testSAXSCal_flipped.poni") # integrator with vertical flipped image
+
+
 .. _Overview:
 
 Overview

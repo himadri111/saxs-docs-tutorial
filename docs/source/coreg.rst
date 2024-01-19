@@ -21,6 +21,8 @@ The centre of this rotation is independent to the rotation of the corresponding 
 
 These datasets must be registered both vertically and horizontally, for each raster map representing each orientation of the tomoSAXS scan, in order for the identity of isolated fibres in CT data to be consistently retained through the tomoSAXS scan. 
 
+.. image:: overview fig 1.png
+
 Prerequisite data:
 
 a. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.

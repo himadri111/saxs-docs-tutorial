@@ -71,7 +71,7 @@ In the plot below, we show the estimated amplitudes from a 10x10 planar slice
 
 with the fibril geometry (viewed from above) shown below:
 
-.. image:: simpleFibreGeometry.png
+.. image:: figures-saxsrecon/190124_modelIVD_top.png
   :width: 700
 
 .. _angular:

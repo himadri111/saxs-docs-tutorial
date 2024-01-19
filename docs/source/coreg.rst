@@ -34,15 +34,15 @@ Prerequisite data:
 
 a. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.
 
-b. Coarse WAXS mapping dataset of the respective sample (per-frame sum WAXS scattering): Each tomoSAXS scan starts with a coarse mapping of the sample, oriented at the midpoint of the tomoSAXS scan (i.e. if the scan is roated between -90 and 90 degrees - the map is taken at 0 degrees). While this map is initially used to pinpoint the rgeion of interest (ROI) within the sample for the tomoSAXS scan - it is used here for vertical registration with the CT data. 
+b. Coarse WAXS mapping dataset of the respective sample (per-frame sum WAXS scattering) (Fig. 1b): Each tomoSAXS scan starts with a coarse mapping of the sample, oriented at the midpoint of the tomoSAXS scan (i.e. if the scan is roated between -90 and 90 degrees - the map is taken at 0 degrees). While this map is initially used to pinpoint the rgeion of interest (ROI) within the sample for the tomoSAXS scan - it is used here for vertical registration with the CT data. 
 
-c. CT dataset: Reconstruction of the CT data set of the respective sample
+c. CT dataset: Reconstruction of the CT data set of the respective sample (Fig. 2c middle)
 
-d. Resliced and inverted copy of CT dataset at same orientation as coarse WAXS map (See CT Processing page - [update to hyperlink once page complete]).
+d. Resliced and inverted copy of CT dataset at same orientation as coarse WAXS map (See CT Processing page - [update to hyperlink once page complete]) (Fig. 2b).
 
-e. Segmentation dataset of kapton tube (from CT data). A copy of the original CT dataset, with the kapton tube segmented from the rest of the data - leaving a binary dataset consiting of the only the kapton tube and background. 
+e. Segmentation dataset of kapton tube (from CT data). A copy of the original CT dataset, with the kapton tube segmented from the rest of the data - leaving a binary dataset consiting of the only the kapton tube and background (Fig. 2c top). 
 
-f. Fibre tracing dataset of CT data (volumetric datasets with greyscale values corresponding to estimated 3D collagen fibre orientations). This consists of two seperate folders containing alpha (called theta in the fibre tracing process), and beta (called phi in the fibre tracing process) values for traced fibres (respectively).
+f. Fibre tracing dataset of CT data (volumetric datasets with greyscale values corresponding to estimated 3D collagen fibre orientations). This consists of two seperate folders containing alpha (called theta in the fibre tracing process), and beta (called phi in the fibre tracing process) values for traced fibres (respectively) (Fig. 2c bottom).
 
 g. Fibre tracing "vox_padding" excel file - used for padding of fibre tracing data. NB - the names given to tomoSAXS scans in this file are used verbatim in this registration process.
 

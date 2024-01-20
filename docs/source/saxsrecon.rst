@@ -215,7 +215,7 @@ In the code, the function which carries out the analysis for single-voxel condit
 Identifying double-voxel overlapping sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next we consider the case where two fibres have overlapping patterns and their combined intensity is the dominant contribution over a specified angular sector. The Figure [REF] shows an example case with 4 fibres, where fibres 2 and 3 are overlapping. In this case, neither fibre 2 nor 3 are solvable by themselves, as seen by their ratios, but their combined ratio is :math:`>\lambda_{ov}` where :math:`>\lambda_{ov} = 0.95`. 
+Next we consider the case where two fibres have overlapping patterns and their combined intensity is the dominant contribution over a specified angular sector. The Figure :ref:`ovprinciple-label` shows an example case with 4 fibres, where fibres 2 and 3 are overlapping. In this case, neither fibre 2 nor 3 are solvable by themselves, as seen by their ratios, but their combined ratio is :math:`>\lambda_{ov}` where :math:`>\lambda_{ov} = 0.95`. 
 
 .. _ovprinciple-label:
 .. figure:: figures-saxsrecon/200124_ov_example.png

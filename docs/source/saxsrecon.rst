@@ -69,16 +69,22 @@ In the plot below, we show the estimated amplitudes from a 10x10 planar slice
 .. image:: pred_vs_actualAmps_labels.png
   :width: 400
 
-with the fibril geometry (viewed from above) shown below:
+.. _geometry:
+
+Simulated tissue geometry
+--------------------------------
+Consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils are shown (in x-z plane projection viewed from above) on a per-voxel basis:
 
 .. image:: figures-saxsrecon/190124_modelIVD_top.png
   :width: 700
 
+As can be seen, the fibrils curve around the central nucleus pulposus structure. Their pitch :math:`\alpha_{i}` is intended to change as a function of distance from centre (this needs work) and the angular rotation :math:`\beta_{i}` (the polar angle equivalent) will change as one goes around the central nucleus pulposus.
+
 .. _angular:
 
-Simulating the tomoSAXS scan and rotation
+Simulating the tomoSAXS SAXS scans
 -----------------------------------------------
-Using these estimated amplitude and fibril characteristics, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, as shown in the schematics below.
+Using estimated amplitudes, initial guess for fibril characteristics, and fixed :math:`(\alpha_{i},\beta_{i})` per voxel, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, using the model scattering functions described in the earlier section.
 
 SHOW EXAMPLE PLOT
 

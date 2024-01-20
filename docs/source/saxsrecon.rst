@@ -195,12 +195,12 @@ In the code, the function which carries out the analysis for single-voxel condit
 
 .. code-block:: python
 
-def analyseForSV(FibrilPars,rotFibrilPars,vox,indxVox,voxelsInPath,alphaVox,betaVox,
-                 weightVox,chirange,Ichi_us,chiRefWin,rotAngle,chiIntPars,qIntPars,
-                 dx_pack,n_slices,dchi_slices,filename,thresh_SV,fig,axes,
-                 plotFig=True,data=None,SVSuccess=False,color_solved="green",
-                 color_unsolved="blue",color_filled="chartreuse",linestyle_solved="solid",
-                 linestyle_unsolved="solid",linewidth_solved=1.5,linewidth_unsolved=0.5)
+  def analyseForSV(FibrilPars,rotFibrilPars,vox,indxVox,voxelsInPath,alphaVox,betaVox,
+                   weightVox,chirange,Ichi_us,chiRefWin,rotAngle,chiIntPars,qIntPars,
+                   dx_pack,n_slices,dchi_slices,filename,thresh_SV,fig,axes,
+                   plotFig=True,data=None,SVSuccess=False,color_solved="green",
+                   color_unsolved="blue",color_filled="chartreuse",linestyle_solved="solid",
+                   linestyle_unsolved="solid",linewidth_solved=1.5,linewidth_unsolved=0.5)
 
 
 .. _overlapvoxel:

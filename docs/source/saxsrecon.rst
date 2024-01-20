@@ -80,21 +80,30 @@ Consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils 
 
 As can be seen, the fibrils curve around the central nucleus pulposus structure. Their pitch :math:`\alpha_{i}` is intended to change as a function of distance from centre (this needs work) and the angular rotation :math:`\beta_{i}` (the polar angle equivalent) will change as one goes around the central nucleus pulposus.
 
-.. _angular:
-
 Simulating the tomoSAXS SAXS scans
 -----------------------------------------------
 Using estimated amplitudes, initial guess for fibril characteristics, and fixed :math:`(\alpha_{i},\beta_{i})` per voxel, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, using the model scattering functions described in the earlier section :ref:`section_fibre_diff`. 
 
+
+.. _summaryalgorithm:
+
 The flowchart of steps is:
 
-#. Step 1.
-  #. Item 1.
-  #. Item 2.
-#. Step 2.
-#. Step 3.
+#. Repeatedly loop over all rotation angles and scan points (i.e. iterate through all SAXS frames), and carry out the steps below, until no additional voxels are solved after a full set of rotations
+  #. For each SAXS pattern, simulate the beam path through  the defined sample geometry in SAXSCOREG, and identify the intersecting voxels (weighted according to how much of the beam photons pass through that voxel). This is denoted as the variable :python:`voxelsPerPath`, which is a list of dictionaries. Each list element corresponds to a beam path. Each beam path is associated with a dictionary of all voxels intersected by that beam, along with auxiliary/metadata. 
+  #. Calculate :math:`I(\chi)` for each scan point, which is a sum of all component voxel contributions (with estimated parameters) 
+#. For each voxel in the beam path
+  #. Check if the voxel can be classified as single-voxel as per :ref:`singlevoxel`. Take into account existing voxels which have been solved (i.e. subtracts their contribution). If yes, solve it
+  #. Check all neighbours of the voxel to see if the voxel+neighbour pair can be classified as separable overlap-voxel pair as per :ref:`overlapvoxel`. If yes, solve it
+  #. Update the master list of all voxels, changing unsolved voxels to solved
 
-.. _voxelsol:
+Results will be shown below. This process is linear and proceeds from the first to last scan. Improvements in the method could include
+#. Rank order the contributions of different voxels to the scattering pattern. Solve the strongest contributing voxels first, then move down to less intense contributors. This may reduce propagation errors due to uncertainty of fit of noisy data.
+#. Overlapping voxel contributions are an issue at large scan sizes. Find ways to fit triplets and higher order overlaps, going beyond single- and double-voxels
+
+The single voxel method is described below.
+
+.. _singlevoxel:
 
 Identifying voxel-specific diffracting sectors
 -----------------------------------------------
@@ -105,6 +114,8 @@ SHOW EXAMPLE PLOT
 As can be seen, some fibres are the predominant contributors to the SAXS signal in certain angular sectors :math:`\delta \chi_q` (shown as shaded), while other fibres are overlapping. For the first category, the fibre characteristics can be extracted by fitting the radial intensity profiles along these angular sectors to the model scattering functions. The angular sector where the fibre :math:`i` is the predominant contributor is estimated by taking the ratio of the simulated :math:`w_{i,r}^{k} \times a_{i} V_{i}(\chi;{\bf{f_{i},\alpha_{i}}};r)` to :math:`I^{k}_{r}(\chi)` over the full :math:`\chi` range, and finding if there exists any :math:`\delta \chi_q` where the ratio is :math:`>t_{s}` where :math:`t_{s}` is a single-voxel dimensionless ratio e.g. :math:`\rho_{sv}> 0.95` (i.e. the fibre :math:`i` contributes at least :math:`t_{s}` of the intensity over :math:`\delta \chi_q^{sv}`. This step is called Single-Voxel Estimation, and an example of the :math:`I(q)` fits is shown below. 
 
 SHOW EXAMPLE PLOT
+
+.. _overlapvoxel:
 
 Next we consider the case where two fibres have overlapping patterns and their combined intensity is the dominant contribution over the angular sector :math:`\delta \chi_q^{2v}` ('2' for 2 overlapping fibres) for a specific rotation angle. By a combined fit of the 2 component functions to the measured :math:`I(q;\chi)` profile over the overlapping sector, both fibril-parameters can be evaluated. This step is called Double-Voxel Estimation and an example of the :math:`I(q)` fits is shown below.
 

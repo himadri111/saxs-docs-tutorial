@@ -131,6 +131,7 @@ For clarity, we show this for a small 10 x 10 grid below. The Figure below shows
 ^^^^^^^^^^^^^^^^^^^^^
 The 2D pattern for this path is shown below, along with a visually clearer polar representation. Note that in real data, the 2D pattern will be the experimental one. 
 
+.. _2dpolar:
 .. figure:: figures-saxsrecon/190124_2DSAXS_PolarPlot.png
   :width: 700
 
@@ -144,6 +145,7 @@ For the above case we can see there are some known contributions from already so
 
 Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of the component terms in a conventional rectangular Cartesian plot as below, using a log-scale for the y-axis to help identify voxels with a weak scattering contribution at this combination of rotation angles and scan step. 
 
+.. _logichi:
 .. figure:: figures-saxsrecon/190124_logIchi.png
   :width: 700
 
@@ -152,7 +154,7 @@ Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of th
   Left: 2D SAXS pattern of simulated 3rd order meridional peak; right: Polar plot representation of the :math:`I(\chi)` components. Blue/green denote unsolved/solved
 
 .. _singlevoxel:
-Identifying voxel-specific diffracting sectors
+Identifying single-voxel diffracting sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each fibre :math:`i` contributes significantly (above a noise threshold) only at specific rotation angles :math:`i` and angular sectors :math:`\delta \chi_q`. To calculate this, using the estimated :math:`\{a_{i},\bf{f}_{i},,\bf{\alpha}_{i}\}_{M}` parameters, the total measured angular SAXS intensity :math:`I^{k}_{r}(\chi)` for each rotation angle :math:`r_{j}`, and the individual components :math:`w_{i,r}^{k} \times a_{i} V_{i}(\chi;{\bf{f_{i},\alpha_{i}}};r)` are calculated. 
@@ -164,25 +166,25 @@ For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`,
 .. figure:: figures-saxsrecon/200124_sv_example.png
   :width: 600
 
-  ..
+  SV principle
 
   Top: Three different fibres (1: red, 2: blue, 3: green) contributing to :math:`I(\chi)` in different angular sectors Bottom: ratio of fibre 1 intensity to total intensity as a function of :math:`\chi`. Horizontal line is at :math:`\lambda_{sv}=0.95`. Shaded region is the :math:`\chi`-sector where :math:`I_{1}(\chi)>\lambda_{sv}`
 
+This principle is applied to the :math:`I(\chi)` profiles in Figure 
 
-SHOW EXAMPLE PLOT
+Fitting single-voxel diffracting sectors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As can be seen, some fibres are the predominant contributors to the SAXS signal in certain angular sectors :math:`\delta \chi_q` (shown as shaded), while other fibres are overlapping. For the first category, the fibre characteristics can be extracted by fitting the radial intensity profiles along these angular sectors to the model scattering functions. The angular sector where the fibre :math:`i` is the predominant contributor is estimated by taking the ratio of the simulated :math:`w_{i,r}^{k} \times a_{i} V_{i}(\chi;{\bf{f_{i},\alpha_{i}}};r)` to :math:`I^{k}_{r}(\chi)` over the full :math:`\chi` range, and finding if there exists any :math:`\delta \chi_q` where the ratio is :math:`>t_{s}` where :math:`t_{s}` is a single-voxel dimensionless ratio e.g. :math:`\rho_{sv}> 0.95` (i.e. the fibre :math:`i` contributes at least :math:`t_{s}` of the intensity over :math:`\delta \chi_q^{sv}`. This step is called Single-Voxel Estimation, and an example of the :math:`I(q)` fits is shown below. 
+Once the single-voxel angular sector 
 
-SHOW EXAMPLE PLOT
-
-.. _overlapvoxel:
+Identifying double-voxel overlapping sectors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Next we consider the case where two fibres have overlapping patterns and their combined intensity is the dominant contribution over the angular sector :math:`\delta \chi_q^{2v}` ('2' for 2 overlapping fibres) for a specific rotation angle. By a combined fit of the 2 component functions to the measured :math:`I(q;\chi)` profile over the overlapping sector, both fibril-parameters can be evaluated. This step is called Double-Voxel Estimation and an example of the :math:`I(q)` fits is shown below.
 
 SHOW EXAMPLE PLOT
  
 .. _algorithm:
-
 Iterative solution of voxels
 -----------------------------------------------
 

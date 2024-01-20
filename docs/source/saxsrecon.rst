@@ -89,8 +89,8 @@ Using estimated amplitudes, initial guess for fibril characteristics, and fixed 
 The flowchart of steps is:
 
 #. Step 1.
-   #. Item 1.
-   #. Item 2.
+  #. Item 1.
+  #. Item 2.
 #. Step 2.
 #. Step 3.
 

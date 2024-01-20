@@ -231,8 +231,6 @@ In the code, the analysis for double voxel solubility is split across three func
 #. :python:`checkSolvablePair`: checks if the combined intensity ratio for a voxel/neighboring voxel pair is greater than :python:`thresh_combined` (:math:`=\lambda_{ov}`) over a specified angular width. To avoid a case where one voxel is dominant in intensity and the other goes to zero over part of this sector, we also impose the condition that each individual voxel must have an intensity ratio of at least :python:`thresh_individual`. Returns a boolean value :python:`solved` if the conditions are satisfied, and if :python:`solved=True`, returns the angular overlap window :python:`solved_window` (otherwise returns :python:`None`). Note that if the window over which the conditions are satisfied is greater than the reference width, or if there are multiple windows, this function returns that angular sector over which the combined intensity ratio is maximied. 
 #. :python:`fitOverlapPair`: If :python:`solved=True` in the previous step, fits the overlap pair and stores the fit results.
 
-called :python:`checkSolvablePair`. For each voxel along the beam path in Figure :ref:`beampathsmall`, all other voxels in the beam path are checked to see if they While the list of arguments is long, the parameters after :python:`chiIntPars` are mainly display and fit-setting parameters. 
-
 An example of the fit is shown below:
 
 .. _ovfit-label:

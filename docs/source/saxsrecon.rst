@@ -179,7 +179,7 @@ Fitting single-voxel diffracting sectors
 
 Using this principle on SAXS data of the type shown in Figure :ref:`logichi`, we identify, for each voxel in the path, angular sectors where their contribution predominates in the sense described in :ref:`singlevoxel`. If this ratio exceeds :math:`\lambda_{sv}` over an angular sector equal to or greater than :math:`\chi_{ref}^{win}= 10^(\circ)` (denoted :python:`chiRefWindow`), the voxel is considered solvable independent of other voxels. 
 
-This test is carried out in the function :python:`findChiWindow` within the :python:`analyseForSV` function.
+This test is carried out in the function :python:`findChiWindow` within the :python:`analyseForSV` function. The parameters :python:`threshold_interference` and :python:`threshold_detection` denote respectively :math:`100(1-\lambda_{sv})` and the minimum absolute intensity level that the currently analysed voxel must have. By checking the second parameter, we avoid the condition where an extremely weak peak is being fitted at the tails of the total scattering. In practice, we expect this will be less of an issue for real data, where the presence of noise means that extremely weak voxels will not satisfy the :math:`r_{sv}>\lambda_{sv}` condition.
 
 .. code-block:: python
 

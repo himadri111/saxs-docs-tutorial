@@ -162,7 +162,7 @@ Each fibre :math:`i` contributes significantly (above a noise threshold) only at
 
 A simple example is shown below, where we have 3 fibres contributing different components. The total intensity :math:`I(\chi)`, as well as the individual intensities :math:`I^{k}_{r}(\chi)`, are plotted below. We wish to identify an angular :math:`\chi` sector where fibre 1 is the principal contributor to the SAXS signal, and where fitting the SAXS signal to a single-fibril model function (of the type defined in the earlier section :ref:`section_fibre_diff`) is a good approximation. 
 
-For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`, then the angular sector :math:`\chi` sector where :math:`I_{1}(\chi)/(I_{1}(\chi)+I_{2}(\chi)+I_{3}(\chi))>\lambda_{sv}` will satisfy this requirement, as shown below.  
+For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`, then the angular sector :math:`\chi` sector where :math:`r_{sv}=I_{1}(\chi)/(I_{1}(\chi)+I_{2}(\chi)+I_{3}(\chi))>\lambda_{sv}` will satisfy this requirement, as shown below.  
 
 .. _svprinciple-label:
 .. figure:: figures-saxsrecon/200124_sv_example.png
@@ -177,7 +177,31 @@ This method is applied to the :math:`I(\chi)` profiles in Figure :ref:`svprincip
 Fitting single-voxel diffracting sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using this principle on SAXS data of the type shown in Figure 
+Using this principle on SAXS data of the type shown in Figure :ref:`logichi`, we identify, for each voxel in the path, angular sectors where their contribution predominates in the sense described in :ref:`singlevoxel`. If this ratio exceeds :math:`\lambda_{sv}` over an angular sector equal to or greater than :math:`\chi_{ref}^{win}= 10^(\circ)` (denoted :python:`chiRefWindow`), the voxel is considered solvable independent of other voxels. 
+
+For these voxels, we find the angular sector of width :python:`chiRefWindow` where the ratio :math:`r_{sv}` is maximum, and over this angular sector, radial profiles are calculated at three angles (left, center and right) from the measured data. These radial profiles are fit to the model predictions for that specific voxel.  
+
+.. _svfit-label:
+.. figure:: figures-saxsrecon/200124_sv_fit_example.png
+  :width: 600
+
+  SV fits
+
+  Fits of the fibre diffraction model to angular slices :math:`I(q)` across the :python:`chiRefWindow`. Symbols denote real (simulated) data and lines denote fits.
+
+It can be seen that a good fit is obtained in Figure :ref:`svfit-label`. A close examination of the right-hand side will show a slight underestimation by the fit. The reason behind this is "leakage" of intensity from the near-flat streaks from angularly-adjacent voxels (shown in Section :ref:`section_fibre_diff`) toward the right-hand tail end of the peak of the voxel being fitted. To mitigate against this, the fit is restricted to the full left hand side of the peak and only part of the right hand side.
+
+In the code, the function which carries out the analysis for single-voxel condition, and fits it, is called :python:`analyseForSV`
+
+.. code-block:: python
+
+def analyseForSV(FibrilPars,rotFibrilPars,vox,indxVox,voxelsInPath,alphaVox,betaVox,
+                 weightVox,chirange,Ichi_us,chiRefWin,rotAngle,chiIntPars,qIntPars,
+                 dx_pack,n_slices,dchi_slices,filename,thresh_SV,fig,axes,
+                 plotFig=True,data=None,SVSuccess=False,color_solved="green",
+                 color_unsolved="blue",color_filled="chartreuse",linestyle_solved="solid",
+                 linestyle_unsolved="solid",linewidth_solved=1.5,linewidth_unsolved=0.5)
+
 
 .. _overlapvoxel:
 Identifying double-voxel overlapping sectors

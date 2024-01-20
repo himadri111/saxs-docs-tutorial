@@ -215,10 +215,16 @@ In the code, the function which carries out the analysis for single-voxel condit
 Identifying double-voxel overlapping sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next we consider the case where two fibres have overlapping patterns and their combined intensity is the dominant contribution over the angular sector :math:`\delta \chi_q^{2v}` ('2' for 2 overlapping fibres) for a specific rotation angle. By a combined fit of the 2 component functions to the measured :math:`I(q;\chi)` profile over the overlapping sector, both fibril-parameters can be evaluated. This step is called Double-Voxel Estimation and an example of the :math:`I(q)` fits is shown below.
+Next we consider the case where two fibres have overlapping patterns and their combined intensity is the dominant contribution over a specified angular sector. The Figure [REF] shows an example case with 4 fibres, where fibres 2 and 3 are overlapping. In this case, neither fibre 2 nor 3 are solvable by themselves, as seen by their ratios, but their combined ratio is :math:`>\lambda_{ov}` where :math:`>\lambda_{ov} = 0.95`. 
 
-SHOW EXAMPLE PLOT
- 
+.. _ovprinciple-label:
+.. figure:: figures-saxsrecon/200124_ov_example.png
+  :width: 600
+
+  OV principle
+
+  Top: Four different fibres (1: red, 2: blue, 3: green, 4: orange) contributing to :math:`I(\chi)` in different angular sectors. Bottom: ratios of fibre 2 and 3 (dashed dark cyan) never exceed :math:`>\lambda_{ov}` but the ratio of the sum of 2 and 3 to the total intensity (black solid line) exceeds :math:`>\lambda_{ov}` over an angular range between :math:`80^{\circ}` and :math:`100^{\circ}`.
+
 .. _algorithm:
 Iterative solution of voxels
 -----------------------------------------------

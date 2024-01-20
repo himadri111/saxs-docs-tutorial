@@ -120,10 +120,11 @@ A worked example
 
 For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` components from unsolved voxels in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
 
+.. _beampathsmall:
 .. figure:: figures-saxsrecon/190124_small_IVD_top.png
   :width: 400
 
-  ..
+  Beam path (small sample)
 
   Blue: unsolved voxels; green: already solved voxel; yellow circle: solved in current SAXS pattern. Orange rectangle: beampath with red center line
 
@@ -149,9 +150,9 @@ Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of th
 .. figure:: figures-saxsrecon/190124_logIchi.png
   :width: 700
 
-  ..
+  Log-scaled :math:`I(\chi)` curve 
 
-  Left: 2D SAXS pattern of simulated 3rd order meridional peak; right: Polar plot representation of the :math:`I(\chi)` components. Blue/green denote unsolved/solved
+  Thick light blue line: total :math:`I(\chi)` scattering from the beam path in Figure :ref:`beampathsmall`. Component curves: model predictions from each voxel in path (blue: unsolved; thick green: solved (single voxel); green: solved (overlap), as described in :ref:`singlevoxel` and :ref:`overlapvoxel` below.
 
 .. _singlevoxel:
 Identifying single-voxel diffracting sectors
@@ -171,13 +172,14 @@ For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`,
 
   Top: Three different fibres (1: red, 2: blue, 3: green) contributing to :math:`I(\chi)` in different angular sectors Bottom: ratio of fibre 1 intensity to total intensity as a function of :math:`\chi`. Horizontal line is at :math:`\lambda_{sv}=0.95`. Shaded region is the :math:`\chi`-sector where :math:`I_{1}(\chi)>\lambda_{sv}`
 
-This principle is applied to the :math:`I(\chi)` profiles in Figure :ref:`svprinciple-label`
+This method is applied to the :math:`I(\chi)` profiles in Figure :ref:`svprinciple-label` to obtain the gray-shaded angular sector. 
 
 Fitting single-voxel diffracting sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once the single-voxel angular sector 
+Using this principle on SAXS data of the type shown in Figure 
 
+.. _overlapvoxel:
 Identifying double-voxel overlapping sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

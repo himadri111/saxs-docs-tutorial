@@ -102,7 +102,14 @@ Results will be shown below. This process is linear and proceeds from the first 
 #. Rank order the contributions of different voxels to the scattering pattern. Solve the strongest contributing voxels first, then move down to less intense contributors. This may reduce propagation errors due to uncertainty of fit of noisy data.
 #. Overlapping voxel contributions are an issue at large scan sizes. Find ways to fit triplets and higher order overlaps, going beyond single- and double-voxels
 
-For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path.
+For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` componentss from unsolved voxel in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
+
+.. figure:: figures-saxsrecon/190124_small_IVD_top.png
+  :width: 400
+
+  ..
+
+  Blue: unsolved voxels; green: already solved voxel; yellow circle: solved in current SAXS pattern. Orange rectangle: beampath with red center line
 
 The 2D pattern for this path is shown below, along with a visually clearer polar representation. Note that in real data, the 2D pattern will be the experimental one. 
 
@@ -111,8 +118,19 @@ The 2D pattern for this path is shown below, along with a visually clearer polar
 
   ..
 
-  The legend consists of all elements after the caption.  In this
-case, the legend consists of this paragraph and the following table:
+  Left: 2D SAXS pattern of simulated 3rd order meridional peak; right: Polar plot representation of the :math:`I(\chi)` components. Blue/green denote unsolved/solved
+
+For the above case we can see there are some known contributions from already solved voxels (two green curves, between 100:math:`^\degree` and 125:math:`^\degree`), one voxel which is solved in the current iteration, and two unknown voxels (blue, between 100:math:`^\degree` and 125:math:`^\degree`). The second blue one is not clear in the polar plot as it is much smaller than all the others. 
+
+Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of the component terms in a conventional rectangular Cartesian plot as below, using a log-scale for the y-axis to help identify voxels with a weak scattering contribution at this combination of rotation angles and scan step. 
+
+.. figure:: figures-saxsrecon/190124_logIchi.png
+  :width: 600
+
+  ..
+
+  Left: 2D SAXS pattern of simulated 3rd order meridional peak; right: Polar plot representation of the :math:`I(\chi)` components. Blue/green denote unsolved/solved
+
 
 .. _singlevoxel:
 

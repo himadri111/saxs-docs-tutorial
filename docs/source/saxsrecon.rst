@@ -82,7 +82,7 @@ As can be seen, the fibrils curve around the central nucleus pulposus structure.
 
 Rotation
 ^^^^^^^^^^^
-When the sample is rotated around the vertical axis by :math:`r`, the voxels will rotate as well
+When the sample is rotated around the vertical axis by :math:`r`, the voxels will rotate as well. Ignore the few green voxels for now, it will bee explained in :ref:`workedexampleref`.
 
 .. image:: figures-saxsrecon/200124_sampleGeometryRotn.png
   :width: 700
@@ -114,6 +114,7 @@ Improvements in the method could include:
 #. Rank order the contributions of different voxels to the scattering pattern. Solve the strongest contributing voxels first, then move down to less intense contributors. This may reduce propagation errors due to uncertainty of fit of noisy data.
 #. Overlapping voxel contributions are an issue at large scan sizes. Find ways to fit triplets and higher order overlaps, going beyond single- and double-voxels
 
+.. _workedexampleref:
 A worked example
 -----------------------------------------------
 

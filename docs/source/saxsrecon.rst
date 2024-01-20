@@ -120,7 +120,7 @@ The 2D pattern for this path is shown below, along with a visually clearer polar
 
   Left: 2D SAXS pattern of simulated 3rd order meridional peak; right: Polar plot representation of the :math:`I(\chi)` components. Blue/green denote unsolved/solved
 
-For the above case we can see there are some known contributions from already solved voxels (two green curves, between 100:math:`^\degree` and 125:math:`^\degree`), one voxel which is solved in the current iteration, and two unknown voxels (blue, between 100:math:`^\degree` and 125:math:`^\degree`). The second blue one is not clear in the polar plot as it is much smaller than all the others. 
+For the above case we can see there are some known contributions from already solved voxels (two green curves, between :math:`100^{\degree}` and :math:`125^{\degree}`), one voxel which is solved in the current iteration, and two unknown voxels (blue, between :math:`100^{\degree}` and :math:`125^{\degree}`). The second blue one is not clear in the polar plot as it is much smaller than all the others. 
 
 Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of the component terms in a conventional rectangular Cartesian plot as below, using a log-scale for the y-axis to help identify voxels with a weak scattering contribution at this combination of rotation angles and scan step. 
 

@@ -106,8 +106,13 @@ For clarity, we show this for a small 10 x 10 grid below. The Figure below shows
 
 The 2D pattern for this path is shown below, along with a visually clearer polar representation. Note that in real data, the 2D pattern will be the experimental one. 
 
-.. image:: figures-saxsrecon/190124_2DSAXS_PolarPlot.png
+.. figure:: figures-saxsrecon/190124_2DSAXS_PolarPlot.png
   :width: 400
+
+  ..
+
+  The legend consists of all elements after the caption.  In this
+case, the legend consists of this paragraph and the following table:
 
 .. _singlevoxel:
 

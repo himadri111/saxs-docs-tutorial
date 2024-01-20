@@ -179,6 +179,14 @@ Fitting single-voxel diffracting sectors
 
 Using this principle on SAXS data of the type shown in Figure :ref:`logichi`, we identify, for each voxel in the path, angular sectors where their contribution predominates in the sense described in :ref:`singlevoxel`. If this ratio exceeds :math:`\lambda_{sv}` over an angular sector equal to or greater than :math:`\chi_{ref}^{win}= 10^(\circ)` (denoted :python:`chiRefWindow`), the voxel is considered solvable independent of other voxels. 
 
+This test is carried out in the function :python:`findChiWindow` within the :python:`analyseForSV` function.
+
+.. code-block:: python
+
+  chiwindow, solvable = findChiWindow(ichi,Ichi_us,chirange,chiwin=chiRefWin,threshold_interference=thresh_int_SV,threshold_detection=thresh_det_SV)
+
+if :python:`solvable` is :python:`True` then the voxel is marked as solvable. 
+
 For these voxels, we find the angular sector of width :python:`chiRefWindow` where the ratio :math:`r_{sv}` is maximum, and over this angular sector, radial profiles are calculated at three angles (left, center and right) from the measured data. These radial profiles are fit to the model predictions for that specific voxel.  
 
 .. _svfit-label:
@@ -191,7 +199,7 @@ For these voxels, we find the angular sector of width :python:`chiRefWindow` whe
 
 It can be seen that a good fit is obtained in Figure :ref:`svfit-label`. A close examination of the right-hand side will show a slight underestimation by the fit. The reason behind this is "leakage" of intensity from the near-flat streaks from angularly-adjacent voxels (shown in Section :ref:`section_fibre_diff`) toward the right-hand tail end of the peak of the voxel being fitted. To mitigate against this, the fit is restricted to the full left hand side of the peak and only part of the right hand side.
 
-In the code, the function which carries out the analysis for single-voxel condition, and fits it, is called :python:`analyseForSV`
+In the code, the function which carries out the analysis for single-voxel condition, and fits it, is called :python:`analyseForSV`. This function is called for each voxel along the beam path shown in Figure :ref:`beampathsmall`. While the list of arguments is long, the parameters after :python:`chiIntPars` are mainly display and fit-setting parameters. 
 
 .. code-block:: python
 

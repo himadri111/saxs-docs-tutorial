@@ -73,7 +73,7 @@ In the plot below, we show the estimated amplitudes from a 10x10 planar slice
 
 Tissue geometry representation
 --------------------------------
-The CT image is discretized into cubic SAXS-voxels of size (beamsize):math:`^{3}`. The beamsize is typically :math:`\sim 20 \mu m` at beamline I22, DLS. To visualise the geometry of the sample, consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils are shown (in x-z plane projection viewed from above) on a per-voxel basis:
+The CT image is discretized into cubic SAXS-voxels of size :math:`(beamsize)^{3}`. The beamsize is typically :math:`\sim 20 \mu m` at beamline I22, DLS. To visualise the geometry of the sample, consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils are shown (in x-z plane projection viewed from above) on a per-voxel basis:
 
 .. image:: figures-saxsrecon/190124_modelIVD_top.png
   :width: 700

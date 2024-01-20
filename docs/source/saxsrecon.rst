@@ -71,16 +71,24 @@ In the plot below, we show the estimated amplitudes from a 10x10 planar slice
 
 .. _geometry:
 
-Simulated tissue geometry
+Tissue geometry representation
 --------------------------------
-Consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils are shown (in x-z plane projection viewed from above) on a per-voxel basis:
+The CT image is discretized into cubic SAXS-voxels of size (beamsize):math:`^{3}`. The beamsize is typically :math:`\sim 20 \mu m` at beamline I22, DLS. To visualise the geometry of the sample, consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils are shown (in x-z plane projection viewed from above) on a per-voxel basis:
 
 .. image:: figures-saxsrecon/190124_modelIVD_top.png
   :width: 700
 
 As can be seen, the fibrils curve around the central nucleus pulposus structure. Their pitch :math:`\alpha_{i}` is intended to change as a function of distance from centre (this needs work) and the angular rotation :math:`\beta_{i}` (the polar angle equivalent) will change as one goes around the central nucleus pulposus.
 
-Simulating the tomoSAXS SAXS scans
+Rotation
+^^^^^^^^^^^
+When the sample is rotated around the vertical axis by :math:`r`, the voxels will rotate as well
+
+.. image:: figures-saxsrecon/200124_sampleGeometryRotn.png
+  :width: 700
+
+
+Reconstruction principle
 -----------------------------------------------
 Using estimated amplitudes, initial guess for fibril characteristics, and fixed :math:`(\alpha_{i},\beta_{i})` per voxel, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, using the model scattering functions described in the earlier section :ref:`section_fibre_diff`. 
 
@@ -99,15 +107,15 @@ The flowchart of steps is:
 
 Results will be shown below. This process is linear and proceeds from the first to last scan. 
 
-Future improvements
-^^^^^^^^^^^^^^^^^^^^^^
+Future method improvements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Improvements in the method could include:
 
 #. Rank order the contributions of different voxels to the scattering pattern. Solve the strongest contributing voxels first, then move down to less intense contributors. This may reduce propagation errors due to uncertainty of fit of noisy data.
 #. Overlapping voxel contributions are an issue at large scan sizes. Find ways to fit triplets and higher order overlaps, going beyond single- and double-voxels
 
 A worked example
-^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------
 
 For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` componentss from unsolved voxel in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
 

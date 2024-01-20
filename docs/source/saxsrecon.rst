@@ -166,7 +166,7 @@ For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`,
 
   ..
 
-  Top: Different fibres (1: red, 2: blue, 3: green) contributing to :math:`I(\chi)` in different angular sectors Bottom: ratio of fibre 1 intensity to total intensity as a function of :math:`\chi`. Horizontal line is at :math:`\lambda_{sv}=0.95`. Shaded region is the :math:`\chi`-sector where :math:`I_{1}(\chi)>\lambda_{sv}`
+  Top: Three different fibres (1: red, 2: blue, 3: green) contributing to :math:`I(\chi)` in different angular sectors Bottom: ratio of fibre 1 intensity to total intensity as a function of :math:`\chi`. Horizontal line is at :math:`\lambda_{sv}=0.95`. Shaded region is the :math:`\chi`-sector where :math:`I_{1}(\chi)>\lambda_{sv}`
 
 
 SHOW EXAMPLE PLOT

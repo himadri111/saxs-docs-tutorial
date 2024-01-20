@@ -118,7 +118,7 @@ Improvements in the method could include:
 A worked example
 -----------------------------------------------
 
-For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` componentss from unsolved voxel in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
+For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` components from unsolved voxels in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
 
 .. figure:: figures-saxsrecon/190124_small_IVD_top.png
   :width: 400
@@ -136,6 +136,8 @@ The 2D pattern for this path is shown below, along with a visually clearer polar
 
   Left: 2D SAXS pattern of simulated 3rd order meridional peak; right: Polar plot representation of the :math:`I(\chi)` components. Blue/green denote unsolved/solved
 
+Total :math:`I(\chi)` from components
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For the above case we can see there are some known contributions from already solved voxels (two green curves, between :math:`100^{\circ}` and :math:`125^{\circ}`), one voxel which is solved in the current iteration, and two unknown voxels (blue, between :math:`100^{\circ}` and :math:`125^{\circ}`). The second blue one is not clear in the polar plot as it is much smaller than all the others. 
 
 Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of the component terms in a conventional rectangular Cartesian plot as below, using a log-scale for the y-axis to help identify voxels with a weak scattering contribution at this combination of rotation angles and scan step. 

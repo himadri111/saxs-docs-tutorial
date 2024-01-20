@@ -225,6 +225,26 @@ Next we consider the case where two fibres have overlapping patterns and their c
 
   Top: Four different fibres (1: red, 2: blue, 3: green, 4: orange) contributing to :math:`I(\chi)` in different angular sectors. Bottom: ratios of fibre 2 and 3 (dashed dark cyan) never exceed the :math:`>\lambda_{ov}` reference value (dashed gray line), but the ratio of the sum of 2 and 3 to the total intensity (black solid line) exceeds :math:`>\lambda_{ov}` over an angular range between :math:`80^{\circ}` and :math:`100^{\circ}`.
 
+In the code, the analysis for double voxel solubility is split across three functions, which are applied sequentially to each voxel along the beam path. 
+
+#. :python:`FindNbrIndices`: search the beampath to see if there are some adjacent voxels which are neighbours to the current voxel. The condition for being a neighbour is that their angular centres are separated by :python:`searchwindow` or less (i.e. not too far apart, e.g. :math:`10^{\circ}`), but not too close (i.e. by :python:`minseparation` or more). Note this function does do any test on their combined intensity ratio.
+#. :python:`checkSolvablePair`: checks if the combined intensity ratio for a voxel/neighboring voxel pair is greater than :python:`thresh_combined` (:math:`=\lambda_{ov}`) over a specified angular width. To avoid a case where one voxel is dominant in intensity and the other goes to zero over part of this sector, we also impose the condition that each individual voxel must have an intensity ratio of at least :python:`thresh_individual`. Returns a boolean value :python:`solved` if the conditions are satisfied, and if :python:`solved=True`, returns the angular overlap window :python:`solved_window` (otherwise returns :python:`None`). Note that if the window over which the conditions are satisfied is greater than the reference width, or if there are multiple windows, this function returns that angular sector over which the combined intensity ratio is maximied. 
+#. :python:`fitOverlapPair`: If :python:`solved=True` in the previous step, fits the overlap pair and stores the fit results.
+
+called :python:`checkSolvablePair`. For each voxel along the beam path in Figure :ref:`beampathsmall`, all other voxels in the beam path are checked to see if they While the list of arguments is long, the parameters after :python:`chiIntPars` are mainly display and fit-setting parameters. 
+
+An example of the fit is shown below:
+
+.. _ovfit-label:
+.. figure:: figures-saxsrecon/200124_ov_fit_example.png
+  :width: 600
+
+  OV fits
+
+  Fits of the fibre diffraction model to angular slices :math:`I(q)` across the :python:`solved_window`. Symbols denote real (simulated) data and lines denote fits.
+
+The Figure :ref:`ovfit-label` shows the combined fit. The two peaks corresponding to the two component voxels can be clearly seen in the data. 
+
 .. _algorithm:
 Iterative solution of voxels
 -----------------------------------------------

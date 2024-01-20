@@ -163,6 +163,7 @@ A simple example is shown below, where we have 3 fibres contributing different c
 
 For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`, then the angular sector :math:`\chi` sector where :math:`I_{1}(\chi)/(I_{1}(\chi)+I_{2}(\chi)+I_{3}(\chi))>\lambda_{sv}` will satisfy this requirement, as shown below.  
 
+.. _svprinciple-label:
 .. figure:: figures-saxsrecon/200124_sv_example.png
   :width: 600
 
@@ -170,7 +171,7 @@ For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`,
 
   Top: Three different fibres (1: red, 2: blue, 3: green) contributing to :math:`I(\chi)` in different angular sectors Bottom: ratio of fibre 1 intensity to total intensity as a function of :math:`\chi`. Horizontal line is at :math:`\lambda_{sv}=0.95`. Shaded region is the :math:`\chi`-sector where :math:`I_{1}(\chi)>\lambda_{sv}`
 
-This principle is applied to the :math:`I(\chi)` profiles in Figure 
+This principle is applied to the :math:`I(\chi)` profiles in Figure :ref:`svprinciple-label`
 
 Fitting single-voxel diffracting sectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

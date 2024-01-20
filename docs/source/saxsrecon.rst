@@ -86,7 +86,9 @@ Simulating the tomoSAXS SAXS scans
 -----------------------------------------------
 Using estimated amplitudes, initial guess for fibril characteristics, and fixed :math:`(\alpha_{i},\beta_{i})` per voxel, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, using the model scattering functions described in the earlier section :ref:`section_fibre_diff`. The flowchart of steps is:
 
-#. Step 1.
+#. Loop until no further voxels are solved in each iteration.
+   * Item 1.
+   * Item 2.
 #. Step 2.
 #. Step 3.
 

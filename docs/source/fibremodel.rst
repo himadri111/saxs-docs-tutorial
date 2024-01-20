@@ -1,3 +1,4 @@
+.. _section_fibre_diff:
 Fibre diffraction model
 =======================
 

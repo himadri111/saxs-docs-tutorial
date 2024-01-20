@@ -142,7 +142,7 @@ The 2D pattern for this path is shown below, along with a visually clearer polar
 
 Total :math:`I(\chi)` from components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-For the above case we can see there are some known contributions from already solved voxels (two green curves, between :math:`100^{\circ}` and :math:`125^{\circ}`), one voxel which is solved in the current iteration, and two unknown voxels (blue, between :math:`100^{\circ}` and :math:`125^{\circ}`). The second blue one is not clear in the polar plot as it is much smaller than all the others. 
+For the above case we can see there are some known contributions from already solved voxels (two green curves, between :math:`100^{\circ}` and :math:`125^{\circ}`), one voxel which is solved in the current iteration, and two unknown voxels (blue, between :math:`25^{\circ}` and :math:`75^{\circ}`). The second blue one (toward :math:`25^{\circ}`) is not clear in the polar plot as it is much smaller than all the others. 
 
 Therefore, the total :math:`I(\chi)` pattern can be represented as the sum of the component terms in a conventional rectangular Cartesian plot as below, using a log-scale for the y-axis to help identify voxels with a weak scattering contribution at this combination of rotation angles and scan step. 
 

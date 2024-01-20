@@ -162,7 +162,7 @@ Each fibre :math:`i` contributes significantly (above a noise threshold) only at
 
 A simple example is shown below, where we have 3 fibres contributing different components. The total intensity :math:`I(\chi)`, as well as the individual intensities :math:`I^{k}_{r}(\chi)`, are plotted below. We wish to identify an angular :math:`\chi` sector where fibre 1 is the principal contributor to the SAXS signal, and where fitting the SAXS signal to a single-fibril model function (of the type defined in the earlier section :ref:`section_fibre_diff`) is a good approximation. 
 
-For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`, then the angular sector :math:`\chi` sector where :math:`r_{sv}=I_{1}(\chi)/(I_{1}(\chi)+I_{2}(\chi)+I_{3}(\chi))>\lambda_{sv}` will satisfy this requirement, as shown in the Figure :ref:`svprinciple-label` below.  
+For this purpose, define a threshold close to 1, e.g. :math:`\lambda_{sv}=0.95`, and find if an angular sector :math:`\chi` sector exists where :math:`r_{sv}=I_{1}(\chi)/(I_{1}(\chi)+I_{2}(\chi)+I_{3}(\chi))>\lambda_{sv}` will satisfy this requirement, as shown in the Figure :ref:`svprinciple-label` below.  
 
 .. _svprinciple-label:
 .. figure:: figures-saxsrecon/200124_sv_example.png

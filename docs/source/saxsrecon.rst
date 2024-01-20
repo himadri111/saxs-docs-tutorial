@@ -84,11 +84,12 @@ As can be seen, the fibrils curve around the central nucleus pulposus structure.
 
 Simulating the tomoSAXS SAXS scans
 -----------------------------------------------
-Using estimated amplitudes, initial guess for fibril characteristics, and fixed :math:`(\alpha_{i},\beta_{i})` per voxel, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, using the model scattering functions described in the earlier section :ref:`section_fibre_diff`.
+Using estimated amplitudes, initial guess for fibril characteristics, and fixed :math:`(\alpha_{i},\beta_{i})` per voxel, the 2D- and 1D- SAXS pattern can be simulated for each scan-point and rotation angle, using the model scattering functions described in the earlier section :ref:`section_fibre_diff`. The flowchart of steps is:
 
-SHOW EXAMPLE PLOT
+#. Step 1.
+#. Step 2.
+#. Step 3.
 
-The color scheme for the voxels represents their status - green (unsolved), dark pink (already solved), and bright pink (solved at the current scan point). The procedure for solving the voxels is described next. 
 
 .. _voxelsol:
 

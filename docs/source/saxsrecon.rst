@@ -102,7 +102,12 @@ Results will be shown below. This process is linear and proceeds from the first 
 #. Rank order the contributions of different voxels to the scattering pattern. Solve the strongest contributing voxels first, then move down to less intense contributors. This may reduce propagation errors due to uncertainty of fit of noisy data.
 #. Overlapping voxel contributions are an issue at large scan sizes. Find ways to fit triplets and higher order overlaps, going beyond single- and double-voxels
 
-The single voxel method is described below.
+For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path.
+
+The 2D pattern for this path is shown below, along with a visually clearer polar representation. Note that in real data, the 2D pattern will be the experimental one. 
+
+.. image:: figures-saxsrecon/190124_2DSAXS_PolarPlot.png
+  :width: 400
 
 .. _singlevoxel:
 

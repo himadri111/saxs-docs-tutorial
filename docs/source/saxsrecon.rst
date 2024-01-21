@@ -269,7 +269,8 @@ The progress of the reconstruction in solving voxels for the simulated IVD-like 
 
 Two stages are observed - increasing (up to 30 minutes) and a slower increase/saturation (afterward). The reconstruction of the simulated structure was carried out on a Win10 PC, Intel i5-12400F, 2.5 MHz, 6 core/12 logical, 16 GB RAM, with no parallelisation, multiprocessing or GPU acceleration. 
 
-Since the planes are independent, on real data the code should be distributed to multiple nodes in a HPC cluster to solve each plane independently. Within each plane, areas of optimisation of current code include
+Since the planes are independent, on real data the code should be distributed to multiple nodes in a HPC cluster to solve each plane independently. Within each plane, areas of optimisation of current code include:
+
 * In scanning, the serial scanning across each sample slice can be parallelized. Find a maximum "safe" spacing between beam paths which don't pick up signals from adjacent voxels and can be tested independently. For example, for beamsize of 20 microns, it will pick up signal from :math:`\pm 3\sigma`, which means a bit more than 5 voxels (center voxel, 2 lines to left, two lines to right). Let the scan size be 40 voxels like in Figure :ref:`modelivdtop`. Divide the scan into 40/5 = 8 interleaved sets of scans, which (as per above) are not interfering with each other. We can use the python :python:`multiprocessing` module to run these independently on a single multicore node of a cluster.
 * In fitting, reduce the number of data points in each :math:`I(q)` profile. From initial testing, the time taken to fit scales with the number of data points so a coarser profile will fit quicker.
 * In searching for single- or double-voxel windows, use packages like :python:`bottleneck` or further optimise the stride methods (currently using :python:`numpy.lib.stride_tricks.sliding_window_view`)

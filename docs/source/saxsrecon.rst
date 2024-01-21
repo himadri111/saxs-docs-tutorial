@@ -283,6 +283,17 @@ Reconstructed vs original parameters
 
 To test the quality of the reconstruction, the images in Figure :ref:`modelivdtop` show the correlation between :math:`q_{0},w_{a},w_{\mu},amp` from the original versus reconstructed case. 
 
+.. _animationsmall:
+Animated reconstruction (small lattice)
+-----------------------------------------------
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/oG7sIbV_XJQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 75%; height: 75%;"></iframe>
+    </div>
+
+
 .. _algorithm:
 Iterative solution of voxels
 -----------------------------------------------

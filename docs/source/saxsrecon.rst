@@ -292,17 +292,3 @@ Animated reconstruction (small lattice)
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
         <iframe src="https://www.youtube.com/embed/eRZE1H9N4j8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 75%; height: 75%;"></iframe>
     </div>
-
-
-.. _algorithm:
-Iterative solution of voxels
------------------------------------------------
-
-Test video created from Powerpoint and uploaded to Youtube channel, to check the link from Youtube channel to ReadTheDocs works.
-
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/zj4rlZujZsk?si=7O6vDjid2SV6LrGH" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 75%; height: 75%;"></iframe>
-    </div>
-

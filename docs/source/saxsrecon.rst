@@ -290,17 +290,13 @@ Animated reconstruction (small lattice)
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/oG7sIbV_XJQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 75%; height: 75%;"></iframe>
+        <iframe src="https://www.youtube.com/embed/eRZE1H9N4j8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 75%; height: 75%;"></iframe>
     </div>
 
 
 .. _algorithm:
 Iterative solution of voxels
 -----------------------------------------------
-
-To solve the fibril-parameters for the voxels, the above steps for :ref:`voxel-solution <voxelsol>` are combined with :ref:`estimation <angular>` of :math:`I^{k}_{r}(\chi)` for each scan-point and rotation angle. As individual voxels get fitted, they are moved to a "solved" list whose parameters are known. Therefore, when :ref:`estimating voxels <voxelsol>`, only unsolved voxels are included when simulating the angular SAXS intensity profile and identifying any single or overlapping voxels. 
-
-By prioritising the highest single-voxels or double-scattering pairs for initial solution, possible benefits could include more accurate estimate of these initial voxels which then reduce the propagated error for subsequent voxels which have to subtract out these known contributors before fitting.
 
 Test video created from Powerpoint and uploaded to Youtube channel, to check the link from Youtube channel to ReadTheDocs works.
 

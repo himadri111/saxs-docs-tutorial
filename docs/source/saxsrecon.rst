@@ -261,7 +261,9 @@ The progress of the reconstruction in solving voxels for the simulated IVD-like 
 
   Percent solved
 
-  Percentage of voxels in Figure :ref:`modelivdtop` solved as a function of time. Two stages are observed - increasing (up to 30 minutes) and a slower increase/saturation (afterward).
+  Percentage of voxels in Figure :ref:`modelivdtop` solved as a function of time. 
+
+Two stages are observed - increasing (up to 30 minutes) and a slower increase/saturation (afterward). The reconstruction of the simulated structure was carried out on a Win10 PC, Intel i5-12400F, 2.5 MHz, 6 core/12 logical, 16 GB RAM, with no parallelisation or GPU acceleration.  
 
 .. _algorithm:
 Iterative solution of voxels

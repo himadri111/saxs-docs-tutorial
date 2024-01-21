@@ -75,8 +75,14 @@ Tissue geometry representation
 --------------------------------
 The CT image is discretized into cubic SAXS-voxels of size :math:`(beamsize)^{3}`. The beamsize is typically :math:`\sim 20 \mu m` at beamline I22, DLS. To visualise the geometry of the sample, consider a toy "IVD-like" structure, as a discretized elliptical shell. Fibrils are shown (in x-z plane projection viewed from above) on a per-voxel basis:
 
-.. image:: figures-saxsrecon/190124_modelIVD_top.png
+.. _modelivdtop:
+.. figure:: figures-saxsrecon/190124_modelIVD_top.png
   :width: 700
+
+  Sample geometry (IVD-like shape)
+
+  Squares represent SAXS voxels viewed from above. Lines in square: fibril with 3D orientation projected in 2D (small length means more closely pointing out of paper or screen, long length means more closely in paper or screen plane)
+
 
 As can be seen, the fibrils curve around the central nucleus pulposus structure. Their pitch :math:`\alpha_{i}` is intended to change as a function of distance from centre (this needs work) and the angular rotation :math:`\beta_{i}` (the polar angle equivalent) will change as one goes around the central nucleus pulposus.
 
@@ -242,6 +248,20 @@ An example of the fit is shown below:
   Fits of the fibre diffraction model to angular slices :math:`I(q)` across the :python:`solved_window`. Symbols denote real (simulated) data and lines denote fits.
 
 The Figure :ref:`ovfit-label` shows the combined fit. The two peaks corresponding to the two component voxels can be clearly seen in the data. 
+
+.. _percentsolution:
+Tracking solution of voxels 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The progress of the reconstruction in solving voxels for the simulated IVD-like geometry in Figure :ref:`modelivdtop` is shown in Figure :ref:`pctsolved40x40`
+
+.. _pctsolved40x40:
+.. figure:: figures-saxsrecon/200124_percentsol40x40.png
+  :width: 600
+
+  Percent solved
+
+  Percentage of voxels in Figure :ref:`modelivdtop` solved as a function of time. Two stages are observed - increasing (up to 30 minutes) and a slower increase/saturation (afterward).
 
 .. _algorithm:
 Iterative solution of voxels

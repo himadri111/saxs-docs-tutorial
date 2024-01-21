@@ -124,7 +124,11 @@ Improvements in the method could include:
 A worked example
 -----------------------------------------------
 
-For clarity, we show this for a small 10 x 10 grid below. The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` components from unsolved voxels in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
+For clarity, we show this for a small 10 x 10 grid below. 
+
+For the first step (simulated structure only), when the program is run, a pop window appears which asks for the planar size of the sample and also confirms that only a single plane is being analyzed
+
+The Figure below shows the beam path after a few iterations (in which some voxels have been solved). The convention is to represent :math:`I(\chi)` components from unsolved voxels in blue, and from solved voxels in green. At any given point in the reconstruction there will be a mixture of blue and green curves, starting all blue and with green number increasing as the reconstruction progresses.  
 
 .. _beampathsmall:
 .. figure:: figures-saxsrecon/190124_small_IVD_top.png
@@ -263,15 +267,26 @@ The progress of the reconstruction in solving voxels for the simulated IVD-like 
 
   Percentage of voxels in Figure :ref:`modelivdtop` solved as a function of time. 
 
-Two stages are observed - increasing (up to 30 minutes) and a slower increase/saturation (afterward). The reconstruction of the simulated structure was carried out on a Win10 PC, Intel i5-12400F, 2.5 MHz, 6 core/12 logical, 16 GB RAM, with no parallelisation or GPU acceleration.  
+Two stages are observed - increasing (up to 30 minutes) and a slower increase/saturation (afterward). The reconstruction of the simulated structure was carried out on a Win10 PC, Intel i5-12400F, 2.5 MHz, 6 core/12 logical, 16 GB RAM, with no parallelisation, multiprocessing or GPU acceleration. 
+
+Since the planes are independent, on real data the code should be distributed to multiple nodes in a HPC cluster to solve each plane independently. Within each plane, areas of optimisation of current code include
+* In scanning, the serial scanning across each sample slice can be parallelized. Find a maximum "safe" spacing between beam paths which don't pick up signals from adjacent voxels and can be tested independently. For example, for beamsize of 20 microns, it will pick up signal from :math:`\pm 3\sigma`, which means a bit more than 5 voxels (center voxel, 2 lines to left, two lines to right). Let the scan size be 40 voxels like in Figure :ref:`modelivdtop`. Divide the scan into 40/5 = 8 interleaved sets of scans, which (as per above) are not interfering with each other. We can use the python :python:`multiprocessing` module to run these independently on a single multicore node of a cluster.
+* In fitting, reduce the number of data points in each :math:`I(q)` profile. From initial testing, the time taken to fit scales with the number of data points so a coarser profile will fit quicker.
+* In searching for single- or double-voxel windows, use packages like :python:`bottleneck` or further optimise the stride methods (currently using :python:`numpy.lib.stride_tricks.sliding_window_view`)
+
+It is noted that not all voxels were solved (the % solved saturates at 98%). A cluster of closely overlapping voxels (spatially and angularly) cannot be distinguished from each other. In practice, the solution will have to be to fit them jointly or coarse-grain that patch to solve them as one unit. This is justified because if they are not being separated at any tomographic angle, then they are neither spatially separated nor differing angularly, so can be considered "one" unit. 
+
+.. _solvedvsoriginal:
+Reconstructed vs original parameters
+-----------------------------------------------
+
+To test the quality of the reconstruction, the images in Figure :ref:`modelivdtop` show the correlation between :math:`q_{0},w_{a},w_{\mu},amp` from the original versus reconstructed case. 
 
 .. _algorithm:
 Iterative solution of voxels
 -----------------------------------------------
 
 To solve the fibril-parameters for the voxels, the above steps for :ref:`voxel-solution <voxelsol>` are combined with :ref:`estimation <angular>` of :math:`I^{k}_{r}(\chi)` for each scan-point and rotation angle. As individual voxels get fitted, they are moved to a "solved" list whose parameters are known. Therefore, when :ref:`estimating voxels <voxelsol>`, only unsolved voxels are included when simulating the angular SAXS intensity profile and identifying any single or overlapping voxels. 
-
-The plot below shows how the percentage of solved voxels increases with each rotation angle and iteration. In the simplest implementation, solution proceeds serially without ranking or prioritising the peak intensity contributions from specific voxels. 
 
 By prioritising the highest single-voxels or double-scattering pairs for initial solution, possible benefits could include more accurate estimate of these initial voxels which then reduce the propagated error for subsequent voxels which have to subtract out these known contributors before fitting.
 

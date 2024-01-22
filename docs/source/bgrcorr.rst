@@ -135,8 +135,16 @@ and the Sample thickness data:
 
 .. image:: sample_thickness_plot.png
 
-.. image:: sample_thickness_img.png
+.. image:: sample_thickness_img_clip.png
 
+
+The script then loads the mask:
+
+.. image:: Mask.png
+
+and calibration data for the tomoSAXS scan.
+
+.. image:: calib.png
 
 .. _gui:
 Loading Data

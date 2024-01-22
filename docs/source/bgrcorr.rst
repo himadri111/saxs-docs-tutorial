@@ -38,17 +38,17 @@ Prerequisite data:
 
 1. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.
 
-2. Mask file: File ( Figure :ref:`svfit-label` ) created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
+2. Mask file: File ( Figure :ref:`mask-label` ) created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
 
-3. Calibration file: filecreated during calibration of experiment at I22 beamline containing calobration data for analysis of 2D SAXS frames.
+3. Calibration file: file created during calibration of experiment at I22 beamline containing calibration data for analysis of 2D SAXS frames.
 
 4. Background file: raster map acquired using the same parameters as tomoSAXS data taken of an empty kapton tube (diameter the same width as that used in the respective tomoSAXS scan).
 
 5. Dispersant file: raster map acquired using the same parameters as tomoSAXS data taken of a kapton tube (diameter the same width as that used in the respective tomoSAXS scan) filled with hydrating fluid used in tomoSAXS scan (e.g. PBS/phosphate buffer saline solution).
 
-6.Sample thickness file: file containing data for the estimate thickness of the sample across every beampath in the tomoSAXS scan. Can be either a .txt file or .npy file (.npy preferred). Generated as part of the `Co-registration <https://himadri111-saxs-docs-tutorial.readthedocs.io/en/latest/coreg.html>`_ process. .npy file is saved as a 3D arary; first dimension for tomoSAXS orientation; second dimension for tomoSAXS slice; third dimension for estimated sample thickness for each frame. 
+6.Sample thickness file: file containing data for the estimate thickness of the sample across every beampath in the tomoSAXS scan. Can be either a .txt file or .npy file (.npy preferred). Generated as part of the `Co-registration <https://himadri111-saxs-docs-tutorial.readthedocs.io/en/latest/coreg.html>`_ process. npy file is saved as a 3D arary; first dimension for tomoSAXS orientation; second dimension for tomoSAXS slice; third dimension for estimated sample thickness for each frame. 
 
-7. "tomoSAXS_disp_multiproc": library python file for multiprocessing of background correction data.
+7. "adcorr_multiFuncs": library python file for multiprocessing of background correction data.
 
 
 Steps:

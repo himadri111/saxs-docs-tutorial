@@ -137,7 +137,13 @@ Data types loaded for all datasets (background, dispersant, and sample) are:
   iii. Incident flux (I0 data for each frame)
   iv.  Transmitted flux (bs diodes data for each frame)
 
-and the Sample thickness data:
+and finds the edges of the kapton tube for both datasets:
+
+.. image:: Background_kapton_edges.png
+
+.. image:: Dispersant_kapton_edges.png
+
+The script then loads the Sample thickness data:
 
 JAGGED REGIONS ARE ARTEFACTS - MUST BE CORRECTED WITH FIND PEAKS/SMOOTHING ETC
 
@@ -146,11 +152,8 @@ JAGGED REGIONS ARE ARTEFACTS - MUST BE CORRECTED WITH FIND PEAKS/SMOOTHING ETC
 .. image:: sample_thickness_img_clip.png
   :width: 400
 
-and finds the edges of the kapton tube for both datasets:
+and corrects for inconsistencies (from low density regions of fibre tracing data :ref:`.. padding:` )
 
-.. image:: Background_kapton_edges.png
-
-.. image:: Dispersant_kapton_edges.png
 
 The script then loads the mask:
 

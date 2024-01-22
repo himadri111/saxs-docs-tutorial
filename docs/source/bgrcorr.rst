@@ -136,6 +136,7 @@ and the Sample thickness data:
 .. image:: sample_thickness_plot.png
 
 .. image:: sample_thickness_img_clip.png
+:width: 400
 
 
 The script then loads the mask:

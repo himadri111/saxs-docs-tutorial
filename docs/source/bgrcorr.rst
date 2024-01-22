@@ -138,6 +138,11 @@ and the Sample thickness data:
 .. image:: sample_thickness_img_clip.png
   :width: 400
 
+and finds the edges of the kapton tube for both datasets:
+
+.. image:: Background_kapton_edges.png
+
+.. image:: Dispersant_kapton_edges.png
 
 The script then loads the mask:
 
@@ -146,6 +151,20 @@ The script then loads the mask:
 and calibration data for the tomoSAXS scan.
 
 .. image:: calib.png
+
+
+.. bg_corr:
+3. Background correction
+-------------------------
+
+Background correction is performed on a per-slice basis for tomoSAXS data. Each vertical slice is loaded sequentially, and for each slice:
+
+a. the kapton tube edges are found
+
+.. image:: sample_kapton_edges.png
+
+b.
+
 
 .. _gui:
 Loading Data

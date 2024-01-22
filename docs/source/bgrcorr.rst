@@ -130,6 +130,11 @@ The script starts by loading the data for the the background (empty kapton tube)
 
 .. image:: bg_disp_sum_comp_clip.png
 
+Data types loaded for all datasets (background, dispersant, and sample) are:
+  i.   Frames (2D SAXS detector frames)
+  ii.  Count times (exposure time in seconds for each frame)
+  iii. Incident flux (I0 data for each frame)
+  iv.  Transmitted flux (bs diodes data for each frame)
 
 and the Sample thickness data:
 
@@ -157,7 +162,7 @@ and calibration data for the tomoSAXS scan.
 3. Background correction
 -------------------------
 
-Background correction is performed on a per-slice basis for tomoSAXS data. Each vertical slice is loaded sequentially, and for each slice:
+Background correction is performed on a per-scan basis for tomoSAXS (i.e. each individual raster map representing a sequential sample orientation is loaded individually and backgroundcorrected). For each scan, backgroudn correction is also applied on a per-slice basis. Each vertical slice is loaded sequentially, and for each slice:
 
 a. the kapton tube edges are found
 
@@ -165,11 +170,13 @@ a. the kapton tube edges are found
 
 b. The data for the sample:
   a. SAXS frames
-  b. Incident flux (I0 data)
-  c. transmitted flux (bs diodes data)
+  b. Count times
+  c. Incident flux (I0 data)
+  d. transmitted flux (bs diodes data)
+  e. Sample thickness data for this slice
 are then subsampled to just those frames within the kapton edges
 
-c. The X axis positions are found for each of these frames, and the difference between these positions and the lefthand-side (lhs) kapton edge are used to subsample the frames from the equivalent position of the kapton tube width for the background and dispersant data.
+c. The X axis positions are found for each of these frames, and the difference between these positions and the lefthand-side (lhs) kapton edge are used to subsample the frames, count times, incident flux values, and transmittedflux values  from the equivalent position of the kapton tube width for the background and dispersant data.
 
 d. The width of the kapton tube can then be estimated for each frame by estimating the chord length of the frame from its distance from the centre point of the tube:
 
@@ -179,6 +186,17 @@ d. The width of the kapton tube can then be estimated for each frame by estimati
   disp_dist_frm_ctr = np.sqrt((disp_sample_range-(disp_sample_range[0]/2))**2)                
   choord_len = [((disp_dist_frm_ctr[0]**2)-(disp_dist_frm_ctr[k]**2))*1000 for k in np.arange(0,len(disp_dist_frm_ctr),1)]
   choord_len = np.asarray(choord_len)*1e-3
+
+e. We can then input the subsampled data (frames, count times, incident flux, transmitted flux), as well as the estimated kapton tube width, and estimated sample width for every subsampled frame into the "tomSAXS_disp_mutliproc()" multiprocessing function. This function uses multiprocessing to apply the `pauw_dispersed_sample_sequence() <https://github.com/DiamondLightSource/adcorr/blob/main/src/adcorr/sequences/pauw.py>`_ function to background correct each subsampled frame, using the ratio between the sample thickness and kapton tube width as a metric for the displaced volume fraction.
+
+f. This function 
+
+e. Input subsampled values for:
+  i.   frame index (index of the subsampled frame within the original tomoSAXS slice)
+  ii.  sample frames (subsampled frames within the kapton tube)
+  iii. background frames (subsampled background frames within the kapton tube)
+  iv.  dispersant frames (subsampled dispersant frames within the kapton tube)
+  
 
 .. _gui:
 Loading Data

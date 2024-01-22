@@ -139,6 +139,8 @@ Data types loaded for all datasets (background, dispersant, and sample) are:
 
 and the Sample thickness data:
 
+JAGGED REGIONS ARE ARTEFACTS - MUST BE CORRECTED WITH FIND PEAKS/SMOOTHING ETC
+
 .. image:: sample_thickness_plot.png
 
 .. image:: sample_thickness_img_clip.png

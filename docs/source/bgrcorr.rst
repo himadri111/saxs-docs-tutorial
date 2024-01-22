@@ -38,7 +38,7 @@ Prerequisite data:
 
 1. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.
 
-2. Mask file: file created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
+2. Mask file: file :ref:`mask-label`created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
 
 3. Calibration file: filecreated during calibration of experiment at I22 beamline containing calobration data for analysis of 2D SAXS frames.
 
@@ -51,8 +51,8 @@ Prerequisite data:
 7. "tomoSAXS_disp_multiproc": library python file for multiprocessing of background correction data.
 
 
-Steps are:
-^^^^^^^^^^
+Steps:
+^^^^^^^
 
 1. User input folder and scan  parameters (tomoSAXS files, output directories, type of scan, kapton width etc).
 
@@ -154,7 +154,9 @@ and finds the edges of the kapton tube for both datasets:
 
 The script then loads the mask:
 
-.. image:: Mask.png
+.. _mask-label:
+.. figure:: Mask.png
+
 
 and calibration data for the tomoSAXS scan.
 

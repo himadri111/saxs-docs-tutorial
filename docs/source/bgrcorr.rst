@@ -131,11 +131,11 @@ The script starts by loading the data for the the background (empty kapton tube)
 .. image:: bg_disp_sum_comp_clip.png
 
 
-
-
 and the Sample thickness data:
 
+.. image:: sample_thickness_plot.png
 
+.. image:: sample_thickness_img.png
 
 
 .. _gui:

@@ -9,9 +9,12 @@ Describes the steps in normalising and subtracting the background for a sample i
 
 TomoSAXS samples have background SAXS signals from two main sources:
 
-  1. Cylindrical kapton tube
+  1. Cylindrical kapton tube ("Background")
 
-  2. Phosphate buffer solution (PBS) 
+  2. Phosphate buffer solution (PBS) ("Dispersant")
+
+.. image:: frame_comparison_clipped.png
+
 
 Background correction for tomoSAXS samples is complicated by several factors:
 

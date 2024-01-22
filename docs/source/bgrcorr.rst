@@ -152,7 +152,41 @@ JAGGED REGIONS ARE ARTEFACTS - MUST BE CORRECTED WITH FIND PEAKS/SMOOTHING ETC
 .. image:: sample_thickness_img_clip.png
   :width: 400
 
-and corrects for inconsistencies (from low density regions of fibre tracing data :ref:`.. padding:` )
+and corrects for inconsistencies (from low density regions of fibre tracing data :ref:`.. padding:` ) by fitting a 7th order polynomial to the peaks in the thickness dataset:
+
+.. code-block:: python
+
+  from scipy.signal import find_peaks
+  
+  def fit_poly(slice_thickness,Deg):
+      
+      """
+      Function for fitting a polynomial (degree controlled by "Deg") to the peaks found in sample
+      thickness data 
+      """
+      
+      #Isolate region where sample is found
+      test_thickness = slice_thickness[np.where(slice_thickness>0)[0][0]:np.where(slice_thickness>0)[0][-1]]
+      bg_zeros = np.zeros_like(slice_thickness)
+      
+      #find peaks using "scipy.signal.find_peaks"
+      thickness_peaks = find_peaks(test_thickness)[0]
+      peak_thickness = test_thickness[find_peaks(test_thickness)[0]]
+      
+      x = np.arange(0,len(test_thickness),1)
+      
+      #fit polynomial to peaks
+      poly = np.polyfit(thickness_peaks, peak_thickness, deg=Deg)
+      
+      poly_model = np.polyval(poly, x)
+      poly_model[poly_model<0] = 0
+      
+      bg_zeros[np.where(slice_thickness>0)[0][0]:np.where(slice_thickness>0)[0][-1]] = poly_model
+  
+      return bg_zeros
+  
+
+
 
 
 The script then loads the mask:

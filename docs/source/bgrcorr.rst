@@ -128,7 +128,6 @@ The script starts by loading the data for the the background (empty kapton tube)
 
 .. image:: bg_and_disp.png
 
-
 .. image:: bg_disp_sum_comp_clip.png
 
 

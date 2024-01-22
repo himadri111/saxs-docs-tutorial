@@ -76,7 +76,7 @@ User input is performed using a series of graphical user interfaces (GUIs), wher
 
 The first:
 
-.. image:: bg_corr_folder_gui.png
+.. image:: adcorr_gui_1.png
 
 Reads in:
 
@@ -106,6 +106,23 @@ h. "Output folder" - the folder chosen for outputting background corrected data 
 
   "kapton tube"
 
+Then input the respective values for the kapton tube and gross sample thickness.
+
+
+The second:
+
+.. image:: adcorr_gui_2.png
+
+Reads in the nexus files for each of the individual raster maps that make up the respective tomoSAXS scan.
+
+
+.. load_data:
+2. Loading data
+----------------
+
+The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data:
+
+.. image:: disp_frame _plot.png
 
 
 .. _gui:

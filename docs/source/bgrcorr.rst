@@ -34,7 +34,7 @@ These values allow estimation of the displaced volume fraction for every frame o
 
 
 Prerequisite data:
-------------------
+^^^^^^^^^^^^^^^^^^
 
 1. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.
 
@@ -52,7 +52,7 @@ Prerequisite data:
 
 
 Steps are:
-----------
+^^^^^^^^^^
 
 1. User input folder and scan  parameters (tomoSAXS files, output directories, type of scan, kapton width etc).
 

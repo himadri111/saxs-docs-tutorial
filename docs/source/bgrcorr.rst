@@ -38,7 +38,7 @@ Prerequisite data:
 
 1. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.
 
-2. Mask file: file :ref:`mask-label`created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
+2. Mask file: File ( Figure :ref:`svfit-label` ) created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
 
 3. Calibration file: filecreated during calibration of experiment at I22 beamline containing calobration data for analysis of 2D SAXS frames.
 

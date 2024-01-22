@@ -187,9 +187,18 @@ d. The width of the kapton tube can then be estimated for each frame by estimati
   choord_len = [((disp_dist_frm_ctr[0]**2)-(disp_dist_frm_ctr[k]**2))*1000 for k in np.arange(0,len(disp_dist_frm_ctr),1)]
   choord_len = np.asarray(choord_len)*1e-3
 
-e. We can then input the subsampled data (frames, count times, incident flux, transmitted flux), as well as the estimated kapton tube width, and estimated sample width for every subsampled frame into the "tomSAXS_disp_mutliproc()" multiprocessing function. This function uses multiprocessing to apply the `pauw_dispersed_sample_sequence() <https://github.com/DiamondLightSource/adcorr/blob/main/src/adcorr/sequences/pauw.py>`_ function to background correct each subsampled frame, using the ratio between the sample thickness and kapton tube width as a metric for the displaced volume fraction.
+e. We can then input the subsampled data (frames, count times, incident flux, transmitted flux), as well as the estimated kapton tube width, and estimated sample width, and original index (position within the scan) for every subsampled frame into the "tomSAXS_disp_mutliproc()" multiprocessing function. This function uses multiprocessing to apply the `pauw_dispersed_sample_sequence() <https://github.com/DiamondLightSource/adcorr/blob/main/src/adcorr/sequences/pauw.py>`_ function to background correct each subsampled frame, using the ratio between the sample thickness and kapton tube width as a metric for the displaced volume fraction.
 
-f. This function 
+f. For each frame, this function outputs a background corrected frame, and its original index:
+
+.. image:: orig_vs_corr_clipped.png
+
+.. image:: Iq_comp.png
+
+
+
+
+
 
 e. Input subsampled values for:
   i.   frame index (index of the subsampled frame within the original tomoSAXS slice)

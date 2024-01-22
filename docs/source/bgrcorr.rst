@@ -125,7 +125,9 @@ Reads in the nexus files for each of the individual raster maps that make up the
 
 The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data:
 
+
 .. image:: bg_and_disp.png
+
 
 .. image:: bg_disp_sum_comp_clip.png
 

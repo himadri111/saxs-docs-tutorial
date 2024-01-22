@@ -163,8 +163,22 @@ a. the kapton tube edges are found
 
 .. image:: sample_kapton_edges.png
 
-b.
+b. The data for the sample:
+  a. SAXS frames
+  b. Incident flux (I0 data)
+  c. transmitted flux (bs diodes data)
+are then subsampled to just those frames within the kapton edges
 
+c. The X axis positions are found for each of these frames, and the difference between these positions and the lefthand-side (lhs) kapton edge are used to subsample the frames from the equivalent position of the kapton tube width for the background and dispersant data.
+
+d. The width of the kapton tube can then be estimated for each frame by estimating the chord length of the frame from its distance from the centre point of the tube:
+
+.. code-block:: python
+
+  disp_sample_range = sample_axis[-1]-sample_axis                
+  disp_dist_frm_ctr = np.sqrt((disp_sample_range-(disp_sample_range[0]/2))**2)                
+  choord_len = [((disp_dist_frm_ctr[0]**2)-(disp_dist_frm_ctr[k]**2))*1000 for k in np.arange(0,len(disp_dist_frm_ctr),1)]
+  choord_len = np.asarray(choord_len)*1e-3
 
 .. _gui:
 Loading Data

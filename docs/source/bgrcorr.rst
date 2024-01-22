@@ -186,7 +186,7 @@ and corrects for inconsistencies (from low density regions of fibre tracing data
       return bg_zeros
   
 
-
+.. image:: sample_thickness_comp.png
 
 
 The script then loads the mask:

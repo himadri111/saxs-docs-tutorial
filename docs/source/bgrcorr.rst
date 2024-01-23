@@ -9,26 +9,26 @@ Describes the steps in normalising and subtracting the background for a sample i
 
 TomoSAXS samples have background SAXS signals from two main sources:
 
-  1. Cylindrical kapton tube ("Background")
+1. Cylindrical kapton tube ("Background")
 
-  2. Phosphate buffer solution (PBS) ("Dispersant")
+2. Phosphate buffer solution (PBS) ("Dispersant")
 
 .. image:: frame_comparison_clipped.png
 
 
 Background correction for tomoSAXS samples is complicated by several factors:
 
-  1. The cylindrical shape of kapton tubes changes the proportion of scattering background (amount of PBS solution per-beampath
+1. The cylindrical shape of kapton tubes changes the proportion of scattering background (amount of PBS solution per-beampath
 
-  2. The non-uniform shape of samples changes the proportion of PBS displaced b ythe sample both between beampaths and between rotations.
+2. The non-uniform shape of samples changes the proportion of PBS displaced b ythe sample both between beampaths and between rotations.
 
 These factors must be accounted for when applying the Adcorr background correction procedure on tomoSAXS data. 
 
 This technique accounts for these factors by:
 
-  1. Using the known diameter of the kapton tube to estimate the thickness of the tube and thus the amount of undisplaced PBS in every beampath.
+1. Using the known diameter of the kapton tube to estimate the thickness of the tube and thus the amount of undisplaced PBS in every beampath.
 
-  2. Estimating the thickness of the sample for every beampath of the tomoSAXS scan during the co-registration `Co-registration <https://himadri111-saxs-docs-tutorial.readthedocs.io/en/latest/coreg.html>`_ process.
+2. Estimating the thickness of the sample for every beampath of the tomoSAXS scan during the co-registration `Co-registration <https://himadri111-saxs-docs-tutorial.readthedocs.io/en/latest/coreg.html>`_ process.
 
 These values allow estimation of the displaced volume fraction for every frame of the tomoSAXS scan.
 

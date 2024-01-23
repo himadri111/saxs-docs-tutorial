@@ -125,17 +125,17 @@ Reads in the nexus files for each of the individual raster maps that make up the
 2. Loading data
 ----------------
 
-The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data. The outputs (not shown during the script) are: 
-
-.. image:: bg_and_disp.png
-
-.. image:: bg_disp_sum_comp_clip.png
-
 Data types loaded for all datasets (background, dispersant, and sample) are:
   i.   Frames (2D SAXS detector frames)
   ii.  Count times (exposure time in seconds for each frame)
   iii. Incident flux (I0 data for each frame)
   iv.  Transmitted flux (bs diodes data for each frame)
+
+The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data. The outputs (not shown during the script) are: 
+
+.. image:: bg_and_disp.png
+
+.. image:: bg_disp_sum_comp_clip.png
 
 and finds the edges of the kapton tube for both datasets:
 

@@ -261,7 +261,7 @@ and corrects for inconsistencies (from low density regions of fibre tracing data
       return bg_zeros
   
 
-.. image:: sample_thickness_comp.png
+.. image:: sample_thickness_comp_3deg.png
 
 .. image:: corrected_frame_thickness.png
 
@@ -317,7 +317,7 @@ g. For each frame, this function outputs a background corrected frame, and its o
 
 .. image:: orig_vs_corr_clipped.png
 
-.. image:: iq_comp_plot.png
+.. image:: iq_comp_plot_tight.png
 
 h. The original frames for the entire tomoSAXS slice are then copied, and copies are replaced by the corrected frame for the respective index.
 

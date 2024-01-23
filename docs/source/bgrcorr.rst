@@ -317,7 +317,7 @@ g. For each frame, this function outputs a background corrected frame, and its o
 
 .. image:: orig_vs_corr_clipped.png
 
-.. image:: Iq_comp.png
+.. image:: iq_comp_plot.png
 
 h. The original frames for the entire tomoSAXS slice are then copied, and copies are replaced by the corrected frame for the respective index.
 

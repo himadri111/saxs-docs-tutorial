@@ -13,20 +13,21 @@ TomoSAXS samples have background SAXS signals from two main sources:
 
 2. Phosphate buffer solution (PBS) ("Dispersant")
 
-.. image:: frame_comparison_clipped.png
+.. _frame_intro-label:
+.. figure:: frame_comparison_clipped.png
 
 
 Background correction for tomoSAXS samples is complicated by several factors:
 
 1. The cylindrical shape of kapton tubes changes the proportion of scattering background (amount of PBS solution per-beampath
 
-2. The non-uniform shape of samples changes the proportion of PBS displaced b ythe sample both between beampaths and between rotations.
+2. The non-uniform shape of samples changes the proportion of PBS displaced by the sample both between beampaths and between rotations.
 
 These factors must be accounted for when applying the Adcorr background correction procedure on tomoSAXS data. 
 
 This technique accounts for these factors by:
 
-1. Using the known diameter of the kapton tube to estimate the thickness of the tube and thus the amount of undisplaced PBS in every beampath.
+1. Using the known diameter of the kapton tube to estimate the thickness of the tube for every beampath and thus the amount of undisplaced PBS.
 
 2. Estimating the thickness of the sample for every beampath of the tomoSAXS scan during the co-registration `Co-registration <https://himadri111-saxs-docs-tutorial.readthedocs.io/en/latest/coreg.html>`_ process.
 
@@ -38,17 +39,33 @@ Prerequisite data:
 
 1. TomoSAXS dataset: series of individual SAXS raster map files and associated data (accessed using .nxs file) representing each of the tomoSAXS orientations.
 
-2. Mask file: File ( Figure :ref:`mask-label` ) created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
+2. Mask file: file ( Figure :ref:`mask-label` ) created during calibration of experiment at I22 beamline identifying regions of 2D SAXS frames to be masked from analyses.
 
-3. Calibration file: file created during calibration of experiment at I22 beamline containing calibration data for analysis of 2D SAXS frames.
+3. Calibration file: file ( Figure :ref:`calib-label` ) created during calibration of experiment at I22 beamline containing calibration data for analysis of 2D SAXS frames.
 
-4. Background file: raster map acquired using the same parameters as tomoSAXS data taken of an empty kapton tube (diameter the same width as that used in the respective tomoSAXS scan).
+4. Background file: raster map :ref:`frame_intro-label`  acquired using the same parameters as tomoSAXS data taken of an empty kapton tube (diameter the same width as that used in the respective tomoSAXS scan).
 
-5. Dispersant file: raster map acquired using the same parameters as tomoSAXS data taken of a kapton tube (diameter the same width as that used in the respective tomoSAXS scan) filled with hydrating fluid used in tomoSAXS scan (e.g. PBS/phosphate buffer saline solution).
+5. Dispersant file: raster map :ref:`frame_intro-label` acquired using the same parameters as tomoSAXS data taken of a kapton tube (diameter the same width as that used in the respective tomoSAXS scan) filled with hydrating fluid used in tomoSAXS scan (e.g. PBS/phosphate buffer saline solution).
 
 6.Sample thickness file: file containing data for the estimate thickness of the sample across every beampath in the tomoSAXS scan. Can be either a .txt file or .npy file (.npy preferred). Generated as part of the `Co-registration <https://himadri111-saxs-docs-tutorial.readthedocs.io/en/latest/coreg.html>`_ process. npy file is saved as a 3D arary; first dimension for tomoSAXS orientation; second dimension for tomoSAXS slice; third dimension for estimated sample thickness for each frame. 
 
 7. "adcorr_multiFuncs": library python file for multiprocessing of background correction data.
+
+8. `Beamline-specific information <https://diamondlightsource.github.io/adcorr/main/tutorials/i22_corrections.html>`_ for the Adcorr procedure:
+
+.. code-block:: python
+  """
+  beamline-specific information: https://diamondlightsource.github.io/adcorr/main/tutorials/i22_corrections.html
+  """
+  MINIMUM_PULSE_SEPARATION = 2e-6
+  MINIMUM_ARRIVAL_SEPARATION = 3e-6
+  BASE_DARK_CURRENT = 0.0
+  TEMPORAL_DARK_CURRENT = 0.0
+  FLUX_DEPENDANT_DARK_CURRENT = 0.0
+  SENSOR_ABSORPTION_COEFFICIENT = 0.85
+  SENSOR_THICKNESS = 1e-3
+  BEAM_POLARIZATION = 0.5
+  DISPLACED_FRACTION = 0.8
 
 
 Steps:
@@ -56,9 +73,9 @@ Steps:
 
 1. User input folder and scan  parameters (tomoSAXS files, output directories, type of scan, kapton width etc).
 
-2. Load background and dispersant data
+2. Load background and dispersant data and estimate position of kapton edges.
 
-3. Load sample thickness data
+3. Load sample thickness data.
 
 4. for each scan: 
 
@@ -131,6 +148,36 @@ Data types loaded for all datasets (background, dispersant, and sample) are:
   iii. Incident flux (I0 data for each frame)
   iv.  Transmitted flux (bs diodes data for each frame)
 
+.. code-block:: python
+   DISPERSANT_PATH = Path(params["-DISPFILE-"])            
+                    
+    with File(DISPERSANT_PATH) as dispersant_file:
+        entry = list(dispersant_file.keys())[0]
+        if entry == 'I0_data':
+            dispersants = array(dispersant_file["data"])
+            dispersant_sums = array(dispersant_file["sum"])
+            dispersant_xAxis = array(dispersant_file["base_x_value_set"])
+            dispersants_count_times = array(dispersant_file["count_time"]).tolist()
+            dispersants_incident_flux = array(dispersant_file["I0_data"])
+            dispersants_transmitted_flux = array(dispersant_file["OAV_data"])
+        else:
+            if entry+"/SAXS/data" in dispersant_file:
+                dispersants = array(dispersant_file[entry+"/SAXS/data"])
+                dispersant_sums = array(dispersant_file[entry+"/SAXS_sum/sum"])
+                dispersant_xAxis = array(dispersant_file[entry+"/SAXS_sum/base_x_value_set"])
+                dispersants_count_times = array(dispersant_file[entry+"/instrument/SAXS/count_time"]).tolist()
+                dispersants_incident_flux = array(dispersant_file[entry+"/I0/data"])
+                dispersants_transmitted_flux =  array(dispersant_file[entry+"/BSDIODES/data"])
+            else:
+                dispersants = array(dispersant_file[entry+"/detector/data"])[0,0,:,:]
+                dispersant_sums = np.sum(dispersants)
+                dispersants_incident_flux = array(dispersant_file[entry+"/I0/data"])
+                dispersants_transmitted_flux = array(dispersant_file[entry+"/bsdiodes/data"])
+                dispersants_count_times = array(dispersant_file[entry+"/instrument/detector/count_time"])[0]
+        dispersant_file.close()
+
+
+
 a. The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data. The outputs (not shown during the script) are: 
 
 .. image:: bg_and_disp.png
@@ -150,7 +197,7 @@ c. The script then loads the Sample thickness data:
 .. image:: sample_thickness_img_clip.png
   :width: 400
 
-and corrects for inconsistencies (from low density regions of fibre tracing data :ref:`.. padding:` ) by fitting a 7th order polynomial to the peaks in the thickness dataset:
+and corrects for inconsistencies (from low density regions of fibre tracing data :ref:`.. padding:` ) by fitting a 3rd order polynomial to the peaks in the thickness dataset:
 
 .. code-block:: python
 
@@ -197,7 +244,8 @@ d. The script then loads the mask:
 
 and calibration data for the tomoSAXS scan.
 
-.. image:: calib.png
+.. _calib-label:
+.. figure:: calib.png
 
 
 .. bg_corr:

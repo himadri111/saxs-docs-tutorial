@@ -195,25 +195,25 @@ b. Then finds the edges of the kapton tube for both datasets:
   
   def find_kapton(slice_sums):
     
-  """
-  Function for finding edges of kapton tube in sum SAXS data
+    """
+    Function for finding edges of kapton tube in sum SAXS data
+    
+    check if the first set of frames is:
+        background - typically minus sum WAXS radiation values
+        kapton - high sum WAXS rad values followed by positive values
+        artefact - high values followed by minus values
+    """
   
-  check if the first set of frames is:
-      background - typically minus sum WAXS radiation values
-      kapton - high sum WAXS rad values followed by positive values
-      artefact - high values followed by minus values
-  """
-
-  if len(np.where(slice_sums>np.abs(slice_sums[0])*10)[0])>0:
-      first_x_kapton = np.where(slice_sums>np.abs(slice_sums[0])*10)[0][0]
-  else:
-      if np.min(slice_sums[0:50])>0:
-          first_x_kapton = 0
-      else:
-          first_frame = np.where(slice_sums<0)[0][0]
-          first_x_kapton = np.where(slice_sums[first_frame:-1]>np.abs(slice_sums[first_frame])*10)[0][0]
-          
-  return first_x_kapton
+    if len(np.where(slice_sums>np.abs(slice_sums[0])*10)[0])>0:
+        first_x_kapton = np.where(slice_sums>np.abs(slice_sums[0])*10)[0][0]
+    else:
+        if np.min(slice_sums[0:50])>0:
+            first_x_kapton = 0
+        else:
+            first_frame = np.where(slice_sums<0)[0][0]
+            first_x_kapton = np.where(slice_sums[first_frame:-1]>np.abs(slice_sums[first_frame])*10)[0][0]
+            
+    return first_x_kapton
 
 
 .. image:: Background_kapton_edges.png

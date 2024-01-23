@@ -151,6 +151,9 @@ Data types loaded for all datasets (background, dispersant, and sample) are:
 
 .. code-block:: python
 
+   """
+   Example for loading dispersant data
+   """
    DISPERSANT_PATH = Path(params["-DISPFILE-"])            
                     
     with File(DISPERSANT_PATH) as dispersant_file:

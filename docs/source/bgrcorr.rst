@@ -328,7 +328,7 @@ g. For each frame, this function outputs a background corrected frame, and its o
 
 .. image:: 3rd_peak_iq_log_comp_plot.png
 
-.. image:: 3rd_peak_log_just_iq_comp_plot
+.. image:: 3rd_peak_log_just_iq_comp_plot.png
 
 
 h. The original frames for the entire tomoSAXS slice are then copied, and copies are replaced by the corrected frame for the respective index.

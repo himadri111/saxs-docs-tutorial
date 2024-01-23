@@ -131,21 +131,19 @@ Data types loaded for all datasets (background, dispersant, and sample) are:
   iii. Incident flux (I0 data for each frame)
   iv.  Transmitted flux (bs diodes data for each frame)
 
-The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data. The outputs (not shown during the script) are: 
+a. The script starts by loading the data for the the background (empty kapton tube) and dispersant (filled kapton tube) data. The outputs (not shown during the script) are: 
 
 .. image:: bg_and_disp.png
 
 .. image:: bg_disp_sum_comp_clip.png
 
-and finds the edges of the kapton tube for both datasets:
+b. Then finds the edges of the kapton tube for both datasets:
 
 .. image:: Background_kapton_edges.png
 
 .. image:: Dispersant_kapton_edges.png
 
-The script then loads the Sample thickness data:
-
-JAGGED REGIONS ARE ARTEFACTS - MUST BE CORRECTED WITH FIND PEAKS/SMOOTHING ETC
+c. The script then loads the Sample thickness data:
 
 .. image:: sample_thickness_plot.png
 
@@ -188,8 +186,10 @@ and corrects for inconsistencies (from low density regions of fibre tracing data
 
 .. image:: sample_thickness_comp.png
 
+.. image:: corrected_frame_thickness.png
 
-The script then loads the mask:
+
+d. The script then loads the mask:
 
 .. _mask-label:
 .. figure:: Mask.png

@@ -320,7 +320,16 @@ g. For each frame, this function outputs a background corrected frame, and its o
 
 .. image:: orig_vs_corr_clipped.png
 
-.. image:: iq_comp_plot_tight.png
+.. image:: full_iq_comp_plot.png
+
+.. image:: full_iq_log_comp_plot.png
+
+.. image:: 3rd_peak_iq_comp_plot.png
+
+.. image:: 3rd_peak_iq_log_comp_plot.png
+
+.. image:: 3rd_peak_log_just_iq_comp_plot
+
 
 h. The original frames for the entire tomoSAXS slice are then copied, and copies are replaced by the corrected frame for the respective index.
 
@@ -333,24 +342,3 @@ Principles of Background Corrections
 Summarize relations in A. Smith et al J. App. Cryst. (2017)
 (Primary responsibility: EN/HG)
 Summarize equations
-
-Load SAXS scans along with background files and apply adcorr correction
-  a. Theory behind absorption corrections in variable geometries
-  b. Example usage with experimental data
-  c. Example usage with simulated data
-    i. Using `pyFAI <https://pyfai.readthedocs.io/>`_ to generate synthetic data
-
-.. _variablethickness:
-Accounting for variable thickness with CT image
-------------------
-(Primary responsibility: EN with input from AP/JC). Code examples
-
-.. _examplesim:
-Simulated data examples
---------------------
-Linescan of tissue plane with small voxel size in saline/PBS
-
-.. _exampleexp:
-Experimental data examples
---------------------
-Linescan of tissue plane from experimental data in saline/PBS

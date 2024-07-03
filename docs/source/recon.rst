@@ -56,3 +56,43 @@ Fitting produces optimised values for the 4 scattering metrics of the respective
 
 .. figure:: recon_Fig_4.png
 
+
+This operation is performed independently for each vertical “slice” in a TomoSAXS scan, the details provided herein are with-respect to a single “slice”.
+
+Prerequisite data:
+
+1.	Spatially registered datasets of per TomoSAXS voxel:
+
+  a.	Alpha values (herein α): vertical orientation angle.
+
+  b.	Beta values (herein β): horizontal orientation angle.
+
+  c.	Fibre indexes.
+
+  d.	Fibre counts: counts of fibre tracing voxels that comprise each indexed fibre.
+
+  e.	Fibre weights: weighting value for the distance between fibre voxels and the SAXS beam centre.
+
+2.	Background-corrected SAXS data for each orientation of the TomoSAXS scan (see LINK TO BGCORR PAGE).
+
+3.	Calibration file for the TomoSAXS scan
+
+4.	Mask file for the TomoSAXS scan
+
+5.	TomoSAXS scan information:
+a.	Start/end orientation (in degrees)
+b.	Rotation direction (clockwise vs anticlockwise)
+c.	Number of angular orientations
+
+6.	“fibrilParam” dictionary comprising entries for each indexed fibre in the respective scan. Each entry contains the index, α, β, estimated amplitude, and !! for each fibre (created during the amplitude estimation process – LINK TO PAGE).
+
+7.	“rotated_beampaths” dictionary, containing dictionaries of indexed fibres for each orientation of the TomoSAXS scan, with corrected β values (change with orientation of beampaths relative to fibres), and added details for the weighting factor and voxel count of each fibre for the beampaths that they encounter for the respective orientation.
+
+8.	“cake_params” dictionary, containing information for subsampling χ and q axes for 1D integrations (created during the amplitude estimation process – LINK TO PAGE).
+
+9.	“initStruct” dictionary, containing initial estimates and estimated maximum variation of for scattering metric values (created during the amplitude estimation process – LINK TO PAGE).
+
+
+
+
+

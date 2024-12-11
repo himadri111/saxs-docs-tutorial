@@ -58,6 +58,7 @@ This module operates over several discrete processing steps:
  **c.	Registration of fibre orientation and SAXS data.**
 
 **a.	Processing of CT data**
+------------
 
 For imaging large samples such as complete intervertebral discs, two CT scans are used; 
  
@@ -71,14 +72,14 @@ This is to allow the low resolution scan to calibrate the distance of the sample
 
 This process follows the following steps:
 
-*Scaling CT data.* The high resolution and low resolution CT reconstructions are opened in imageJ/Fiji (herein referred to as `Fiji <https://imagej.net/>`_), by locating their folder and dragging the folder icon into the Fiji taskbar. Once loaded, reduce the bit-rate to 8bit by selecting Image>Type>8bit. Then save the 8bit version to your working directory by selecting File>Save As>Image Sequence. In the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working directory and create a new subfolder, naming it “CT data”. Within “CT data” create a further subfolder called “low res” if you are saving the low resolution scan, or “high res” if you are saving the high resolution scan. Finally create a final subfolder called “8bit original”. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the sub-window next to “Name” and hit the “OK” button. Repeat this for each dataset.
+*Scaling CT data.* The high resolution and low resolution CT reconstructions are opened in imageJ/Fiji (herein referred to as `Fiji <https://imagej.net/>`_), by locating their folder and dragging the folder icon into the Fiji taskbar. Once loaded, reduce the bit-rate to 8bit by selecting **Image>Type>8bit**. Then save the 8bit version to your working directory by selecting **File>Save As>Image Sequence**. In the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working directory and create a new subfolder, naming it “CT data”. Within “CT data” create a further subfolder called “low res” if you are saving the low resolution scan, or “high res” if you are saving the high resolution scan. Finally create a final subfolder called “8bit original”. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the sub-window next to “Name” and hit the “OK” button. Repeat this for each dataset.
 
 .. image:: 8bit_img.png
 **FIG. 2. downsampling to 8bit in Fiji.** 
 
 For registration, both datasets must be modified so that they are the same absolute voxel size. The current default high resolution voxel size is 1.625 μm\ :sup:`3`, and low resolution voxel size is 2.6 μm\ :sup:`3`. Both datasets are modified to produce voxels sizes of 6.5 μm\ :sup:`3` .  :sup:`2`.
 
- •	Modify the **high resolution** 8bit data by selecting Image>Adjust>Size in Fiji and changing the **width and height to 640 and the depth to 540**. 
+ •	Modify the **high resolution** 8bit data by selecting **Image>Adjust>Size** in Fiji and changing the **width and height to 640 and the depth to 540**. 
 
  •	Modify the **low resolution** 8bit data by changing the **width and height to 1024 and depth to 864**. 
 
@@ -88,6 +89,45 @@ For registration, both datasets must be modified so that they are the same absol
 **FIG. 3. Resizing data in Fiji.**
 
 High resolution data only included a subsection of the low resolution data (smaller field of view), so the vertical offset between the two scaled datasets must be calculated. Open both scaled datasets in Fiji and isolate a slice in the low resolution dataset that includes a diagnostic element of the sample. This can be a portion of sample with a definitive and unique 2D shape or size. Once selected, find the same portion in the high resolution scaled data and log the offset in the slice number between both datasets. Duplicate the slice in both datasets by right clicking inside the slice and selecting “Duplicate” in the proceeding window. 
+
+.. image:: threshold_img.png
+**FIG. 4. Thresholding data in duplicated slices representing the same region-of-interest in rescaled low resoluton and high resoluton datasets in Fiji.**
+
+
+Now the spatial registration between the low resolution and high resolution datasets can be calibrated. To do this: 
+ •	first select **Process>Binary>Options** in the Fiji taskbar and in the proceeding “Binary Options” window, tick “Black background” before hitting “ok”. 
+ •	You can now use thresholding to isolate the selected feature in both duplicates by clicking on the duplicate and selecting **Image>Adjust>Threshold** in the Fiji taskbar. 
+ •	In the “Threshold” window, adjust the lower bound of the threshold so that the feature is kept as red but the surrounding background is not. 
+ •	Once this has been optimized, make sure “Dark background” has been ticked in the “Threshold” window and then hit the “Apply” button. 
+ •	This converts the duplicate into a binary image consisting of greyscale values of 255 for all regions marked with red in the threshold and 0 for all other regions. 
+ •	You can now further isolate the chosen feature by using the Polygon selection tool in the Fiji taskbar to select around the feature, before selecting **Edit>Clear outside** to remove any other material. 
+ •	Once only the feature is left in the duplicate, save using **File>save as>tiff** and create a new subfolder in “CT data” called “calibration”, then saving within that folder by naming the image after the slice that it originates from (e.g.**“low_res_168.tiff”** or **“high res_450.tiff”** respectively).
+
+.. image:: region_select.png
+**FIG. 4. Selection of diagnostic sample element and isolation using the Polygon selection tool in Fiji.**
+
+.. image:: region_isolate.png
+**FIG. 4. Isolated sample element after using "Clear outside" tool in Fiji.**
+
+The data is now ready to be calibrated alongside the orientation data.
+
+**b) Processing of fibre orientation data**
+------------
+
+Fibre orientation data is provided in the form of downsampled and subsampled stacks of tiffs, saved as single 3D tiff files, each with its own .png file highlighting the parameters used for creating the data:
+•	 Fibre theta angle (azimuthal angle) - 8bit tiffs
+•	 Fibre theta angle.png
+•	 Fibre phi angle (lateral angle) – 8bit tiffs
+•	 Fibre phi angle.png
+•	 Fibre index (index value for each fibre) – 16bit tiffs
+•	 Fibre index.png
+
+These files must be exported to stacks of single tiff files. Then, for registration, processed by padding to the same absolute size as the original CT data.
+
+.. image:: region_isolate.png
+**FIG. 4. Isolated sample element after using "Clear outside" tool in Fiji.**
+
+
 
 
 

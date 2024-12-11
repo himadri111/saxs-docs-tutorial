@@ -48,7 +48,7 @@ Once downloaded, copy to the desired working folder for your analysis. The “fo
 .. _Module 1:
 
 Module 1: SAXS/CT data registraion
-------------
+------------------------------------
 This module operates over several discrete processing steps:
 
  **a.	Processing of CT data.**
@@ -58,7 +58,7 @@ This module operates over several discrete processing steps:
  **c.	Registration of fibre orientation and SAXS data.**
 
 **a.	Processing of CT data**
-------------
+------------------------------------
 
 For imaging large samples such as complete intervertebral discs, two CT scans are used; 
  
@@ -70,6 +70,7 @@ This is to allow the low resolution scan to calibrate the distance of the sample
 .. image:: resolution_comp.png
 **FIG. 1. low versus high resolution SRCT reconstructions.** 
 
+
 This process follows the following steps:
 
 *Scaling CT data.* The high resolution and low resolution CT reconstructions are opened in imageJ/Fiji (herein referred to as `Fiji <https://imagej.net/>`_), by locating their folder and dragging the folder icon into the Fiji taskbar. Once loaded, reduce the bit-rate to 8bit by selecting **Image>Type>8bit**. Then save the 8bit version to your working directory by selecting **File>Save As>Image Sequence**. In the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working directory and create a new subfolder, naming it “CT data”. Within “CT data” create a further subfolder called “low res” if you are saving the low resolution scan, or “high res” if you are saving the high resolution scan. Finally create a final subfolder called “8bit original”. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the sub-window next to “Name” and hit the “OK” button. Repeat this for each dataset.
@@ -77,7 +78,8 @@ This process follows the following steps:
 .. image:: 8bit_img.png
 **FIG. 2. downsampling to 8bit in Fiji.** 
 
-For registration, both datasets must be modified so that they are the same absolute voxel size. The current default high resolution voxel size is 1.625 μm\ :sup:`3`, and low resolution voxel size is 2.6 μm\ :sup:`3`. Both datasets are modified to produce voxels sizes of 6.5 μm\ :sup:`3` .  :sup:`2`.
+
+For registration, both datasets must be modified so that they are the same absolute voxel size. The current default high resolution voxel size is 1.625 μm\ :sup:`3`, and low resolution voxel size is 2.6 μm\ :sup:`3`. Both datasets are modified to produce voxels sizes of 6.5 μm\ :sup:`3`.  :sup:`2`.
 
  •	Modify the **high resolution** 8bit data by selecting **Image>Adjust>Size** in Fiji and changing the **width and height to 640 and the depth to 540**. 
 
@@ -87,6 +89,7 @@ For registration, both datasets must be modified so that they are the same absol
 
 .. image:: resize_img.png
 **FIG. 3. Resizing data in Fiji.**
+
 
 High resolution data only included a subsection of the low resolution data (smaller field of view), so the vertical offset between the two scaled datasets must be calculated. Open both scaled datasets in Fiji and isolate a slice in the low resolution dataset that includes a diagnostic element of the sample. This can be a portion of sample with a definitive and unique 2D shape or size. Once selected, find the same portion in the high resolution scaled data and log the offset in the slice number between both datasets. Duplicate the slice in both datasets by right clicking inside the slice and selecting “Duplicate” in the proceeding window. 
 
@@ -107,13 +110,14 @@ Now the spatial registration between the low resolution and high resolution data
 **FIG. 4. Selection of diagnostic sample element and isolation using the Polygon selection tool in Fiji.**
 
 .. image:: region_isolate.png
-**FIG. 4. Isolated sample element after using "Clear outside" tool in Fiji.**
+**FIG. 5. Isolated sample element after using "Clear outside" tool in Fiji.**
+
 
 The data is now ready to be calibrated alongside the orientation data.
 
-**b) Processing of fibre orientation data**
-------------
 
+**b) Processing of fibre orientation data**
+--------------------------------------------
 Fibre orientation data is provided in the form of downsampled and subsampled stacks of tiffs, saved as single 3D tiff files, each with its own .png file highlighting the parameters used for creating the data:
 •	 Fibre theta angle (azimuthal angle) - 8bit tiffs
 •	 Fibre theta angle.png
@@ -124,12 +128,128 @@ Fibre orientation data is provided in the form of downsampled and subsampled sta
 
 These files must be exported to stacks of single tiff files. Then, for registration, processed by padding to the same absolute size as the original CT data.
 
-.. image:: region_isolate.png
-**FIG. 4. Isolated sample element after using "Clear outside" tool in Fiji.**
+.. image:: theta_stack.png
+**FIG. 6. Per-fibre Azimuthal orientation data.**
 
 
+*Exporting data.* Data is exported to single tiffs in Fiji. Open Fiji and drag each of the above 3D tiffs into the tool bar, which will load them into Fiji. For each stack, select **File>Save As>Image Sequence** and in the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working folder and create a new subfolder, naming it the same name as the original file. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the subwindow next to “Name” and hit the “OK” button. Repeat this for each dataset.
+
+.. image:: pad_settings.png
+**FIG. 7. Padding settings from associated .png file for fibre orientation data.**
 
 
+*Inputting calibration details.* This uses the associated .png file for the fibre orientation data. Only one needs to be used as the parameters are the same for each. The process also uses the **“voxel processing.xlsx”** and **“vox_padding.xlsx”** files (LINK TO FILES HERE). 
+
+•	 Open one of the .png files, and both .xlsx files. 
+•	 In the “voxel_processing.xlsx” file, in the “sample” column provide the desired name of the sample. **This is very important** as the exact name will be used for all further scripts. Do not include spaces (use underscores _ instead). 
+•	 In the three columns to the right (X axis length (new voxels); Y axis length (new voxels); Z axis length (new voxels)), input the “Lattice info” in the .png file. 
+•	 Then in “X axis length (old voxels); Y axis length (old voxels); Z axis length (old voxels)”, input the “physical size” in the .png file. 
+•	 Finally, in the “x start point old voxels; y start point old voxels; z start point old voxels” columns, input the starts points of the “physical size” data in the .png file (numbers starting after “from”). The rest of the columns should automatically generate.
+
+.. image:: voxel_padding_entry_1.png
+**FIG. 8. voxel_processing.xlsx dataset.**
+
+.. image:: voxel_padding_entry_2.png
+**FIG. 9. voxel_processing.xlsx dataset continued.**
 
 
+Once this data has been inputted: 
+
+•	 Copy the data from columns “X start padding (new voxels); Y start padding (new voxels); Z start padding (new voxels)” in “voxel_processing.xlsx” into the “x padding (new voxels); y padding (new voxels); z padding (new voxels)” of the “vox_padding.xlsx” file. Round these values up to the nearest integer. 
+•	 Then copy the data from “X end padding; Y end padding; Z end padding” into the “X bottom pad (new voxels); Y bottom pad (new voxels); Z bottom pad (new voxels)” of the “vox_padding.xlsx” file. 
+•	 Finally, add the same sample name to the “sample” column of “vox_padding.xlsx” and save both files in the working directory. These files will be used in the next step.
+
+.. image:: vox_padding.png
+**FIG. 10. vox_padding.xlsx dataset.**
+
+
+**Calibrating to CT data.** This process uses the **“folder_swap.py”** and **“FIVD_calbration.py”** scripts (LINKS TO SCRIPT PAGES). Both are ran within the **“Spyder” (V.5+)** Interactive Developer Environment (`IDE <https://www.spyder-ide.org/>`_). Open “folder_swap.py” in Spyder and hit run. You will be greeted by a Graphical User Interface (GUI):
+
+.. image:: folder_swap.png
+**FIG. 11. Folder Swap GUI.**
+
+
+Hit the Brows button for “Script Folder” and navigate to your script folder, then press Select. Then hit the Browse button for “New file folder” and navigate to your working directory and press Select. Finally hit the “Submit” button in the main GUI. This will change the input folder in all python and bash scripts to the working directory. 
+
+Now run the “FIVD_calibration.py” script in spyder. This will create a new dataset and folder in the CT Data subfolder called “calibrated”. This consists of copies of the scaled low resolution dataset for slices representing the same region of interest as the high resolution dataset, with the scaled high resolution slices copied onto them according to the spatial offset between the low resolution and high resolution representations of the isolated features characterized in each dataset. The script also pads the fibre orientation data to the same absolute size as the scaled low resolution data, within the “[orientation data] padded” subfolder for each orientation dataset, created in the working directory. Within this folder, another subfolder is created called “calibrated” which consists of the fibre orientation data padded to the same absolute sixe as the calibrated CT data.
+
+.. image:: calibration_data.png
+**FIG. 12. Padded and calibrated fibre oirentation and SRCT data.**
+
+
+*Creating inverted reslice for vertical registration.* The registration process (see below) uses a 2D map of summed Wide Angle X-ray Scatter (WAXS; collected alongside SAXS data at I22) intensity for the user to select a distinct region and compare it to a comparable map of the CT data. While the WAXS map is created in the registration script, the CT map must be created by the user. 
+
+•	 Load the calibrated CT data into Fiji and select **Image>Stacks>Reslice**. 
+•	 In the proceeding “Reslice” window, ensure the “Start At” position is set to “top” and hit the OK button. 
+•	 This will create a “resliced” dataset oriented the same way as the WAXD map. 
+•	 To create a single map image, select the resliced dataset and go to **image>stacks>z-project...**, and in the proceeding “Z-projection” window select “sum slices” before hitting OK. 
+•	 This creates a single image, with grey vales the sum of all slices for the respective voxel. Finally, select edit>invert to invert these values (mirroring the WAXS map) and save this image as a tiff in the “calibration” subfolder of CT data.
+
+.. image:: reslice_data.png
+**FIG. 13. Reslice window in Fiji**
+
+.. image:: inverted_ct.png
+**FIG. 14. Inverted CT map for registration**
+
+
+*Processing kapton data.* The kapton tube is used for the spatial registration between the fibre orientation and SAXS data. To do this, the tube must be isolated in the calibrated CT data. 
+
+•	 Load the calibrated data into Fiji, and either select **Image>Adjust> Brightness/contrast** or use the keyboard shortcut **ctrl+shift+c** to open the brightness/contrast window. 
+•	 This window will show two distinct peaks in the greyscale histogram. Drag the “Minimum” bar to change the minimum dynamic range until only the kapton tube (and probably bone) is visible, and the “maximum” bar to the right-hand limit of the right-hand peak and hit the “apply” button. 
+•	 This will change the dynamic range of the dataset so that the kapton window is clear. 
+•	 Now go to **Analyse>tools>ROI manager** in the Fiji taskbar, which will open the ROI manager subwindow. 
+•	 In the dataset, navigate to the first slice that shows a complete kapton tube (small sections may be lost from the overlapping by the high resolution data). Choose the “polygon selection” tool in the Fiji taskbar and draw a polygon around the inner surface of the kapton tube, then hit “add” in the ROI manager window. 
+•	 Navigate to the slice **50 slices higher** than the current slice in the dataset and repeat the polygon selection and add to the ROI manager. 
+•	 Repeat this for the rest of the dataset. 
+•	 Once finished, in the ROI manager window, select every ROI (hold shift and select the first and last ROI), then hit the “more” button. Within the proceeding popup window, select “interpolate ROIs”. 
+•	 This will interpolate for each slice between the created ROIs. 
+•	 Then hit **ctrl+shift+n** to open the macro editor window and **File>open** within this window to open the **“ROI_manager.ijm”** macro. Hit **“run”** in this window to clear the inside of every ROI, removing the sample from the image and leaving only the kapton tube. 
+•	 Save this dataset as an image sequence in a new subfolder within the “calibrated” folder called “kapton”. 
+
+.. image:: kapton_segment.png
+**FIG. 15. Segmnetation of kapton data in Fiji**
+
+
+**c.	Registration of fibre orientation and SAXS data**
+--------------------------------------------------------
+
+This process registers the padded fibre orientation and index data with tomographic SAXS data. It uses two python scripts:
+ 
+ **1.	Registration_user_input.py (LINK TO SCRIPT HERE).**
+ **2.	Fivd_registration_cluster.py (LINK TO SCRIPT HERE).**
+
+*Inputting registration information.* This process is user operated, providing all of the necessary information for the main script, “FIVD_registration_cluster.py”. Registration_user_input.py is operated locally in the Spyder IDE. Load the script in Spyder and hit “run”. The script is GUI based, first providing a GUI window for the user to input folder locations and scan information:
+
+.. image:: reg_gui_1.png
+**FIG. 16. Registration GUI 1.**
+
+•	“Scan name” – this must be the same name inputted in the “vox_padding.xlsx” file.
+•	“original CT data” – Hit the browse button and navigate to the CT data folder and press Select.
+•	“inverted resliced CT Map” – Hit the browse button and select the inverted resliced z projection in “calibration”, and press Select.
+•	“kapton CT dataset” – navigate to the “kapton” folder of the “calibrated” subfolder in CT data, then press Select.
+•	“Beta/phi fibre tracing data” – hit the browse button and navigate to the working directory. Naviagate to the “calibrated” subfolder of the padded folder for the phi data and press Select.
+•	“alpha/theta fibre tracing data” – hit the browse button and navigate to the working directory. Naviagate to the “calibrated” subfolder of the padded folder for the theta data and press Select.
+•	“WAXS map data” – hit the browse button and navigate to the folder storing the SAXS data for the respective sample. Select the .nxs file for the coarse mapping scan (performed before each tomography to locate the sample within the sample holder, then press Select.
+•	“Output folder” – hit Browse and navigate to the working directory, then press select.
+•	“Script folder” – hit Browse and navigate to the folder including all downloaded TomoSAXS scripts, then press Select.
+•	“Fibre tracing padding file” – navigate to the working directory and select the “vox_padding.xlsx” file, then press Select.
+•	“Original CT voxel size (um)” – input the voxel size of the original CT data (default set to 1.625 μm).
+•	“Inverted CT voxel sixe” – input the voxel size of the inverted CT map (default set to 6.5 μm).
+•	“kapton data voxel size) – input the voxel size of the isolated kapton dataset (default set to 6.5 μm).
+•	“Fibre tracing voxel size” – input the voxel size of the fibre orientation and fibre index data (default set to 5 μm).
+•	“kapton tube diameter (um)” – input the diameter of the kapton tube used for the sample (default is 4000 μm but set to 6000 μm if using full IVD as this was the diameter used for these samples). 
+•	“SAXS rotational direction” – set to the direction of rotation for the respective SAXS tomography (set to clockwise if using development scans).
+•	“TomoSAXS binning” – binning of SAXS tomography data (default set to 1 – i.e. no binning).
+
+Input all of the above data then hit the “submit” button.
+
+This will open up a new GUI titled “3D registration: TomoSAXS parameters” for the user to input the parameters of the SAXS tomography:
+
+.. image:: reg_gui_2.png
+**FIG. 16. Registration GUI 2.**
+
+•	“Number of rotational angles in TomoSAXS scan” – default set to 9.
+•	“Start angle” – default set to -90\ :sup:`o`.
+•	“end angle” – default set to 90\ :sup:`o`.
+•	“Angle of WAXS map” – default set to 00.
 

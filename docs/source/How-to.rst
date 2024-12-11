@@ -76,6 +76,20 @@ This process follows the following steps:
 .. image:: 8bit_img.png
 **FIG. 2. downsampling to 8bit in Fiji.** 
 
+For registration, both datasets must be modified so that they are the same absolute voxel size. The current default high resolution voxel size is 1.625 μm\ :sup:`3`, and low resolution voxel size is 2.6 μm\ :sup:`3`. Both datasets are modified to produce voxels sizes of 6.5 μm\ :sup:`3` .  :sup:`2`.
+
+ •	Modify the **high resolution** 8bit data by selecting Image>Adjust>Size in Fiji and changing the **width and height to 640 and the depth to 540**. 
+
+ •	Modify the **low resolution** 8bit data by changing the **width and height to 1024 and depth to 864**. 
+
+ •	Save each modified dataset as an image sequence in a new subfolder within their respective “high res” or “low res” folder called “inverse scaled”.
+
+.. image:: resize_img.png
+**FIG. 3. Resizing data in Fiji.**
+
+High resolution data only included a subsection of the low resolution data (smaller field of view), so the vertical offset between the two scaled datasets must be calculated. Open both scaled datasets in Fiji and isolate a slice in the low resolution dataset that includes a diagnostic element of the sample. This can be a portion of sample with a definitive and unique 2D shape or size. Once selected, find the same portion in the high resolution scaled data and log the offset in the slice number between both datasets. Duplicate the slice in both datasets by right clicking inside the slice and selecting “Duplicate” in the proceeding window. 
+
+
 
 
 

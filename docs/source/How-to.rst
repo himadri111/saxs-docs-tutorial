@@ -303,5 +303,96 @@ You can monitor the progress of the job using **“squeue –u YOUR_FEDID”** (
 
 .. _Module 2:
 
-**2. Background correction.**
--------------------------------
+**Module 2. Background correction.**
+---------------------------------------
+
+This process uses two scripts – **“bgcr_user_input.py”** and **“bgcr_cluster.py”**. “bgcr_user_input.py” is run locally within Spyder. “bgcr_cluster.py” is most efficiently run using cluster computing.
+
+“bgcr_user_input.py”. Load the script into Spyder and hit Run. You will be greeted by the following GUI, titled “TomoSAXS background correction”:
+
+.. image:: bg_corr_gui_1.png
+**FIG. 24. background correction GUI.**
+
+•	“SAXS data folder” – hit Browse and navigate to the folder containing the SAXS data for the respective scan.
+•	“Mask file” – hit Browse and navigate to the folder containing the .nxs files for the mask created during the SAXS experiment (usually within the “processing” folder), select the mask.nxs file, and hit Select.
+•	“Calibration file” – hit Browse and select the calibration.nxs file created during the SAXS experiment (usually in the same 2processing folder as the mask file”), select the file and hit Select.
+•	“Scan name” - this must be the same name inputted in the “vox_padding.xlsx” file.
+•	“Background file” – hit Browse and navigate to the SAXS data folder, select the .nxs file representing the empty kapton tube background scan and hit Select.
+•	“Dispersant used?” – tickbox. If you used a hydrating fluid (e.g. PBS) during the scan, tick this box. This creates a new input called “Dispersant file” (see below).
+•	“sample thickness file?” – tickbox. If you have complete the registration process, it will have generated a sample thickness file (see bloew), so tick and the “sample width file” input will appear.
+•	“dispersant file” – hit Browse and navigate to your SAXS data folder. Select the .nxs file representing the background scan collected of the kapton tube filled with your hydrating fluid, then hit Select.
+•	“sample width file” – hit Browse and navigate to the output folder selected for the registration process (usually your working directory). Select the file name “full_sample_thickness.npy” then hit Select. 
+•	“scan info”: 
+ •	For a tomoSAXS scan, select “TomoSAXS”.
+ •	If a hydrating fluid was used, select “Correct background and dispersant”, if not then select “Corrct just background”.
+ •	If your background scans were performed using a line scan (default for TomoSAXS), select “line-scan background”, if not select the most appropriate between “single background” (one background frame collected for empty sample holder, and sample holder filled with fluid, respectively) or “sample background” (sample of backgrounds taken but not using a line-scan).
+ •	Select the appropriate sample holder from “kapton tube”, “kapton cuboid”, or “no chamber”.
+ •	If “kapton tube” selected: 
+   •	Input the sample width – or if a biological sample of no fixed width used, input “NA”.
+   •	Input the sample holder width in mm (6 for full IVD).
+   •	Input with the width of the kapton material in mm (0.125 for TomoSAXS experiments).
+
+
+Hitting “submit” will open a second GUI, titled “Select files in TomoSAXS scan”. Hit the Browse button and navigate to the folder containing your SAXS data. Select all of the .nxs files in the respective scan (hold ctrl while selecting to highlight all scans, then press Select. Hit “ok” to submit.
+
+.. image:: reg_gui_3.png
+**FIG. 25. tomoSAXS file selection GUI.**
+
+
+This process creates the **“bgcorr_info.pkl”** and **“registration_scan_files.npy”** files in the directory set as the output folder. 
+
+
+*“bgcr_cluster.py”.* This is most efficiently ran using cluster computing. Before using this, open the **“folder_swap.py”** script in Spyder, hit run and for “script folder”, browse to the “bcgr_corr” sub folder in your scripts folder and press Select. Then for “new file folder”, navigate to the working directory and press Select. Then hit Submit. This will convert the input folder of all the background correction scripts to the working directory.
+
+If using a clyster, navigate to the operations node. if using the DLS cluser, open a terminal and enter “ssh Wilson” – you may then be prompted to input your fedID password). Navigate to your background correction script folder folder using **“cd /path/to/your/script_folder/bgcr_corr”**. Then submit the bash scripts for each TomoSAXS slice using: 
+
+•	**“sbatch --partition=#partion_you_want_to_use# FIVD_bgcorr_0_bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# FIVD_bgcorr_1_bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# FIVD_bgcorr_2_bash.sh”**
+•	…
+•	**“sbatch --partition=#partion_you_want_to_use# FIVD_bgcorr_10_bash.sh”**
+
+
+.. _Module 3:
+
+**Module 3. Initial estimation of scattering intensity for individual fibres using single value decomposition (SVD).**
+---------------------------------------
+
+This process uses two scripts, most efficiently ran using cluster computing. The first script is **“chi_exp_multiproc.py”**, which builds a python library consisting of measured intensity values across the χ axis for every beampath in the SAXS tomography (see LINK TO CHIEXP PAGE). Run this on the cluster. Before using this, open the “folder_swap.py” script in Spyder, hit run and for “script folder”, browse to the “chiExp_multiproc” sub folder in your scripts folder and press Select. Then for “new file folder”, navigate to the working directory and press Select. Then hit Submit. This will convert the input folder of all the background correction scripts to the working directory.
+
+If using the DLS cluser, open a terminal and enter “ssh Wilson” – you may then be prompted to input your fedID password). Navigate to your background correction script folder folder using **“cd /path/to/your/script_folder/chiExp_multiproc”**. Then submit the bash scripts for each TomoSAXS slice using: 
+
+•	**“sbatch --partition=#partion_you_want_to_use# chiExp_multiproc_0_bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# chiExp_multiproc_1_bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# chiExp_multiproc_2_bash.sh”**
+•	…
+•	**“sbatch --partition=#partion_you_want_to_use# chiExp_multiproc_10_bash.sh”**
+
+Once these scripts have finished running, you can run the “svd_module.py” script. This uses the index and orientation data of fibres in each beampath to simulate scattering across the beampath and compare it to measured data held in the above library. Comparisons are used to estimate the amplitude of scattering intensity required for simulations to match measured intensity for every possible fibre using single value decomposition (SVD) (see LINK TO SVD PAGE). 
+
+Run this on the cluster. Before using this, open the “folder_swap.py” script in Spyder, hit run and for “script folder”, browse to the “svd” sub folder in your scripts folder and press Select. Then for “new file folder”, navigate to the working directory and press Select. Then hit Submit. This will convert the input folder of all the background correction scripts to the working directory.
+
+If using the DLS cluser, open a terminal and enter “ssh Wilson” – you may then be prompted to input your fedID password). Navigate to your background correction script folder folder using **“cd /path/to/your/script_folder/svd”**. Then submit the bash scripts for each TomoSAXS slice using: 
+
+•	**“sbatch --partition=#partion_you_want_to_use# _0_svd_Bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# _1_svd_Bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# _2_svd_Bash.sh”**
+•	…
+•	**“sbatch --partition=#partion_you_want_to_use# _10_svd_Bash.sh”**
+
+
+.. _Module 3:
+
+**Module 4. Reconstruction of scattering metrics for individual fibres related to nanoscale structure and mechanics.**
+------------------------------------------------------------------------------------------------------------------------
+Once the SVD scripts have finished, you can now start the reconstruction process. This is performed using the **“recon_module.py”** script. This script performs simulations of each beampath using its fibre orientation and index data. If either single fibres or neighbouring fibres with sufficient overlap between each other and indepdendence from neighbouring fibres along χ are found to provide a proportion of total scattering above a certain threshold (see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/recon.rst>`_).
+
+Run this on the cluster. Before using this, open the “folder_swap.py” script in Spyder, hit run and for “script folder”, browse to the “recon” sub folder in your scripts folder and press Select. Then for “new file folder”, navigate to the working directory and press Select. Then hit Submit. This will convert the input folder of all the background correction scripts to the working directory.
+
+If using the DLS cluser, open a terminal and enter “ssh Wilson” – you may then be prompted to input your fedID password). Navigate to your background correction script folder folder using **“cd /path/to/your/script_folder/svd”**. Then submit the bash scripts for each TomoSAXS slice using: 
+
+•	**“sbatch --partition=#partion_you_want_to_use# _0_recon_Bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# _1_ recon_Bash.sh”**
+•	**“sbatch --partition=#partion_you_want_to_use# _2_ recon_Bash.sh”**
+•	…
+•	**“sbatch --partition=#partion_you_want_to_use# _10_ recon_Bash.sh”**

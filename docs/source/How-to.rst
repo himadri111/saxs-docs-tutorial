@@ -45,5 +45,37 @@ This document focusses on how to perform the Python pipeline for TomoSAXS proces
 To download the necessary scripts, visit the stable build library at LINK TO SCRIPTS PAGE.
 Once downloaded, copy to the desired working folder for your analysis. The “folder_swap.py” script is a useful tool for changing the input folder in downloaded scripts.
 
+.. _Module 1:
+
+Module 1: SAXS/CT data registraion
+------------
+This module operates over several discrete processing steps:
+
+ **a.	Processing of CT data.**
+
+ **b.	Processing of fibre orientation data.**
+
+ **c.	Registration of fibre orientation and SAXS data.**
+
+**a.	Processing of CT data**
+
+For imaging large samples such as complete intervertebral discs, two CT scans are used; 
+ 
+ **a) a high resolution scan including the entire sample;**
+
+ **b) a low resolution scan including the sample and at least one half of the kapton tube sample holder.** 
+This is to allow the low resolution scan to calibrate the distance of the sample from the kapton tube in the high resolution scan (used for fibre orientation analysis and DVC), which is vital for the registration process. The scans are then combined by scaling each to that they are the same size, calculating the vertical offset between them using a suitable fiducial marker in the sample, and using the spatial offset between the marker in each scan to centre the high resolution data onto the low resolution data.
+
+.. image:: resolution_comp.png
+**FIG. 1. low versus high resolution SRCT reconstructions.** 
+
+This process follows the following steps:
+
+*Scaling CT data.* The high resolution and low resolution CT reconstructions are opened in imageJ/Fiji (herein referred to as `Fiji <https://imagej.net/>`_), by locating their folder and dragging the folder icon into the Fiji taskbar. Once loaded, reduce the bit-rate to 8bit by selecting Image>Type>8bit. Then save the 8bit version to your working directory by selecting File>Save As>Image Sequence. In the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working directory and create a new subfolder, naming it “CT data”. Within “CT data” create a further subfolder called “low res” if you are saving the low resolution scan, or “high res” if you are saving the high resolution scan. Finally create a final subfolder called “8bit original”. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the sub-window next to “Name” and hit the “OK” button. Repeat this for each dataset.
+
+.. image:: 8bit_img.png
+**FIG. 2. downsampling to 8bit in Fiji.** 
+
+
 
 

@@ -246,10 +246,62 @@ Input all of the above data then hit the “submit” button.
 This will open up a new GUI titled “3D registration: TomoSAXS parameters” for the user to input the parameters of the SAXS tomography:
 
 .. image:: reg_gui_2.png
-**FIG. 16. Registration GUI 2.**
+**FIG. 17. Registration GUI 2.**
 
 •	“Number of rotational angles in TomoSAXS scan” – default set to 9.
 •	“Start angle” – default set to -90\ :sup:`o`.
 •	“end angle” – default set to 90\ :sup:`o`.
 •	“Angle of WAXS map” – default set to 00.
 
+Input the parameters of the respective scan, then hit “submit”.
+
+This will now open a third GUI, titled “Select files in TomoSAXS scan”. Hit the Browse button and navigate to the folder containing your SAXS data. Select all of the .nxs files in the respective scan (hold ctrl while selecting to highlight all scans, then press Select. Hit “ok” to submit.
+
+.. image:: reg_gui_3.png
+**FIG. 18. Registration GUI 3.**
+
+This will now open up a pop-up, displaying the WAXS map. Target a characteristic element of the sample in this map (zoom using middle mouse button) and click to place a cross-hairs at this position. I usually use the highest point of the lower vertebral endplate. Once you are happy with the placement of the cross-hair. **Hit esc twice**.
+
+.. image:: waxs_map.png
+**FIG. 18. Map of WAXS intensity across sample.**
+
+.. image:: waxs_map_zoom.png
+**FIG. 19. Selection of diagnostic sample region in WAXS data.**
+
+
+A new pop-up will then appear displaying the cross-hair to double check that you are satisfied with the placement. If you hit “Cancel” you can reapply the cross-hair and repeat until you are happy. Once you are satisfied, hit the “yes” then “submit” button.
+
+.. image:: waxs_selection.png
+**FIG. 20. Confirming selection in GUI.**
+
+
+This will trigger the inverted CT map to pop-up. Find the same point in this map and apply the cross-hair, repeating the above steps until you are satisfied that the cross-hairs are at the same position (vertically) in both maps. Hit “yes” and the “submit” button.
+
+.. image:: ct_invert_map.png
+**FIG. 21. Select same sample element in inverted SRCT map.**
+
+.. image:: ct_invert_map.png
+**FIG. 22. Confirming selection in GUI.**
+
+
+This operation will create the “registration_scan_info.pkl”, “bgcorr_info.pkl”, “registration_info.pkl”, and “registration_scan_files.npy” files in the folder selected as the output folder in the original GUI. These are used for the main registration script “FIVD_registration_cluster.py”.
+
+
+*Registering data.* This operation is all performed in the “FIVD_registration_cluster.py” script. This can either be operated locally, or using SLURM on a computer cluster. If used locally, load “FIVD_registration_cluster.py” into Spyder and hit “Run”.
+
+If using a cluster, navigate to the operations node. 
+•	If using the DLS cluser, open a terminal and enter “ssh Wilson” – you may then be prompted to input your fedID password). 
+•	Navigate to your script folder using **“cd /path/to/your/script_folder”**. 
+•	Then enter **“sbatch --partition=#partion_you_want_to_use# FIVD_full_reg_bash.sh”**. for dls an example would be **“sbatch --partition=cs04r FIVD_full_reg_bash.sh”**. 
+•	This should create an output similar to **“Submitted batch job 9999”**.
+
+.. image:: slurm_terminal.png
+**FIG. 23. Operating in cluster terminal.**
+
+You can monitor the progress of the job using **“squeue –u YOUR_FEDID”** (swap YOUR_FEDID for your federal ID).
+
+
+.. _Module 2:
+
+**2. Background correction.**
+-------------------------------

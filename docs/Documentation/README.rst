@@ -308,7 +308,7 @@ You can monitor the progress of the job using **“squeue –u YOUR_FEDID”** (
 **Module 2. Background correction.**
 ---------------------------------------
 
-This process uses two scripts – **“bgcr_user_input.py”** and **“bgcr_cluster.py”**. “bgcr_user_input.py” is run locally within Spyder. “bgcr_cluster.py” is most efficiently run using cluster computing.
+This process uses two scripts – `bgcr_user_input.py <https://github.com/himadri111/saxs-docs-tutorial/blob/main/Code/bgr_user_input.py>`_ and `bgcr_cluster.py <https://github.com/himadri111/saxs-docs-tutorial/blob/main/Code/bgr_cluster.py>`_. “bgcr_user_input.py” is run locally within Spyder. “bgcr_cluster.py” is most efficiently run using cluster computing.
 
 “bgcr_user_input.py”. Load the script into Spyder and hit Run. You will be greeted by the following GUI, titled “TomoSAXS background correction”:
 

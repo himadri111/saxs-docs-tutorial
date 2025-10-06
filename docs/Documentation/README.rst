@@ -163,7 +163,9 @@ Once this data has been inputted:
 **FIG. 10. vox_padding.xlsx dataset.**
 
 
-**Calibrating to CT data.** This process uses the **“folder_swap.py”** and **“FIVD_calbration.py”** scripts (LINKS TO SCRIPT PAGES). Both are ran within the **“Spyder” (V.5+)** Interactive Developer Environment (`IDE <https://www.spyder-ide.org/>`_). Open “folder_swap.py” in Spyder and hit run. You will be greeted by a Graphical User Interface (GUI):
+**Calibrating to CT data.** This process uses the `folder_swap.py <https://github.com/himadri111/saxs-docs-tutorial/blob/main/Code/folder_swap.py>`_
+
+and `FIVD_calbration.py <https://github.com/himadri111/saxs-docs-tutorial/blob/main/Code/FIVD_calbration.py>`_ scripts. Both are ran within the **“Spyder” (V.5+)** Interactive Developer Environment (`IDE <https://www.spyder-ide.org/>`_). Open “folder_swap.py” in Spyder and hit run. You will be greeted by a Graphical User Interface (GUI):
 
 .. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/folder_swap.png
 **FIG. 11. Folder Swap GUI.**

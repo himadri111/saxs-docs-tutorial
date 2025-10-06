@@ -67,7 +67,7 @@ For imaging large samples such as complete intervertebral discs, two CT scans ar
  **b) a low resolution scan including the sample and at least one half of the kapton tube sample holder.** 
 This is to allow the low resolution scan to calibrate the distance of the sample from the kapton tube in the high resolution scan (used for fibre orientation analysis and DVC), which is vital for the registration process. The scans are then combined by scaling each to that they are the same size, calculating the vertical offset between them using a suitable fiducial marker in the sample, and using the spatial offset between the marker in each scan to centre the high resolution data onto the low resolution data.
 
-.. image:: resolution_comp.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/resolution_comp.png
 **FIG. 1. low versus high resolution SRCT reconstructions.** 
 
 

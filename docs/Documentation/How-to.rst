@@ -169,7 +169,7 @@ Once this data has been inputted:
 **FIG. 11. Folder Swap GUI.**
 
 
-Hit the Brows button for “Script Folder” and navigate to your script folder, then press Select. Then hit the Browse button for “New file folder” and navigate to your working directory and press Select. Finally hit the “Submit” button in the main GUI. This will change the input folder in all python and bash scripts to the working directory. 
+Hit the Browse button for “Script Folder” and navigate to your script folder, then press Select. Then hit the Browse button for “New file folder” and navigate to your working directory and press Select. Finally hit the “Submit” button in the main GUI. This will change the input folder in all python and bash scripts to the working directory. 
 
 Now run the “FIVD_calibration.py” script in spyder. This will create a new dataset and folder in the CT Data subfolder called “calibrated”. This consists of copies of the scaled low resolution dataset for slices representing the same region of interest as the high resolution dataset, with the scaled high resolution slices copied onto them according to the spatial offset between the low resolution and high resolution representations of the isolated features characterized in each dataset. The script also pads the fibre orientation data to the same absolute size as the scaled low resolution data, within the “[orientation data] padded” subfolder for each orientation dataset, created in the working directory. Within this folder, another subfolder is created called “calibrated” which consists of the fibre orientation data padded to the same absolute sixe as the calibrated CT data.
 

@@ -75,7 +75,7 @@ This process follows the following steps:
 
 *Scaling CT data.* The high resolution and low resolution CT reconstructions are opened in imageJ/Fiji (herein referred to as `Fiji <https://imagej.net/>`_), by locating their folder and dragging the folder icon into the Fiji taskbar. Once loaded, reduce the bit-rate to 8bit by selecting **Image>Type>8bit**. Then save the 8bit version to your working directory by selecting **File>Save As>Image Sequence**. In the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working directory and create a new subfolder, naming it “CT data”. Within “CT data” create a further subfolder called “low res” if you are saving the low resolution scan, or “high res” if you are saving the high resolution scan. Finally create a final subfolder called “8bit original”. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the sub-window next to “Name” and hit the “OK” button. Repeat this for each dataset.
 
-.. image:: 8bit_img.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/8bit_img.png
 **FIG. 2. downsampling to 8bit in Fiji.** 
 
 
@@ -87,13 +87,13 @@ For registration, both datasets must be modified so that they are the same absol
 
  •	Save each modified dataset as an image sequence in a new subfolder within their respective “high res” or “low res” folder called “inverse scaled”.
 
-.. image:: resize_img.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/resize_img.png
 **FIG. 3. Resizing data in Fiji.**
 
 
 High resolution data only included a subsection of the low resolution data (smaller field of view), so the vertical offset between the two scaled datasets must be calculated. Open both scaled datasets in Fiji and isolate a slice in the low resolution dataset that includes a diagnostic element of the sample. This can be a portion of sample with a definitive and unique 2D shape or size. Once selected, find the same portion in the high resolution scaled data and log the offset in the slice number between both datasets. Duplicate the slice in both datasets by right clicking inside the slice and selecting “Duplicate” in the proceeding window. 
 
-.. image:: threshold_img.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/threshold_img.png
 **FIG. 4. Thresholding data in duplicated slices representing the same region-of-interest in rescaled low resoluton and high resoluton datasets in Fiji.**
 
 
@@ -106,10 +106,10 @@ Now the spatial registration between the low resolution and high resolution data
  •	You can now further isolate the chosen feature by using the Polygon selection tool in the Fiji taskbar to select around the feature, before selecting **Edit>Clear outside** to remove any other material. 
  •	Once only the feature is left in the duplicate, save using **File>save as>tiff** and create a new subfolder in “CT data” called “calibration”, then saving within that folder by naming the image after the slice that it originates from (e.g.**“low_res_168.tiff”** or **“high res_450.tiff”** respectively).
 
-.. image:: region_select.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/region_select.png
 **FIG. 4. Selection of diagnostic sample element and isolation using the Polygon selection tool in Fiji.**
 
-.. image:: region_isolate.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/region_isolate.png
 **FIG. 5. Isolated sample element after using "Clear outside" tool in Fiji.**
 
 
@@ -128,13 +128,13 @@ Fibre orientation data is provided in the form of downsampled and subsampled sta
 
 These files must be exported to stacks of single tiff files. Then, for registration, processed by padding to the same absolute size as the original CT data.
 
-.. image:: theta_stack.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/theta_stack.png
 **FIG. 6. Per-fibre Azimuthal orientation data.**
 
 
 *Exporting data.* Data is exported to single tiffs in Fiji. Open Fiji and drag each of the above 3D tiffs into the tool bar, which will load them into Fiji. For each stack, select **File>Save As>Image Sequence** and in the proceeding “Save Image Sequence” window, select the “Browse” button. Navigate to your working folder and create a new subfolder, naming it the same name as the original file. Navigate inside this new folder and hit the “select” button. Then in the “Save Image Sequence” window, delete the information in the subwindow next to “Name” and hit the “OK” button. Repeat this for each dataset.
 
-.. image:: pad_settings.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/pad_settings.png
 **FIG. 7. Padding settings from associated .png file for fibre orientation data.**
 
 
@@ -146,10 +146,10 @@ These files must be exported to stacks of single tiff files. Then, for registrat
 •	 Then in “X axis length (old voxels); Y axis length (old voxels); Z axis length (old voxels)”, input the “physical size” in the .png file. 
 •	 Finally, in the “x start point old voxels; y start point old voxels; z start point old voxels” columns, input the starts points of the “physical size” data in the .png file (numbers starting after “from”). The rest of the columns should automatically generate.
 
-.. image:: voxel_padding_entry_1.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/voxel_padding_entry_1.png
 **FIG. 8. voxel_processing.xlsx dataset.**
 
-.. image:: voxel_padding_entry_2.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/voxel_padding_entry_2.png
 **FIG. 9. voxel_processing.xlsx dataset continued.**
 
 
@@ -159,13 +159,13 @@ Once this data has been inputted:
 •	 Then copy the data from “X end padding; Y end padding; Z end padding” into the “X bottom pad (new voxels); Y bottom pad (new voxels); Z bottom pad (new voxels)” of the “vox_padding.xlsx” file. 
 •	 Finally, add the same sample name to the “sample” column of “vox_padding.xlsx” and save both files in the working directory. These files will be used in the next step.
 
-.. image:: vox_padding.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/vox_padding.png
 **FIG. 10. vox_padding.xlsx dataset.**
 
 
 **Calibrating to CT data.** This process uses the **“folder_swap.py”** and **“FIVD_calbration.py”** scripts (LINKS TO SCRIPT PAGES). Both are ran within the **“Spyder” (V.5+)** Interactive Developer Environment (`IDE <https://www.spyder-ide.org/>`_). Open “folder_swap.py” in Spyder and hit run. You will be greeted by a Graphical User Interface (GUI):
 
-.. image:: folder_swap.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/folder_swap.png
 **FIG. 11. Folder Swap GUI.**
 
 
@@ -173,7 +173,7 @@ Hit the Brows button for “Script Folder” and navigate to your script folder,
 
 Now run the “FIVD_calibration.py” script in spyder. This will create a new dataset and folder in the CT Data subfolder called “calibrated”. This consists of copies of the scaled low resolution dataset for slices representing the same region of interest as the high resolution dataset, with the scaled high resolution slices copied onto them according to the spatial offset between the low resolution and high resolution representations of the isolated features characterized in each dataset. The script also pads the fibre orientation data to the same absolute size as the scaled low resolution data, within the “[orientation data] padded” subfolder for each orientation dataset, created in the working directory. Within this folder, another subfolder is created called “calibrated” which consists of the fibre orientation data padded to the same absolute sixe as the calibrated CT data.
 
-.. image:: calibration_data.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/calibration_data.png
 **FIG. 12. Padded and calibrated fibre oirentation and SRCT data.**
 
 
@@ -185,10 +185,10 @@ Now run the “FIVD_calibration.py” script in spyder. This will create a new d
 •	 To create a single map image, select the resliced dataset and go to **image>stacks>z-project...**, and in the proceeding “Z-projection” window select “sum slices” before hitting OK. 
 •	 This creates a single image, with grey vales the sum of all slices for the respective voxel. Finally, select edit>invert to invert these values (mirroring the WAXS map) and save this image as a tiff in the “calibration” subfolder of CT data.
 
-.. image:: reslice_data.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/reslice_data.png
 **FIG. 13. Reslice window in Fiji**
 
-.. image:: inverted_ct.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/inverted_ct.png
 **FIG. 14. Inverted CT map for registration**
 
 
@@ -206,7 +206,7 @@ Now run the “FIVD_calibration.py” script in spyder. This will create a new d
 •	 Then hit **ctrl+shift+n** to open the macro editor window and **File>open** within this window to open the **“ROI_manager.ijm”** macro. Hit **“run”** in this window to clear the inside of every ROI, removing the sample from the image and leaving only the kapton tube. 
 •	 Save this dataset as an image sequence in a new subfolder within the “calibrated” folder called “kapton”. 
 
-.. image:: kapton_segment.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/kapton_segment.png
 **FIG. 15. Segmnetation of kapton data in Fiji**
 
 
@@ -220,7 +220,7 @@ This process registers the padded fibre orientation and index data with tomograp
 
 *Inputting registration information.* This process is user operated, providing all of the necessary information for the main script, “FIVD_registration_cluster.py”. Registration_user_input.py is operated locally in the Spyder IDE. Load the script in Spyder and hit “run”. The script is GUI based, first providing a GUI window for the user to input folder locations and scan information:
 
-.. image:: reg_gui_1.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/reg_gui_1.png
 **FIG. 16. Registration GUI 1.**
 
 •	“Scan name” – this must be the same name inputted in the “vox_padding.xlsx” file.
@@ -245,7 +245,7 @@ Input all of the above data then hit the “submit” button.
 
 This will open up a new GUI titled “3D registration: TomoSAXS parameters” for the user to input the parameters of the SAXS tomography:
 
-.. image:: reg_gui_2.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/reg_gui_2.png
 **FIG. 17. Registration GUI 2.**
 
 •	“Number of rotational angles in TomoSAXS scan” – default set to 9.
@@ -257,30 +257,30 @@ Input the parameters of the respective scan, then hit “submit”.
 
 This will now open a third GUI, titled “Select files in TomoSAXS scan”. Hit the Browse button and navigate to the folder containing your SAXS data. Select all of the .nxs files in the respective scan (hold ctrl while selecting to highlight all scans, then press Select. Hit “ok” to submit.
 
-.. image:: reg_gui_3.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/reg_gui_3.png
 **FIG. 18. Registration GUI 3.**
 
 This will now open up a pop-up, displaying the WAXS map. Target a characteristic element of the sample in this map (zoom using middle mouse button) and click to place a cross-hairs at this position. I usually use the highest point of the lower vertebral endplate. Once you are happy with the placement of the cross-hair. **Hit esc twice**.
 
-.. image:: waxs_map.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/waxs_map.png
 **FIG. 18. Map of WAXS intensity across sample.**
 
-.. image:: waxs_map_zoom.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/waxs_map_zoom.png
 **FIG. 19. Selection of diagnostic sample region in WAXS data.**
 
 
 A new pop-up will then appear displaying the cross-hair to double check that you are satisfied with the placement. If you hit “Cancel” you can reapply the cross-hair and repeat until you are happy. Once you are satisfied, hit the “yes” then “submit” button.
 
-.. image:: waxs_selection.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/waxs_selection.png
 **FIG. 20. Confirming selection in GUI.**
 
 
 This will trigger the inverted CT map to pop-up. Find the same point in this map and apply the cross-hair, repeating the above steps until you are satisfied that the cross-hairs are at the same position (vertically) in both maps. Hit “yes” and the “submit” button.
 
-.. image:: ct_invert_map.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/ct_invert_map.png
 **FIG. 21. Select same sample element in inverted SRCT map.**
 
-.. image:: ct_invert_map.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/ct_invert_map.png
 **FIG. 22. Confirming selection in GUI.**
 
 
@@ -295,7 +295,7 @@ If using a cluster, navigate to the operations node.
 •	Then enter **“sbatch --partition=#partion_you_want_to_use# FIVD_full_reg_bash.sh”**. for dls an example would be **“sbatch --partition=cs04r FIVD_full_reg_bash.sh”**. 
 •	This should create an output similar to **“Submitted batch job 9999”**.
 
-.. image:: slurm_terminal.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/slurm_terminal.png
 **FIG. 23. Operating in cluster terminal.**
 
 You can monitor the progress of the job using **“squeue –u YOUR_FEDID”** (swap YOUR_FEDID for your federal ID).
@@ -310,7 +310,7 @@ This process uses two scripts – **“bgcr_user_input.py”** and **“bgcr_clu
 
 “bgcr_user_input.py”. Load the script into Spyder and hit Run. You will be greeted by the following GUI, titled “TomoSAXS background correction”:
 
-.. image:: bg_corr_gui_1.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/bg_corr_gui_1.png
 **FIG. 24. background correction GUI.**
 
 •	“SAXS data folder” – hit Browse and navigate to the folder containing the SAXS data for the respective scan.
@@ -335,7 +335,7 @@ This process uses two scripts – **“bgcr_user_input.py”** and **“bgcr_clu
 
 Hitting “submit” will open a second GUI, titled “Select files in TomoSAXS scan”. Hit the Browse button and navigate to the folder containing your SAXS data. Select all of the .nxs files in the respective scan (hold ctrl while selecting to highlight all scans, then press Select. Hit “ok” to submit.
 
-.. image:: reg_gui_3.png
+.. image:: https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/reg_gui_3.png
 **FIG. 25. tomoSAXS file selection GUI.**
 
 

@@ -215,7 +215,7 @@ Now run the “FIVD_calibration.py” script in spyder. This will create a new d
 
 This process registers the padded fibre orientation and index data with tomographic SAXS data. It uses two python scripts:
  
- **1.	Registration_user_input.py (LINK TO SCRIPT HERE).**
+ **1.	`Registration_user_input.py <Code/registration_user_input.py>`_.**
  **2.	Fivd_registration_cluster.py (LINK TO SCRIPT HERE).**
 
 *Inputting registration information.* This process is user operated, providing all of the necessary information for the main script, “FIVD_registration_cluster.py”. Registration_user_input.py is operated locally in the Spyder IDE. Load the script in Spyder and hit “run”. The script is GUI based, first providing a GUI window for the user to input folder locations and scan information:

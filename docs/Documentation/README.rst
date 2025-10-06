@@ -370,7 +370,7 @@ If using the DLS cluser, open a terminal and enter “ssh Wilson” – you may 
 •	…
 •	**“sbatch --partition=#partion_you_want_to_use# chiExp_multiproc_10_bash.sh”**
 
-Once these scripts have finished running, you can run the “svd_module.py” script. This uses the index and orientation data of fibres in each beampath to simulate scattering across the beampath and compare it to measured data held in the above library. Comparisons are used to estimate the amplitude of scattering intensity required for simulations to match measured intensity for every possible fibre using single value decomposition (SVD) (see LINK TO SVD PAGE). 
+Once these scripts have finished running, you can run the `svd_module.py <https://github.com/himadri111/saxs-docs-tutorial/blob/main/Code/1_svd_module.py>`_ script. This uses the index and orientation data of fibres in each beampath to simulate scattering across the beampath and compare it to measured data held in the above library. Comparisons are used to estimate the amplitude of scattering intensity required for simulations to match measured intensity for every possible fibre using single value decomposition (SVD) (see LINK TO SVD PAGE). 
 
 Run this on the cluster. Before using this, open the “folder_swap.py” script in Spyder, hit run and for “script folder”, browse to the “svd” sub folder in your scripts folder and press Select. Then for “new file folder”, navigate to the working directory and press Select. Then hit Submit. This will convert the input folder of all the background correction scripts to the working directory.
 
@@ -387,7 +387,11 @@ If using the DLS cluser, open a terminal and enter “ssh Wilson” – you may 
 
 **Module 4. Reconstruction of scattering metrics for individual fibres related to nanoscale structure and mechanics.**
 ------------------------------------------------------------------------------------------------------------------------
-Once the SVD scripts have finished, you can now start the reconstruction process. This is performed using the **“recon_module.py”** script. This script performs simulations of each beampath using its fibre orientation and index data. If either single fibres or neighbouring fibres with sufficient overlap between each other and indepdendence from neighbouring fibres along χ are found to provide a proportion of total scattering above a certain threshold (see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/recon.rst>`_).
+Once the SVD scripts have finished, you can now start the reconstruction process. This is performed using the **“recon_module.py”** script.
+
+`recon_module.py <https://github.com/himadri111/saxs-docs-tutorial/blob/main/Code/1_recon_module.py>`_
+
+This script performs simulations of each beampath using its fibre orientation and index data. If either single fibres or neighbouring fibres with sufficient overlap between each other and indepdendence from neighbouring fibres along χ are found to provide a proportion of total scattering above a certain threshold (see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/recon.rst>`_).
 
 Run this on the cluster. Before using this, open the “folder_swap.py” script in Spyder, hit run and for “script folder”, browse to the “recon” sub folder in your scripts folder and press Select. Then for “new file folder”, navigate to the working directory and press Select. Then hit Submit. This will convert the input folder of all the background correction scripts to the working directory.
 

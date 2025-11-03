@@ -21,6 +21,7 @@ Commercial software
 .. _Python:
 
 Python (3.10) 
+------------
 - see `here <https://www.python.org/downloads/>`_
 
 

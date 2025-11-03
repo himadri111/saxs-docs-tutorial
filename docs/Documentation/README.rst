@@ -33,19 +33,13 @@ This document focusses on how to perform the Python pipeline for TomoSAXS proces
 
   •	For details on software dependencies and installation - see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/Documentation/Software.rst>`_
 
-  •	For details on Fibre Orientation processing and analysis – see LINK TO FIBRE TRACING PAGE
-
   •	For details on data registration – see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/coreg.rst>`_
 
   •	For details on background correction - see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/bgrcorr.rst>`_
 
-  •	For details on initial estimation of per-fibre scattering intensity – see LINK TO SVD PAGE
-
   •	For Reconstruction of per-fibre scattering metrics – see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/source/recon.rst>`_
 
-  •	For details on DVC processing and analysis – see LINK TO DVC PAGE
-
-  •	For details on spatial mapping and strain estimation – see LINK TO MAPPING PAGE
+  •	For details on DVC processing and analysis – see `here <https://github.com/himadri111/tomosaxs/tree/main/Code/CT%20%26%20DVC>`_
 
 To download the necessary scripts, visit the stable build library `here <https://github.com/himadri111/tomosaxs/tree/main/Code>`_
 Once downloaded, copy to the desired working folder for your analysis. The “folder_swap.py” script is a useful tool for changing the input folder in downloaded scripts.

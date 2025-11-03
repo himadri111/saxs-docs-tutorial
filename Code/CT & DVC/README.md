@@ -3,7 +3,7 @@
 This repository contains the code for performing synchrotron computed tomography (sCT) image analysis, fibre tracing, and digital volume correlation (DVC) analysis as described in:
 
 **"Multimodal X-ray imaging reveals hierarchical fibre mechanics"**  
-Newham et al., 2025
+Newham and Parmenter et al., 2025
 
 ## Overview
 

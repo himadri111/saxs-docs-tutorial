@@ -5,7 +5,7 @@ Software dependencies and Installation:
 
 Overview
 ------------
-This pipeline is ran using a combination of commercial licenced/free sfotware and custom Python packages using pre-built libraries. 
+This pipeline is ran using a combination of commercial licenced/free sfotware and custom Python packages using pre-built libraries (Typical installation time ~ 2 hours). 
 
 
 .. _Commercial software:

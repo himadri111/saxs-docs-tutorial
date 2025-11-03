@@ -47,7 +47,7 @@ Once downloaded, copy to the desired working folder for your analysis. The “fo
 The expected output from each step (itemised above) are described here and in the links provided.
 
 **Example data** to run reconstruction on a single slice can be found on the Figshare repository `here <https://figshare.com/s/ad8a7f8cef880b62f28d>`_
-
+This is an example for a specific slice of the real data for our sample "FIVD1". 
 
 .. _Module 1:
 

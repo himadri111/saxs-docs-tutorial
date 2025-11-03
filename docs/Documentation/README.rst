@@ -44,6 +44,8 @@ This document focusses on how to perform the Python pipeline for TomoSAXS proces
 To download the necessary scripts, visit the stable build library `here <https://github.com/himadri111/tomosaxs/tree/main/Code>`_
 Once downloaded, copy to the desired working folder for your analysis. The “folder_swap.py” script is a useful tool for changing the input folder in downloaded scripts.
 
+The expected output from each step (itemised above) are described here and in the links provided.
+
 **Example data** to run reconstruction on a single slice can be found on the Figshare repository `here <https://figshare.com/s/ad8a7f8cef880b62f28d>`_
 
 

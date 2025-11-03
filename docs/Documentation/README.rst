@@ -47,8 +47,11 @@ This document focusses on how to perform the Python pipeline for TomoSAXS proces
 
   •	For details on spatial mapping and strain estimation – see LINK TO MAPPING PAGE
 
-To download the necessary scripts, visit the stable build library at LINK TO SCRIPTS PAGE.
+To download the necessary scripts, visit the stable build library `here <https://github.com/himadri111/tomosaxs/tree/main/Code>`_
 Once downloaded, copy to the desired working folder for your analysis. The “folder_swap.py” script is a useful tool for changing the input folder in downloaded scripts.
+
+Example data to run reconstruction on a single slice can be found `here <https://figshare.com/s/ad8a7f8cef880b62f28d>`_
+
 
 .. _Module 1:
 

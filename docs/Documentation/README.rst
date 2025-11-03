@@ -11,7 +11,7 @@ compare with micro-scale structure and strain/pre-strain estimated from micro-CT
 obtained at the Diamond Light Source synchrotron (`DLS <https://www.diamond.ac.uk/Home.html>`_), and the pipeline is currently 
 formatted for the data structure applied by DLS.
 
-**PLEASE NOTE - THIS IS A PIPELINE DESIGNED FOR USING CLUSTER COMPUTING TO PARALLELISE BETWEEN SLICES. IF RUNNING WITHOUT THIS ON A STANDARD DEKSTOP, THIS PROCESS MAY TAKE 1-2 WEEKS**
+**HARDWARE REQUIRED - THIS IS A PIPELINE DESIGNED FOR USING CLUSTER COMPUTING TO PARALLELISE BETWEEN SLICES. IT HAS BEEN CARIED OUT AT THE HPC CLUSTER AT DIAMOND LIGHT SOURCE. IF RUNNING WITHOUT THIS ON A STANDARD DEKSTOP, THIS PROCESS MAY TAKE 1-2 WEEKS**
 
 
 The TomoSAXS pipeline principally operates in the Python (v = 3.10) platform, using cluster computing in the SLURM environment. 

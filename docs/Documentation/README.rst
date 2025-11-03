@@ -28,7 +28,7 @@ The pipeline is modular, operating along the following modules:
 
 This document focusses on how to perform the Python pipeline for TomoSAXS processing and analysis (Modules 1,3,4,5). Details of the algorithms involved in each module are provided in the following pages:
 
-  •	For details on software dependencies and installation - see here.
+  •	For details on software dependencies and installation - see `here <https://github.com/himadri111/saxs-docs-tutorial/blob/main/docs/Documentation/Software.rst>`_
 
   •	For details on Fibre Orientation processing and analysis – see LINK TO FIBRE TRACING PAGE
 
